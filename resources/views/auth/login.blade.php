@@ -8,7 +8,7 @@
 
         @session('status')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ $value }}
+                {{ session('status') }}
             </div>
         @endsession
 
@@ -16,12 +16,12 @@
             @csrf
 
             <div>
-                <x-label for="email" value="{{ __('Email') }}" />
+                <x-label for="email" value="Email" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
+                <x-label for="password" value="Password" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
