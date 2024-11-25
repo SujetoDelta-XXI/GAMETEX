@@ -1,16 +1,16 @@
 <x-app-layout>
-    <x-slot name="header">
+    <x-slot name="header" class="bg-bronce">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
 
     <div class="flex">
-        <div class="flex-1 py-12 px-4">
-            <!-- Tu contenido aquí -->
+        <div class="flex-1 py-12 px-4 bg-blue-900">
+            
         </div>
 
-        <div class="w-64 bg-white shadow-xl p-4 hidden lg:block">
+        <div class="w-64 bg-gray-400 shadow-xl p-4 hidden lg:block">
             <div class="mb-6 text-center">
                 <div class="relative w-32 h-32 mx-auto mb-4">
                     <img id="profile-image" src="{{ Auth::guard('admin')->user()->profile_photo_url ?? '/default-avatar.png' }}" 
