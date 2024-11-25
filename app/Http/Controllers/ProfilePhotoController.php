@@ -21,7 +21,7 @@ class ProfilePhotoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'photo' => ['required', 'image', 'max:2048'] // 2MB Max
+            'photo' => ['required', 'image', 'max:2048']
         ]);
 
         try {

@@ -38,7 +38,12 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
 });
-
+Route::middleware(['auth.moder'])->group(function () {
+    Route::get('moder/dashboard',[ModerDashController::class,'index'])->name('moder.dashboard');
+});
+Route::middleware(['auth.admin'])->group(function () {
+    Route::get('admin/dashboard',[AdminDashController::class,'index'])->name('admin.dashboard');
+});
 
 Route::get('/', [HomeController::class, 'index']);
 
