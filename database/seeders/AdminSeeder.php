@@ -14,8 +14,7 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         DB::table('admins')->insert([
-            'nombres' => 'Pedro López',
-            'apellidos' => 'Martínez',
+            'name' => 'Pedro López',
             'email' => 'pe@gametex.com',
             'password' => bcrypt('123'),
             'telefono' => 986523258,
@@ -27,8 +26,7 @@ class AdminSeeder extends Seeder
         ]);
 
         DB::table('admins')->insert([
-            'nombres' => 'Mario',
-            'apellidos' => 'González',
+            'name' => 'Mario',
             'email' => 'mr@gametex.com',
             'password' => bcrypt('123'),
             'telefono' => 987654321,

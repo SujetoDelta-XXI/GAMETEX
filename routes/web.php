@@ -6,6 +6,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TorneosController;
 use App\Http\Controllers\user\UserDashController;
+use App\Http\Controllers\moder\ModerDashController;
+use App\Http\Controllers\admin\AdminDashController;
+use App\Http\Controllers\ProfilePhotoController;
 use Illuminate\Support\Facades\Auth;
 
 
