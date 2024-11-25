@@ -5,3 +5,15 @@
 [x-cloak] {
     display: none;
 }
+
+/* Archivo de CSS adicional o en tu sección <style> */
+.hide-scroll-bar {
+    /* Oculta la barra de scroll pero permite desplazamiento */
+    -ms-overflow-style: none; /* IE y Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .hide-scroll-bar::-webkit-scrollbar {
+    display: none; /* Navegadores basados en Webkit como Chrome, Safari */
+  }
+  
