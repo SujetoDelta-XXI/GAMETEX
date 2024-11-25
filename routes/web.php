@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\user\UserDashController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -27,3 +28,8 @@ Route::post('/logout', [LoginController::class, 'logout'])
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])
     ->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+
+Route::middleware(['auth.user'])->group(function () {
+    Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
+});

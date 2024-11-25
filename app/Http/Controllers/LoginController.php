@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
-    {
-        return view('auth.login');
-    }
 
     public function login(Request $request)
     {
@@ -29,9 +25,10 @@ class LoginController extends Controller
             return redirect()->intended('/moder/dashboard');
         }
 
-        if (Auth::guard('user')->attempt($credentials)) {
+        if (Auth::guard('user')->attempt( $credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+    
+            return redirect()->intended(route('dashboard'));
         }
         return back()->withErrors([
             'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
