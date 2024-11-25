@@ -2,10 +2,12 @@
 
 namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class ModerModel extends Authenticatable
 {
+    use Notifiable;
     protected $table = 'moders';
     protected $fillable = [
         'nombres',

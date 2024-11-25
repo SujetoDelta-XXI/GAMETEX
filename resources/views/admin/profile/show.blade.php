@@ -51,24 +51,6 @@
                     <p class="text-sm text-gray-500">{{ $user->email ?? 'Sin email' }}</p>
                 </div>
             @endif
-
-            <!-- Información específica según el rol -->
-            @if(Auth::guard('admin')->check())
-                <div class="mt-10 sm:mt-0">
-                    <h3 class="text-lg font-medium text-gray-900">Admin Information</h3>
-                    <p>Información específica para administradores.</p>
-                </div>
-            @elseif(Auth::guard('moder')->check())
-                <div class="mt-10 sm:mt-0">
-                    <h3 class="text-lg font-medium text-gray-900">Moder Information</h3>
-                    <p>Información específica para moderadores.</p>
-                </div>
-            @elseif(Auth::guard('user')->check())
-                <div class="mt-10 sm:mt-0">
-                    <h3 class="text-lg font-medium text-gray-900">User Information</h3>
-                    <p>Información específica para usuarios.</p>
-                </div>
-            @endif
         </div>
     </div>
 </x-app-layout>

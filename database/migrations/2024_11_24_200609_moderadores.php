@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('moders', function (Blueprint $table) {
             $table->id();
-            $table->string('nombres');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('fecha_inicio')->nullable();

@@ -15,7 +15,7 @@ class ModerSeeder extends Seeder
     public function run(): void
     {
         DB::table('moders')->insert([
-            'nombres' => 'Juan Pérez',
+            'name' => 'Juan Pérez',
             'email' => 'jn@gametex.com',
             'password' => bcrypt('123'),
             'fecha_inicio' => now(),
@@ -28,7 +28,7 @@ class ModerSeeder extends Seeder
         ]);
 
         DB::table('moders')->insert([
-            'nombres' => 'Adrian Escobar',
+            'name' => 'Adrian Escobar',
             'email' => 'ad@gametex.com',
             'password' => bcrypt('123'),
             'fecha_inicio' => now(),

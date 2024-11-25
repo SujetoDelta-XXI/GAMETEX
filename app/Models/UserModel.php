@@ -2,10 +2,11 @@
 
 namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 class UserModel extends Authenticatable
 {
+    use Notifiable;
     protected $table = 'users';
     protected $fillable = [
         'name',
@@ -47,5 +48,17 @@ class UserModel extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function getProfilePhotoUrlAttribute()
+    {
+        if ($this->profile_photo_path) {
+            return Storage::url($this->profile_photo_path);
+        }
+        return $this->defaultProfilePhotoUrl();
+    }
+
+    protected function defaultProfilePhotoUrl()
+    {
+        return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
     }
 }
