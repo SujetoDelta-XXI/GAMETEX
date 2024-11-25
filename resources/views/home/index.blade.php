@@ -52,6 +52,7 @@
                 </div>
             </div>
         </section>
+
         <section class="bg-blue-900 text-white py-14 px-8 border p-0">
             <div class="container mx-auto px-0 py-0">
                 <!-- Subtítulo de la sección -->
@@ -61,7 +62,7 @@
                 <section class="text-gray-400 bg-gray-900 body-font">
                     <div class="flex flex-wrap justify-center px-5 py-5 mx-auto space-x-0 sm:space-x-4 md:space-x-10">
                         <!--Evento 1-->
-                        <x-home.evento_card>
+                        <x-home.evento_card class="lg:w-1/3">
                             <x-slot name="imagen">
                                 https://image.api.playstation.com/vulcan/ap/rnd/202405/2117/bd406f42e9352fdb398efcf21a4ffe575b2306ac40089d21.png
                             </x-slot>
@@ -75,7 +76,7 @@
                         </x-home.evento_card>
 
                         <!--Evento 2-->
-                        <x-home.evento_card>
+                        <x-home.evento_card class="lg:w-1/4">
                             <x-slot name="imagen">
                                 https://preview.redd.it/8m9tv6m3ouq81.jpg?auto=webp&s=0f99cb2b9bd28d93667453c0806a5dd75f888c1e
                             </x-slot>
@@ -89,7 +90,7 @@
                         </x-home.evento_card>
 
                         <!--Evento 3-->
-                        <x-home.evento_card>
+                        <x-home.evento_card class="lg:w-1/3">
                             <x-slot name="imagen">
                                 https://image.api.playstation.com/vulcan/ap/rnd/202405/2216/cbb03393f0ab1149f2b89a8194ce19e596a24fa5bec6526a.png
                             </x-slot>
@@ -202,7 +203,7 @@
                         </x-home.ranking_card>
 
                         <!-- Card 2 -->
-                        <x-home.ranking_card>
+                        <x-home.ranking_card class="bg-yellow-400">
                             <x-slot name="imagen">
                                 https://i.pinimg.com/originals/8b/a4/8d/8ba48db13ca10021f9d14aa91a0d8cb1.gif
                             </x-slot>
@@ -215,7 +216,7 @@
                         </x-home.ranking_card>
 
                         <!-- Card 3 -->
-                        <x-home.ranking_card>
+                        <x-home.ranking_card class="bg-orange-700">
                             <x-slot name="imagen">
                                 https://media.tenor.com/xhC6NZETIzMAAAAM/simon-ghost-riley.gif
                             </x-slot>

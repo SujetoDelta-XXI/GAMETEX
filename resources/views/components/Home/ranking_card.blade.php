@@ -1,13 +1,12 @@
-
 <div
-    {{ $attributes->merge(['class' => 'relative flex flex-col mt-6 text-black bg-plata shadow-md bg-clip-border rounded-xl transform transition-all hover:scale-105' . $class])}}>
+    {{ $attributes->merge(['class' => 'relative flex flex-col mt-6 text-black shadow-md bg-clip-border rounded-xl transform transition-transform duration-300 ease-in-out hover:scale-105 overflow-hidden' . $class]) }}>
     <div
         class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-        <img class="object-cover w-full h-full"
-            src="{{ $imagen  }}" alt="card-image"/>
+        <img class="object-cover w-full h-full" src="{{ $imagen }}" alt="card-image" />
     </div>
     <div class="p-6">
-        <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-black text-center">
+        <h5
+            class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-black text-center">
             {{ $name }}
         </h5>
         <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">

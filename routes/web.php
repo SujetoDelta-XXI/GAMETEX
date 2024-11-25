@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TorneosController;
 use App\Http\Controllers\user\UserDashController;
 use App\Http\Controllers\moder\ModerDashController;
 use App\Http\Controllers\admin\AdminDashController;
@@ -47,6 +48,9 @@ Route::middleware(['auth.admin'])->group(function () {
 
 Route::get('/', [HomeController::class, 'index']);
 
+Route::get('torneos', [TorneosController::class, 'index']);
+
+
 Route::get('f_nosotros', [HomeController::class, 'fNosotros']);
 Route::get('f_tienda', [HomeController::class, 'fTienda']);
 Route::get('f_metodos_pago', [HomeController::class, 'fMetodosPago']);
@@ -58,3 +62,4 @@ Route::get('f_poli_privacidad', [HomeController::class, 'fPoliticasPrivacidad'])
 Route::get('f_termin_condiciones', [HomeController::class, 'fTerminosCondiciones']);
 Route::get('f_poli_reembolsos', [HomeController::class, 'fPoliticasReembolso']);
 Route::get('f_poli_cookies', [HomeController::class, 'fPoliticasCookies']);
+

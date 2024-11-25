@@ -1,4 +1,4 @@
-<div class="px-0 py-4 md:w-1/3 sm:mb-0 mb-6 group relative w-full sm:w-1/2 lg:w-1/3">
+<div {{ $attributes->merge(['class' => "px-0 py-4 md:w-1/3 sm:mb-0 mb-6 group relative w-full sm:w-1/2" . $class]) }}>
     <div class="rounded-lg h-80 overflow-hidden relative">
         <!-- Imagen con efecto hover -->
         <img alt="content"
