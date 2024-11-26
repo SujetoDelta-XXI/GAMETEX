@@ -17,11 +17,6 @@ class HomeController extends Controller
         return view('home.footer.acerca.nosotros');
     }
 
-    public function fTienda()
-    {
-        return view('home.footer.acerca.tienda');
-    }
-
     public function fMetodosPago()
     {
         return view('home.footer.acerca.metodos_pago');
@@ -37,10 +32,6 @@ class HomeController extends Controller
         return view('home.footer.acerca.eventos');
     }
 
-    public function fCategorias()
-    {
-        return view('home.footer.acerca.categorias');
-    }
 
     // Métodos para la sección "Términos"
     public function fPoliticasPrivacidad()
