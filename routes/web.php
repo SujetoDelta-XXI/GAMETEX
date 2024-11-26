@@ -54,8 +54,14 @@ Route::middleware(['auth.moder'])->group(function () {
 
 Route::middleware(['auth.admin'])->group(function () {
     Route::get('admin/dashboard',[AdminDashController::class,'index'])->name('admin.dashboard');
-    Route::get('/admin/crud/evento', [AeventoController::class, 'show'])->name('admin.crud.evento');
-    Route::get('/admin/crud/evento/search', [AeventoController::class, 'search'])->name('admin.crud.evento.search');
+    Route::prefix('crud')->group(function () {
+        Route::get('evento', [AeventoController::class, 'show'])->name('admin.crud.evento');
+        Route::get('evento/create', [AeventoController::class, 'create'])->name('evento.create');
+        Route::get('evento-edit/{id}/edit', [AeventoController::class, 'editEventos'])->name('evento-edit');
+        Route::get('evento/{id}', [AeventoController::class, 'deleteEventos'])->name('evento.delete');
+        Route::get('evento/search', [AeventoController::class, 'search'])->name('evento.search');
+        Route::post('evento/store', [AeventoController::class, 'store'])->name('evento.store');
+    });
 });
 
 

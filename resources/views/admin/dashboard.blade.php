@@ -1,11 +1,5 @@
 <!-- resources/views/admin/dashboard.blade.php -->
 <x-app-layout>
-    <x-slot name="header" class="bg-bronce">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
-    </x-slot>
-
     <div class="flex">
         <div class="flex-1 py-12 px-4 bg-blue-900">
             @yield('crudAdm')
