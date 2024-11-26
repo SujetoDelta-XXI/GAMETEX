@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('imagen')->nullable();  
             $table->foreignId('torneo_juego_id')->constrained('torneos_juegos')->onDelete('cascade');
             $table->foreignId('evento_tipo_id')->constrained('eventos_tipo')->onDelete('cascade');
-            $table->foreignId('recompensas_id')->constrained('recompensa_tipo')->onDelete('cascade');
+            $table->foreignId('recompensas_id')->constrained('recompensas_tipo')->onDelete('cascade');
             $table->foreignId('moderador_id')->constrained('moders')->onDelete('cascade');
             $table->foreignId('administrador_id')->constrained('admins')->onDelete('cascade');
             $table->timestamps();

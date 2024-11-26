@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamp('fecha_inicio')->default(DB::raw('CURRENT_TIMESTAMP')); 
             $table->timestamp('fecha_fin')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreignId('evento_tipo_id')->constrained('eventos_tipo')->onDelete('cascade');
-            $table->foreignId('recompensa_tipo_id')->constrained('eventos_tipo')->onDelete('cascade');
+            $table->foreignId('recompensa_tipo_id')->constrained('recompensas_tipo')->onDelete('cascade');
             $table->foreignId('moderador_id')->constrained('moders')->onDelete('cascade');
             $table->timestamps();
         });

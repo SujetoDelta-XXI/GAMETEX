@@ -8,6 +8,7 @@ use App\Http\Controllers\TorneosController;
 use App\Http\Controllers\user\UserDashController;
 use App\Http\Controllers\moder\ModerDashController;
 use App\Http\Controllers\admin\AdminDashController;
+use App\Http\Controllers\admin\AeventoController;
 use App\Http\Controllers\ProfilePhotoController;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,16 +36,33 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])
     ->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-
+///////////////////////////////////////////////////////////////////////////
+/////////////////////////////// user /////////////////////////////////////
 Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
 });
+
+///////////////////////////////////////////////////////////////////////////
+/////////////////////////////// moder /////////////////////////////////////
 Route::middleware(['auth.moder'])->group(function () {
     Route::get('moder/dashboard',[ModerDashController::class,'index'])->name('moder.dashboard');
+    
 });
+
+///////////////////////////////////////////////////////////////////////////
+/////////////////////////////// admin /////////////////////////////////////
+
 Route::middleware(['auth.admin'])->group(function () {
     Route::get('admin/dashboard',[AdminDashController::class,'index'])->name('admin.dashboard');
+    Route::get('/admin/crud/evento', [AeventoController::class, 'show'])->name('admin.crud.evento');
+    Route::get('/admin/crud/evento/search', [AeventoController::class, 'search'])->name('admin.crud.evento.search');
 });
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+/////////////////////////////// HOME /////////////////////////////////////
 
 Route::get('/', [HomeController::class, 'index']);
 

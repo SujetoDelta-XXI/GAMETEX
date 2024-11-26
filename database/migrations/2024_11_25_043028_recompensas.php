@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recompensas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->integer('cantidad');
-            $table->foreignId('recompensa_tipo_id')->constrained('recompensas_tipo')->onDelete('cascade');
-            $table->foreignId('torneo_id')->constrained('torneos')->onDelete('cascade');
-            $table->foreignId('evento_id')->constrained('eventos')->onDelete('cascade');
-            $table->timestamps();
-        });
+    $table->id();
+    $table->string('nombre');
+    $table->integer('cantidad');
+    $table->foreignId('recompensa_tipo_id')->constrained('recompensas_tipo')->onDelete('cascade');
+    $table->foreignId('torneo_id')->constrained('torneos')->onDelete('cascade');
+    $table->foreignId('evento_id')->constrained('eventos')->onDelete('cascade');
+    $table->timestamps();
+});
+
     }
 
     /**
