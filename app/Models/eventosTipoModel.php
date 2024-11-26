@@ -13,6 +13,7 @@ class eventosTipoModel extends Model
         'descripcion',
         'categoria',
         'reglas',
+        'image',
         'updated_date',
     ];
     public function eventos() { 

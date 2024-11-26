@@ -16,6 +16,7 @@ return new class extends Migration
         $table->string('descripcion');
         $table->string('categoria');
         $table->string('reglas');
+        $table->string('imagen')->nullable();  
         $table->timestamps();
     });
     }
