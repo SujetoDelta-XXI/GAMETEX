@@ -101,12 +101,12 @@
 
     @yield('contenido')
 
-    <footer class="relative bg-blueGray-200 pt-8 pb-4">
+    <footer class="relative bg-gray-900 pt-8 pb-4">
         <div class="container mx-auto px-4">
             <div class="flex flex-wrap text-left lg:text-left">
                 <div class="w-full lg:w-6/12 px-4">
-                    <h4 class="text-3xl fonat-semibold text-blueGray-700 pb-2">SIGUENOS EN:</h4>
-                    <h5 class="text-lg mt-0 mb-2 text-blueGray-600">
+                    <h4 class="text-3xl font-semibold text-white pb-2">SIGUENOS EN:</h4>
+                    <h5 class="text-lg mt-0 mb-2 text-white">
                         Entérate de las novedades sobre el desarrollo del sitio web y las actividades futuras a través
                         de nuestras redes sociales.
                     </h5>
@@ -147,55 +147,50 @@
                             </button>
                         </a>
                     </div>
-
                 </div>
                 <div class="w-full lg:w-6/12 px-4">
                     <div class="flex flex-wrap items-top mb-0">
                         <div class="w-full lg:w-4/12 px-4 ml-auto py-5">
-                            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">ACERCA</span>
+                            <span class="block uppercase text-white text-sm font-semibold mb-2">ACERCA</span>
                             <ul class="list-unstyled">
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                                <li><a class="text-white hover:text-gray-400 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_nosotros' }}">Nosotros</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_metodos_pago' }}">Metodos de Pago</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                                <li><a class="text-white hover:text-gray-400 font-semibold block pb-2 text-sm"
+                                        href="{{ 'f_metodos_pago' }}">Métodos de Pago</a></li>
+                                <li><a class="text-white hover:text-gray-400 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_torneos' }}">Torneos</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                                <li><a class="text-white hover:text-gray-400 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_eventos' }}">Eventos</a></li>
                             </ul>
                         </div>
                         <div class="w-full lg:w-4/12 px-4 py-5">
-                            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Terminos</span>
+                            <span class="block uppercase text-white text-sm font-semibold mb-2">Términos</span>
                             <ul class="list-unstyled">
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                                <li><a class="text-white hover:text-gray-400 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_poli_privacidad' }}">Políticas de Privacidad</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_termin_condiciones' }}">Terminos y Condiciones</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                                <li><a class="text-white hover:text-gray-400 font-semibold block pb-2 text-sm"
+                                        href="{{ 'f_termin_condiciones' }}">Términos y Condiciones</a></li>
+                                <li><a class="text-white hover:text-gray-400 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_poli_reembolsos' }}">Política de Reembolsos</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                                <li><a class="text-white hover:text-gray-400 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_poli_cookies' }}">Política de Cookies</a></li>
                             </ul>
-                            <!--<div class="w-full lg:w-12/12 px-4 pt-6">
-                                <button class="bg-green-500 text-white hover:bg-green-700 focus:ring-green-400 focus:ring-opacity-50 px-4 py-2 rounded">
-                                    ¿Necesitas Ayuda?
-                                </button>
-                            </div>-->
                         </div>
                     </div>
                 </div>
             </div>
-            <hr class="mb-4 mt-2 border-blueGray-300">
+            <hr class="mb-4 mt-2 border-gray-600">
             <div class="flex flex-wrap items-center md:justify-between justify-center">
                 <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-                    <div class="text-sm text-blueGray-500 font-semibold py-1">
+                    <div class="text-sm text-white font-semibold py-1">
                         Copyright © <span id="get-current-year">2021</span><a href="{{ '/' }}"
-                            class="text-blueGray-500 hover:text-gray-800" target="_blank"> GAMETEX
+                            class="text-white hover:text-gray-400" target="_blank"> GAMETEX
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
 
 
 </body>
