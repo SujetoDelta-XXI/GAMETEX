@@ -93,17 +93,5 @@
         </div>
     </div>
     @vite('resources/js/app.js')
-    document.getElementById('photo-upload').addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append('photo', file);
-        
-        fetch('/profile/photo', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            }
-        });
-    });
+    
 </x-app-layout>
