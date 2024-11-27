@@ -106,10 +106,10 @@
     @yield('contenido')
 
     <footer class="relative bg-gray-800 pt-8 pb-4">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 text-white ">
             <div class="flex flex-wrap text-left lg:text-left">
                 <div class="w-full lg:w-6/12 px-4">
-                    <h4 class="text-3xl font-semibold text-white pb-2">SIGUENOS EN:</h4>
+                    <h4 class="text-3xl font-semiboldpb-2">SIGUENOS EN:</h4>
                     <h5 class="text-lg mt-0 mb-2 text-white">
                         Entérate de las novedades sobre el desarrollo del sitio web y las actividades futuras a través
                         de nuestras redes sociales.
