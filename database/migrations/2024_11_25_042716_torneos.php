@@ -16,8 +16,12 @@ return new class extends Migration
             $table->string('nombrej');
             $table->timestamp('fecha_inicio')->nullable();
             $table->timestamp('fecha_fin')->nullable();
+<<<<<<< HEAD
+            $table->decimal('entrada',4,2);
+=======
             $table->string('exp');
             $table->string('descripcion');
+>>>>>>> 524ad2434ede4cdcf918b02eedaf5910e118bc6d
             $table->string('imagen')->nullable();  
             $table->foreignId('torneo_juego_id')->constrained('torneos_juegos')->onDelete('cascade');
             $table->foreignId('recompensas_id')->constrained('recompensas_tipo')->onDelete('cascade');

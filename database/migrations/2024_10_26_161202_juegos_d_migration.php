@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('juegos_diccionary', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->String('categoria');
+            $table->String('genero');
             $table->timestamps();
         });
     }

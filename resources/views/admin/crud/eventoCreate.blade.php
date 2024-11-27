@@ -52,6 +52,15 @@
             </div>
             
             <div class="mb-4">
+                <label for="recompensa_tipo_id" class="block text-sm font-medium text-gray-300">Tipo de Recompensa</label>
+                <select name="recompensa_tipo_id" id="recompensa_tipo_id" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required>
+                    @foreach ($recompensasTipos as $recompensaTipo)
+                        <option value="{{ $recompensaTipo->id }}">{{ $recompensaTipo->nombre }} - {{ $recompensaTipo->cantidad }} disponibles</option>
+                    @endforeach
+                </select>
+            </div>
+            
+            <div class="mb-4">
                 <label for="imagen" class="block text-sm font-medium text-gray-300">Imagen del Evento</label>
                 <input type="file" name="imagen" id="imagen" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300">
             </div>

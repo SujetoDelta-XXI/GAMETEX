@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\eventosModel;
 use App\Models\ModerModel;
+use App\Models\recompensasTipoModel;
 use App\Models\eventosTipoModel;
 use Illuminate\Http\Request;
 
@@ -21,12 +22,14 @@ class AeventoController extends Controller
         
         return view('admin.crud.evento', compact('eventos'));
     }
-    public function create() 
-    { 
-        $moderadores = ModerModel::all();  
-        return view('admin.crud.eventoCreate', compact('moderadores'));
-    }
     
+    public function create()
+    {
+        $moderadores = ModerModel::all();  
+        $recompensasTipos = recompensasTipoModel::all(); // Obtener todos los tipos de recompensas
+        return view('admin.crud.eventoCreate', compact('moderadores', 'recompensasTipos'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -38,23 +41,42 @@ class AeventoController extends Controller
             'fecha_fin' => 'required|date',
             'evento_tipo_nombre' => 'required|string|max:50',
             'moderador_id' => 'required|exists:moders,id',
+            'recompensa_tipo_id' => 'required|exists:recompensas_tipo,id', // Validar que el tipo de recompensa existe
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        // Manejar la carga de la imagen
         $rutaImagen = null;
         if ($request->hasFile('imagen')) {
             $rutaImagen = $request->file('imagen')->store('', 'eventos');
         }
 
-        $evento = new eventosTipoModel();
-        $evento->nombre = $request->nombre;
-        $evento->descripcion = $request->descripcion;
-        $evento->categoria = $request->categoria;
-        $evento->reglas = $request->reglas;
-        $evento->imagen = $rutaImagen;
+        // Crear el evento tipo
+        $eventoTipo = new eventosTipoModel();
+        $eventoTipo->nombre = $request->nombre;
+        $eventoTipo->descripcion = $request->descripcion;
+        $eventoTipo->categoria = $request->categoria;
+        $eventoTipo->reglas = $request->reglas;
+        $eventoTipo->imagen = $rutaImagen;
+        $eventoTipo->save();
+
+        // Restar la cantidad de recompensa seleccionada
+        $recompensa = recompensasTipoModel::find($request->recompensa_tipo_id);
+        $recompensa->cantidad -= 1;
+        $recompensa->save();
+
+        // Crear el evento
+        $evento = new eventosModel();
+        $evento->fecha_inicio = $request->fecha_inicio;
+        $evento->fecha_fin = $request->fecha_fin;
+        $evento->evento_tipo_id = $eventoTipo->id; // Relacionar con el evento tipo
+        $evento->moderador_id = $request->moderador_id;
+        $evento->recompensa_tipo_id = $request->recompensa_tipo_id; // Asignar el tipo de recompensa
         $evento->save();
 
         return redirect()->route('admin.crud.evento');
     }
+    
 
 
     public function search(Request $request)
