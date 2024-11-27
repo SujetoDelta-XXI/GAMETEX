@@ -15,6 +15,7 @@ return [
     | during installation and will not need to be changed after that.
     |
     */
+    
 
     'stack' => 'livewire',
 
@@ -32,7 +33,7 @@ return [
     'middleware' => ['web'],
 
     'auth_session' => AuthenticateSession::class,
-
+    'user_model' => App\Models\UserModel::class,
     /*
     |--------------------------------------------------------------------------
     | Jetstream Guard

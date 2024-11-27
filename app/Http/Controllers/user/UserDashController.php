@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\UserModel;
 
 class UserDashController extends Controller
 {
@@ -19,6 +21,12 @@ class UserDashController extends Controller
 
     public function show()
     {
-        return view('profile.show'); #naaaaaaaaaaaa
+        // Verificar si el usuario está autenticado
+        $user = Auth::guard('user')->user();
+        if (!$user) {
+            abort(403, 'No autorizado');
+        }
+
+        return view('profile.show', compact('user')); 
     }
 }
