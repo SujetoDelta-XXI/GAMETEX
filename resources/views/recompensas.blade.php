@@ -68,7 +68,7 @@
                                     d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
                                     clip-rule="evenodd" />
                             </svg>
-                            Opciones de Filtrado
+                            Filtro
                             <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path clip-rule="evenodd" fill-rule="evenodd"
@@ -78,18 +78,10 @@
                         <div id="filterDropdown"
                             class="z-10 hidden px-3 pt-1 bg-white rounded-lg shadow w-80 dark:bg-gray-700 right-0">
                             <div class="flex items-center justify-between pt-2">
-                                <h6 class="text-sm font-medium text-black dark:text-white">Filters</h6>
-                                <div class="flex items-center space-x-3">
-                                    <a href="#"
-                                        class="flex items-center text-sm font-medium text-primary-600 dark:text-primary-500 hover:underline">Save
-                                        view</a>
-                                    <a href="#"
-                                        class="flex items-center text-sm font-medium text-primary-600 dark:text-primary-500 hover:underline">Clear
-                                        all</a>
-                                </div>
+                                <h6 class="text-sm font-medium text-black dark:text-white">Filtros</h6>
                             </div>
                             <div class="pt-3 pb-2">
-                                <label for="input-group-search" class="sr-only">Search</label>
+                                <label for="input-group-search" class="sr-only">Buscar</label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
                                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -113,7 +105,7 @@
                                         class="flex items-center justify-between w-full py-2 px-1.5 text-sm font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700"
                                         data-accordion-target="#category-body" aria-expanded="true"
                                         aria-controls="category-body">
-                                        <span>Category</span>
+                                        <span>Categoria</span>
                                         <svg aria-hidden="true" data-accordion-icon=""
                                             class="w-5 h-5 rotate-180 shrink-0" fill="currentColor" viewbox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -137,11 +129,7 @@
                                                     class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                 <label for="razor"
                                                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Razor
-                                                    (49)</label>
-                                            </li>
-                                            <a href="#"
-                                                class="flex items-center text-sm font-medium text-primary-600 dark:text-primary-500 hover:underline">View
-                                                all</a>
+                                                    (49)</label>         
                                         </ul>
                                     </div>
                                 </div>
@@ -165,97 +153,17 @@
                                         class="flex items-center py-2 space-x-3 font-light border-b border-gray-200 dark:border-gray-600">
                                         <select id="price-from"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                            <option disabled="" selected="">From</option>
+                                            <option disabled="" selected="">Mayor</option>
                                             <option>$500</option>
                                             <option>$2500</option>
                                             <option>$5000</option>
                                         </select><select id="price-to"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                            <option disabled="" selected="">To</option>
+                                            <option disabled="" selected="">Menos</option>
                                             <option>$500</option>
                                             <option>$2500</option>
                                             <option>$5000</option>
                                         </select></div>
-                                </div>
-                                <!-- Worldwide Shipping -->
-                                <h2 id="worldwide-shipping-heading">
-                                    <button type="button"
-                                        class="flex items-center justify-between w-full py-2 px-1.5 text-sm font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700"
-                                        data-accordion-target="#worldwide-shipping-body" aria-expanded="true"
-                                        aria-controls="worldwide-shipping-body">
-                                        <span>Worldwide Shipping</span>
-                                        <svg aria-hidden="true" data-accordion-icon=""
-                                            class="w-5 h-5 rotate-180 shrink-0" fill="currentColor" viewbox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                                        </svg>
-                                    </button>
-                                </h2>
-                                <div id="worldwide-shipping-body" class="hidden"
-                                    aria-labelledby="worldwide-shipping-heading">
-                                    <div class="py-2 space-y-2 font-light border-b border-gray-200 dark:border-gray-600">
-                                        <label class="relative flex items-center cursor-pointer">
-                                            <input type="checkbox" value="" class="sr-only peer" name="shipping"
-                                                checked="">
-                                            <div
-                                                class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600">
-                                            </div>
-                                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">North
-                                                America</span>
-                                        </label>
-                                        <label class="relative flex items-center cursor-pointer">
-                                            <input type="checkbox" value="" class="sr-only peer" name="shipping">
-                                            <div
-                                                class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600">
-                                            </div>
-                                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">South
-                                                America</span>
-                                        </label>
-                                        <label class="relative flex items-center cursor-pointer">
-                                            <input type="checkbox" value="" class="sr-only peer" name="shipping">
-                                            <div
-                                                class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600">
-                                            </div>
-                                            <span
-                                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Asia</span>
-                                        </label>
-                                        <label class="relative flex items-center cursor-pointer">
-                                            <input type="checkbox" value="" class="sr-only peer" name="shipping"
-                                                checked="">
-                                            <div
-                                                class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600">
-                                            </div>
-                                            <span
-                                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Australia</span>
-                                        </label>
-                                        <label class="relative flex items-center cursor-pointer">
-                                            <input type="checkbox" value="" class="sr-only peer" name="shipping">
-                                            <div
-                                                class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600">
-                                            </div>
-                                            <span
-                                                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Europe</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-3 w-full md:w-auto">
-                            <div id="actionsDropdown"
-                                class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="actionsDropdownButton">
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mass
-                                            Edit</a>
-                                    </li>
-                                </ul>
-                                <div class="py-1">
-                                    <a href="#"
-                                        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete
-                                        all</a>
                                 </div>
                             </div>
                         </div>
@@ -265,13 +173,6 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="p-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-all" type="checkbox"
-                                            class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="checkbox-all" class="sr-only">checkbox</label>
-                                    </div>
-                                </th>
                                 <th scope="col" class="p-4">Producto</th>
                                 <th scope="col" class="p-4">Categoria</th>
                                 <th scope="col" class="p-4">Stock</th>
@@ -280,81 +181,77 @@
                                 <th scope="col" class="p-4">Ultima actualización</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <td class="p-4 w-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-table-search-1" type="checkbox"
-                                            onclick="event.stopPropagation()"
-                                            class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                                    </div>
-                                </td>
-                                <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <div class="flex items-center mr-3">
-                                        <img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png"
-                                            alt="iMac Front Image" class="h-8 w-auto mr-3">
-                                        Apple iMac 27&#34;
-                                    </div>
-                                </th>
-                                <td class="px-4 py-3">
-                                    <span
-                                        class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">Desktop
-                                        PC</span>
-                                </td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <div class="flex items-center">95</div>
-                                </td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">15</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    27/11/2024</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    30/11/2024</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <div class="flex items-center space-x-4">
-                                        <button type="button" data-drawer-target="drawer-update-product"
-                                            data-drawer-show="drawer-update-product" aria-controls="drawer-update-product"
-                                            class="py-2 px-3 flex items-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5"
-                                                viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path
-                                                    d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                                                <path fill-rule="evenodd"
-                                                    d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Editar
-                                        </button>
-                                        <button type="button" data-drawer-target="drawer-read-product-advanced"
-                                            data-drawer-show="drawer-read-product-advanced"
-                                            aria-controls="drawer-read-product-advanced"
-                                            class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"
-                                                fill="currentColor" class="w-4 h-4 mr-2 -ml-0.5">
-                                                <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
-                                            </svg>
-                                            Visualizar
-                                        </button>
-                                        <button type="button" data-modal-target="delete-modal"
-                                            data-modal-toggle="delete-modal"
-                                            class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5"
-                                                viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <x-admin.recompensas_list>
+                            <x-slot name="imagen">
+                                https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png
+                            </x-slot>
+                            <x-slot name="producto">
+                                Apple
+                            </x-slot>
+                            <x-slot name="categoria">
+                                PC
+                            </x-slot>
+                            <x-slot name="stock">
+                                15
+                            </x-slot>
+                            <x-slot name="precio">
+                                20
+                            </x-slot>
+                            <x-slot name="f_create">
+                                12/10/2024
+                            </x-slot>
+                            <x-slot name="f_update">
+                                16/11/2024
+                            </x-slot>
+                        </x-admin.recompensas_list>
+                        <x-admin.recompensas_list>
+                            <x-slot name="imagen">
+                                https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png
+                            </x-slot>
+                            <x-slot name="producto">
+                                Apple
+                            </x-slot>
+                            <x-slot name="categoria">
+                                PC
+                            </x-slot>
+                            <x-slot name="stock">
+                                15
+                            </x-slot>
+                            <x-slot name="precio">
+                                20
+                            </x-slot>
+                            <x-slot name="f_create">
+                                12/10/2024
+                            </x-slot>
+                            <x-slot name="f_update">
+                                16/11/2024
+                            </x-slot>
+                        </x-admin.recompensas_list>
+                        <x-admin.recompensas_list>
+                            <x-slot name="imagen">
+                                https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png
+                            </x-slot>
+                            <x-slot name="producto">
+                                Apple
+                            </x-slot>
+                            <x-slot name="categoria">
+                                PC
+                            </x-slot>
+                            <x-slot name="stock">
+                                15
+                            </x-slot>
+                            <x-slot name="precio">
+                                20
+                            </x-slot>
+                            <x-slot name="f_create">
+                                12/10/2024
+                            </x-slot>
+                            <x-slot name="f_update">
+                                16/11/2024
+                            </x-slot>
+                        </x-admin.recompensas_list>
                     </table>
-                </div>
+                    
                 <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
                     aria-label="Table navigation">
                     <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
