@@ -16,4 +16,11 @@ class UserDashController extends Controller
         $actividades = []; 
         return view('dashboard', compact('actividades'));
     }
+
+    public function show()
+    {
+        $usuarios = a::all();  
+        return view('admin.crud.eventoCreate', compact('moderadores', 'recompensasTipos'));
+        return view('profile.show');
+    }
 }

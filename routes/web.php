@@ -40,6 +40,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 /////////////////////////////// user /////////////////////////////////////
 Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
+    Route::get('profile/show',[UserDashController::class,'show'])->name('profile.show');
 });
 
 ///////////////////////////////////////////////////////////////////////////
