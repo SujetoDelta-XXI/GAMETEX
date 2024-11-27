@@ -10,7 +10,7 @@
                     <div class="flex-1 flex items-center space-x-2">
                         <h5>
                             <span class="text-gray-500">Todas la recompensas:</span>
-                            <span class="dark:text-white">123456</span>
+                            <span class="dark:text-white">{{ $totalQuantity }}</span>
                         </h5>
                         <button type="button" class="group" data-tooltip-target="results-tooltip">
                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -166,26 +166,23 @@
                         </thead>
                         @foreach ($recompensas as $recompensa)
                         <x-admin.recompensas_list>
-                            <x-slot name="imagen">
-                                https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png
-                            </x-slot>
                             <x-slot name="producto">
-                                Apple
+                                {{ $recompensa->nombre }}
                             </x-slot>
                             <x-slot name="categoria">
-                                PC
+                                {{ $recompensa->tipo->nombre }}
                             </x-slot>
                             <x-slot name="stock">
-                                15
+                                {{ $recompensa->cantidad }}
                             </x-slot>
                             <x-slot name="precio">
-                                20
+                                {{ $recompensa->precio }}
                             </x-slot>
                             <x-slot name="f_create">
-                                12/10/2024
+                                {{ $recompensa->created_at }}
                             </x-slot>
                             <x-slot name="f_update">
-                                16/11/2024
+                                {{ $recompensa->updated_at }}
                             </x-slot>
                         </x-admin.recompensas_list>
                         @endforeach

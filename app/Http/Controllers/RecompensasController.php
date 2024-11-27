@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 class RecompensasController extends Controller
 {
     public function showListado(){
-        
+
         $recompensas = RecompensasModel::all();
-        return view('recompensas', compact('recompensas'));
+        $totalQuantity = $recompensas->sum('cantidad');
+        return view('recompensas', compact('recompensas', 'totalQuantity'));
 
     }
 }

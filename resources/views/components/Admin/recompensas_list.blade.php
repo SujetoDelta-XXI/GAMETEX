@@ -3,8 +3,6 @@
         <th scope="row"
             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             <div class="flex items-center mr-3">
-                <img src="{{ $imagen }}"
-                    alt="iMac Front Image" class="h-8 w-auto mr-3">
                 {{ $producto }}
             </div>
         </th>
