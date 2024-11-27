@@ -164,6 +164,7 @@
                                 <th scope="col" class="p-4">Ultima actualización</th>
                             </tr>
                         </thead>
+                        @foreach ($recompensas as $recompensa)
                         <x-admin.recompensas_list>
                             <x-slot name="imagen">
                                 https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png
@@ -187,6 +188,7 @@
                                 16/11/2024
                             </x-slot>
                         </x-admin.recompensas_list>
+                        @endforeach
                     </table>
             </div>
         </div>
