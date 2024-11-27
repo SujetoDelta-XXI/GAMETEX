@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('torneos_juegos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre', 45 );
             $table->timestamps();
         });
     }
