@@ -186,7 +186,9 @@
         <section class="bg-blue-900 text-white py-16 px-8 border p-4">
             <div class="flex justify-center items-center">
                 <div class="max-w-7xl mx-auto px-4">
-                    <h3 class="text-center text-2xl font-semibold mb-6">RANKING SEMANAL</h3>
+                    <h2 class="lg:px-20 md:px-10 px-5 lg:mx-0 md:mx-20 mx-5 font-bold text-4xl text-white text-center pb-10">
+                        RANKING SEMANAL
+                    </h2>
                     <div
                         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center text-center">
                         <!-- Card 1 -->

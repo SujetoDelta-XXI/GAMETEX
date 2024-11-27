@@ -101,7 +101,7 @@
 
     @yield('contenido')
 
-    <footer class="relative bg-gray-900 pt-8 pb-4">
+    <footer class="relative bg-gray-800 pt-8 pb-4">
         <div class="container mx-auto px-4">
             <div class="flex flex-wrap text-left lg:text-left">
                 <div class="w-full lg:w-6/12 px-4">

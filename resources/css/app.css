@@ -6,14 +6,15 @@
     display: none;
 }
 
-/* Archivo de CSS adicional o en tu sección <style> */
-.hide-scroll-bar {
-    /* Oculta la barra de scroll pero permite desplazamiento */
-    -ms-overflow-style: none; /* IE y Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-  
-  .hide-scroll-bar::-webkit-scrollbar {
-    display: none; /* Navegadores basados en Webkit como Chrome, Safari */
-  }
+.group:hover .rounded-lg {
+  box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.8);
+  border-color: #c0c0c0;
+  /* Plateado brillante */
+}
+
+.group:hover img {
+  filter: brightness(60%) contrast(120%);
+}
+
+
   
