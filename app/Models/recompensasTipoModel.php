@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class recompensasTipoModel extends Model
+class RecompensasTipoModel extends Model
 {
     public function recompensasTipo() { 
         return $this->hasMany(recompensasModel::class, 'recompensas_id');
