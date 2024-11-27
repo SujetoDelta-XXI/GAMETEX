@@ -16,4 +16,9 @@ class UserDashController extends Controller
         $actividades = []; 
         return view('dashboard', compact('actividades'));
     }
+
+    public function show()
+    {
+        return view('profile.show'); #naaaaaaaaaaaa
+    }
 }

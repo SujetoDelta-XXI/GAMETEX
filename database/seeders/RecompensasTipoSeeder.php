@@ -18,5 +18,15 @@ class RecompensasTipoSeeder extends Seeder
             ['nombre'=>'Cupones de descuento', 'cantidad'=>5],    
             ['nombre'=>'Figuras de accion', 'cantidad'=>5],    
         ]);
+        DB::table('recompensas_tipo')->insert([ 
+            'nombre'=>'targeta regalo $5',
+            'cantidad'=>10,
+            
+        ]);
+        DB::table('recompensas_tipo')->insert([ 
+            'nombre'=>'targeta regalo $50',
+            'cantidad'=>2,
+            
+        ]);
     }
 }

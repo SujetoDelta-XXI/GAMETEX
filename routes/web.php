@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Auth;
     #return view('welcome');
 #});
 
+
+Route::get('recompensas', function() {
+    return view('recompensas');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -40,6 +45,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 /////////////////////////////// user /////////////////////////////////////
 Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
+    Route::get('profile/show',[UserDashController::class,'show'])->name('profile.show');
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -76,11 +82,9 @@ Route::get('torneos', [TorneosController::class, 'index']);
 
 
 Route::get('f_nosotros', [HomeController::class, 'fNosotros']);
-Route::get('f_tienda', [HomeController::class, 'fTienda']);
 Route::get('f_metodos_pago', [HomeController::class, 'fMetodosPago']);
 Route::get('f_torneos', [HomeController::class, 'fTorneos']);
 Route::get('f_eventos', [HomeController::class, 'fEventos']);
-Route::get('f_categorias', [HomeController::class, 'fCategorias']);
 
 Route::get('f_poli_privacidad', [HomeController::class, 'fPoliticasPrivacidad']);
 Route::get('f_termin_condiciones', [HomeController::class, 'fTerminosCondiciones']);
