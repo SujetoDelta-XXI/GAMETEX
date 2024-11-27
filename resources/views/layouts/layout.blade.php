@@ -105,13 +105,14 @@
 
     @yield('contenido')
 
-    <footer class="relative bg-blueGray-200 pt-8 pb-4">
+    <footer class="relative bg-gray-900 pt-8 pb-4">
         <div class="container mx-auto px-4">
             <div class="flex flex-wrap text-left lg:text-left">
                 <div class="w-full lg:w-6/12 px-4">
-                    <h4 class="text-3xl fonat-semibold text-blueGray-700 pb-2">SIGUENOS EN:</h4>
-                    <h5 class="text-lg mt-0 mb-2 text-blueGray-600">
-                        Entérate de las novedades sobre el desarrollo del sitio web y las actividades futuras a través de nuestras redes sociales.
+                    <h4 class="text-3xl font-semibold text-white pb-2">SIGUENOS EN:</h4>
+                    <h5 class="text-lg mt-0 mb-2 text-white">
+                        Entérate de las novedades sobre el desarrollo del sitio web y las actividades futuras a través
+                        de nuestras redes sociales.
                     </h5>
                     <div class="mt-6 lg:mb-0 mb-6">
                         <a href="https://x.com/GAMETEX2024" target="_blank">
@@ -144,7 +145,7 @@
                 <div class="w-full lg:w-6/12 px-4">
                     <div class="flex flex-wrap items-top mb-0">
                         <div class="w-full lg:w-4/12 px-4 ml-auto py-5">
-                            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">ACERCA</span>
+                            <span class="block uppercase text-white text-sm font-semibold mb-2">ACERCA</span>
                             <ul class="list-unstyled">
                                 <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="{{ 'f_nosotros' }}">Nosotros</a></li>
                                 <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="{{ 'f_metodos_pago' }}">Métodos de Pago</a></li>
@@ -166,7 +167,7 @@
                     </div>
                 </div>
             </div>
-            <hr class="mb-4 mt-2 border-blueGray-300">
+            <hr class="mb-4 mt-2 border-gray-600">
             <div class="flex flex-wrap items-center md:justify-between justify-center">
                 <div class="w-full md:w-4/12 px-4 mx-auto text-center">
                     <div class="text-sm text-blueGray-500 font-semibold py-1">
