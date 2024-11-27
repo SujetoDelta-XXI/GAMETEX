@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Auth;
     #return view('welcome');
 #});
 
+
+Route::get('recompensas', function() {
+    return view('recompensas');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
