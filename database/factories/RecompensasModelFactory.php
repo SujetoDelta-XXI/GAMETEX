@@ -16,10 +16,12 @@ class RecompensasModelFactory extends Factory
     {
         return [
             'nombre' => $this->faker->word(), // Nombre aleatorio para la recompensa
-            'cantidad' => $this->faker->numberBetween(1, 100), // Cantidad aleatoria entre 1 y 100
-            'recompensa_tipo_id' => RecompensasTipoModel::all()->random()->id, // Relación con RecompensasTipoModel
-            'torneo_id' => TorneosModel::all()->randon()->id, // Relación con TorneosModel
-            'evento_id' => eventosModel::all()->randon()->id, // Relación con eventosModel
+            'cantidad' => $this->faker->numberBetween(1, 15),
+            'precio' => $this->faker->numberBetween(100, 300),
+            'recompensa_tipo_id' => RecompensasTipoModel::all()->random()->id,
+            'torneo_id' => TorneosModel::all()->random()->id, 
+            /* 'evento_id' => eventosModel::all()->random()->id,  */
         ];
     }
+
 }

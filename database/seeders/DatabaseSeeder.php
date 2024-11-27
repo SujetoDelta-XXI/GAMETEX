@@ -36,8 +36,9 @@ class DatabaseSeeder extends Seeder
 
         // Crear moderador y administrador
         $moderador = ModerModel::factory(5)->create();
-        $administrador = AdminModel::factory(5)->create();
+        $administrador = AdminModel::factory(2)->create();
         $torneos = TorneosModel::factory(20)->create();
+        $recompensas = RecompensasModel::factory(30)->create();
 
     }
 }

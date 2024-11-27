@@ -14,7 +14,7 @@ class TorneosModel extends Model
 
     // Campos asignables masivamente
     protected $fillable = [
-        'nombrej',
+        'nombre',
         'fecha_inicio',
         'fecha_fin',
         'exp',

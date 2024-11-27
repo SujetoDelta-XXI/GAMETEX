@@ -14,9 +14,9 @@ class RecompensasTipoSeeder extends Seeder
     {
         DB::table('recompensas_tipo')->insert([ 
             ['nombre'=>'Tarjetas de regalo', 'cantidad'=>5],    
-            ['nombre'=>'Experiencia', 'cantidad'=>5],    
+            ['nombre'=>'Accesorios tecnologicos', 'cantidad'=>5],    
             ['nombre'=>'Cupones de descuento', 'cantidad'=>5],    
-            ['nombre'=>'Juegos gratis', 'cantidad'=>5],    
+            ['nombre'=>'Figuras de accion', 'cantidad'=>5],    
         ]);
     }
 }

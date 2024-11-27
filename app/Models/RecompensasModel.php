@@ -16,10 +16,17 @@ class RecompensasModel extends Model
     protected $fillable = [
         'nombre',
         'cantidad',
+        'precio',
         'recompensa_tipo_id',
         'torneo_id',
-        'evento_id',
+        /* 'evento_id', */
     ];
+
+    protected $cast = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
+
 
     /**
      * Relación con RecompensasTipo (recompensas_tipo).
@@ -40,8 +47,8 @@ class RecompensasModel extends Model
     /**
      * Relación con Evento (eventos).
      */
-    public function evento()
+/*     public function evento()
     {
         return $this->belongsTo(eventosModel::class, 'evento_id');
-    }
+    } */
 }

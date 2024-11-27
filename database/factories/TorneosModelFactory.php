@@ -18,7 +18,7 @@ class TorneosModelFactory extends Factory
     {
         $imageId = $this->faker->unique()->numberBetween(1, 1000);
         return [
-            'nombrej' => $this->faker->word(), // Un nombre de juego aleatorio
+            'nombre' => $this->faker->word(), // Un nombre de juego aleatorio
             'fecha_inicio' => $this->faker->dateTimeBetween('-1 month', 'now'), // Fecha de inicio aleatoria dentro del último mes
             'fecha_fin' => $this->faker->dateTimeBetween('now', '+1 month'), // Fecha de fin aleatoria dentro del próximo mes
             'exp' => $this->faker->randomElement([100, 200, 300, 400, 500]), // Nivel de experiencia aleatorio
