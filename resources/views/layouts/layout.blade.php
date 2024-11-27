@@ -25,17 +25,16 @@
                     <div class="flex flex-col items-center justify-center gap-2 py-4">
                         <a href="{{ '/' }}">Inicio</a>
                         <a href="{{ 'torneos' }}">Torneos</a>
-                        <a href="{{ 'tienda' }}">Tienda</a>
                     </div>
                     <div class="flex flex-col items-center justify-center gap-2 py-2">
                         @if (Route::has('login'))
                             @if (!auth()->guard('admin')->check() && !auth()->guard('moder')->check() && !auth()->guard('user')->check())
                                 <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                    Login
+                                    Iniciar Sesión
                                 </a>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                        Registro
+                                        Registrase
                                     </a>
                                 @endif
                             @else
@@ -56,30 +55,29 @@
                         @endif
                     </div>
                 </div>
-                <div class="hidden w-3/5 items-center justify-evenly font-semibold md:flex">
+                <div class="hidden w-1/5 items-center justify-evenly font-semibold md:flex xl:pr-[1000px] lg:pr-[800px] md:pr-[500px]">
                     <a href="{{ '/' }}">Inicio</a>
-                    <a href="{{ 'torneos' }}">Torneos</a>
-                    <a href="{{ 'tienda' }}">Tienda</a>
+                    <a class="pl-10" href="{{ 'torneos' }}">Torneos</a>
                 </div>
                 <div class="hidden w-1/5 items-center justify-evenly font-semibold md:flex">
                     @if (Route::has('login'))
                         @if (!auth()->guard('admin')->check() && !auth()->guard('moder')->check() && !auth()->guard('user')->check())
                             <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                Login
+                                Iniciar Sesión
                             </a>
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                    Registro
+                                    Registrarse
                                 </a>
                             @endif
                         @else
                             @if(auth()->guard('admin')->check())
                                 <a href="{{ url('admin/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                    Panel Dashboard
+                                    Panel Administrador
                                 </a>
                             @elseif(auth()->guard('moder')->check())
                                 <a href="{{ url('moder/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                    Panel Dashboard
+                                    Panel Moderador
                                 </a>
                             @elseif(auth()->guard('user')->check())
                                 <a href="{{ url('dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
