@@ -1,7 +1,7 @@
 <!-- resources/views/admin/dashboard.blade.php -->
 <x-app-layout>
     <div class="flex">
-        <div class="flex-1 py-12 px-4 bg-blue-900">
+        <div class="flex-1 py-12 px-4 bg-gray-900">
             @yield('crudAdm')
         </div>
 
