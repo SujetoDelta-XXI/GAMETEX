@@ -19,8 +19,6 @@ class UserDashController extends Controller
 
     public function show()
     {
-        $usuarios = a::all();  
-        return view('admin.crud.eventoCreate', compact('moderadores', 'recompensasTipos'));
-        return view('profile.show');
+        return view('profile.show'); #naaaaaaaaaaaa
     }
 }
