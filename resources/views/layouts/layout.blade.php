@@ -57,6 +57,7 @@
                 </div>
                 <div class="hidden w-1/5 items-center justify-evenly font-semibold md:flex xl:pr-[1000px] lg:pr-[800px] md:pr-[500px]">
                     <a href="{{ '/' }}">Inicio</a>
+                    <a href="{{ 'recompensas' }}">Recompensa</a>
                     <a class="pl-10" href="{{ 'torneos' }}">Torneos</a>
                 </div>
                 <div class="hidden w-1/5 items-center justify-evenly font-semibold md:flex">
