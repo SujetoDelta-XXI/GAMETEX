@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('telefono');
+            $table->integer('telefono')->nullable();
             $table->rememberToken();
-            $table->decimal('sueldo',8,2);
+            $table->decimal('sueldo',8,2)->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });

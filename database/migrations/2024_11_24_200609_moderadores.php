@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamp('fecha_inicio')->nullable();
             $table->timestamp('fecha_fin')->nullable();
             $table->rememberToken();
-            $table->decimal('sueldo', 8, 2);
+            $table->decimal('sueldo', 8, 2)->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
