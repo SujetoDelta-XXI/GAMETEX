@@ -18,7 +18,7 @@
             <div class="flex w-full justify-between">
                 <div :class="open ? 'hidden' : 'flex'" class="flex px-6 w-1/2 items-center font-semibold md:w-1/5 md:px-1 md:flex md:items-center md:justify-center"
                     x-transition:enter="transition ease-out duration-300">
-                    <a href="{{ '/' }}"><img class="h-12" src="{{ asset('imagenes/logo.png') }}"></a>
+                    <a href="{{ '/' }}"><img class="h-12" src="{{ asset('logo.png') }}"></a>
                 </div>
 
                 <div x-show="open" x-transition:enter="transition ease-in-out duration-300" class="flex flex-col w-full h-auto md:hidden">
@@ -41,11 +41,11 @@
                             @else
                                 @if(auth()->guard('admin')->check())
                                     <a href="{{ url('admin/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                        Panel Dashboard
+                                        Panel Administrador
                                     </a>
                                 @elseif(auth()->guard('moder')->check())
                                     <a href="{{ url('moder/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                        Panel Dashboard
+                                        Panel Moderador
                                     </a>
                                 @elseif(auth()->guard('user')->check())
                                     <a href="{{ url('dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
