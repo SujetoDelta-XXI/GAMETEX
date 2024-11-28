@@ -8,14 +8,14 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-                @livewire('profile.update-profile-information-form')
+                @livewire('profile.update-profile-information-form', ['user' => $user])
 
                 <x-section-border />
             @endif
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                 <div class="mt-10 sm:mt-0">
-                    @livewire('profile.update-password-form')
+                    @livewire('profile.update-password-form', ['user' => $user])
                 </div>
 
                 <x-section-border />
@@ -23,21 +23,21 @@
 
             @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
                 <div class="mt-10 sm:mt-0">
-                    @livewire('profile.two-factor-authentication-form')
+                    @livewire('profile.two-factor-authentication-form', ['user' => $user])
                 </div>
 
                 <x-section-border />
             @endif
 
             <div class="mt-10 sm:mt-0">
-                @livewire('profile.logout-other-browser-sessions-form')
+                @livewire('profile.logout-other-browser-sessions-form', ['user' => $user])
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
                 <x-section-border />
 
                 <div class="mt-10 sm:mt-0">
-                    @livewire('profile.delete-user-form')
+                    @livewire('profile.delete-user-form', ['user' => $user])
                 </div>
             @endif
 
@@ -46,9 +46,9 @@
                 <div class="text-red-600">{{ $message }}</div>
             @else
                 <div class="mt-10 sm:mt-0 text-center">
-                    <img src="{{ $url }}" alt="Foto de Perfil" class="rounded-full w-32 h-32 object-cover mx-auto">
-                    <h4 class="font-semibold mt-4">{{ $user->name ?? 'Usuario' }}</h4>
-                    <p class="text-sm text-gray-500">{{ $user->email ?? 'Sin email' }}</p>
+                    <img src="{{ $user->profile_photo_url }}" alt="Foto de Perfil" class="rounded-full w-32 h-32 object-cover mx-auto">
+                    <h4 class="font-semibold mt-4">{{ $user->name }}</h4>
+                    <p class="text-sm text-gray-500">{{ $user->email }}</p>
                 </div>
             @endif
 
