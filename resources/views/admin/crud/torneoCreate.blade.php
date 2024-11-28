@@ -21,25 +21,27 @@
             </div>
             <div class="mb-4">
                 <label for="entrada" class="block text-white">Entrada</label>
-                <input type="number" id="entrada" name="entrada" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
-            </div>
-            <div class="mb-4">
-                <label for="exp" class="block text-white">EXP</label>
-                <input type="text" id="exp" name="exp" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
-            </div>
-            <div class="mb-4">
-                <label for="descripcion" class="block text-white">Descripción</label>
-                <textarea id="descripcion" name="descripcion" rows="3" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required></textarea>
-            </div>
-            <div class="mb-4">
-                <label for="imagen" class="block text-white">Imagen</label>
-                <input type="file" id="imagen" name="imagen" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white">
+                <select id="entrada" name="entrada" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
+                    <option value="gratuito">Gratuito</option>
+                    <option value="s/5">s/5</option>
+                    <option value="s/15">s/15</option>
+                    <option value="s/30">s/30</option>
+                    <option value="s/50">s/50</option>
+                </select>
             </div>
             <div class="mb-4">
                 <label for="torneo_juego_id" class="block text-white">Juego</label>
                 <select id="torneo_juego_id" name="torneo_juego_id" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
                     @foreach($juegos as $juego)
                         <option value="{{ $juego->id }}">{{ $juego->nombre }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="recompensas_tipo_id" class="block text-white">Tipo de Recompensa</label>
+                <select id="recompensas_tipo_id" name="recompensas_tipo_id" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
+                    @foreach($recompensasTipos as $recompensaTipo)
+                        <option value="{{ $recompensaTipo->id }}">{{ $recompensaTipo->nombre }}</option>
                     @endforeach
                 </select>
             </div>
@@ -54,6 +56,10 @@
                         <option value="{{ $moderador->id }}">{{ $moderador->name }}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="mb-4">
+                <label for="imagen" class="block text-white">Imagen</label>
+                <input type="file" id="imagen" name="imagen" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white">
             </div>
             <div class="flex justify-end">
                 <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Crear Torneo</button>

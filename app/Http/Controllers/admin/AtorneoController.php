@@ -16,7 +16,7 @@ class AtorneoController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth.admin'); 
+        $this->middleware('auth:admin'); 
     }
 
     public function show()
@@ -30,9 +30,8 @@ class AtorneoController extends Controller
         $moderadores = ModerModel::all();
         $recompensasTipos = RecompensasTipoModel::all();
         $juegos = TorneoJuegoModel::all();
-        $administrador = Auth::user(); // Obtener el usuario actual
 
-        return view('admin.crud.torneoCreate', compact('moderadores', 'recompensasTipos', 'juegos', 'administrador'));
+        return view('admin.crud.torneoCreate', compact('moderadores', 'recompensasTipos', 'juegos'));
     }
 
     public function store(Request $request)
@@ -41,12 +40,13 @@ class AtorneoController extends Controller
             'nombre' => 'required|string|max:255',
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date',
-            'entrada' => 'required|integer',
+            'entrada' => 'required|string',
             'exp' => 'required|string',
             'descripcion' => 'required|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'torneo_juego_id' => 'required|exists:torneos_juegos,id',
-            'recompensas_cantidad' => 'required|integer|min:1|max:5', // Validar que la cantidad esté entre 1 y 5
+            'recompensas_tipo_id' => 'required|exists:recompensas_tipo,id',
+            'recompensas_cantidad' => 'required|integer|min:1|max:5',
             'moderador_id' => 'required|exists:moders,id',
         ]);
 
@@ -56,9 +56,11 @@ class AtorneoController extends Controller
         }
 
         // Restar la cantidad de recompensa seleccionada
-        $recompensa = RecompensasTipoModel::first(); // Aquí asumimos que se usa un tipo de recompensa predeterminado
-        $recompensa->cantidad -= $request->recompensas_cantidad;
-        $recompensa->save();
+        $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
+        if ($recompensa) {
+            $recompensa->cantidad -= $request->recompensas_cantidad;
+            $recompensa->save();
+        }
 
         $torneo = new TorneoModel();
         $torneo->nombre = $request->nombre;
@@ -69,12 +71,13 @@ class AtorneoController extends Controller
         $torneo->descripcion = $request->descripcion;
         $torneo->imagen = $rutaImagen;
         $torneo->torneo_juego_id = $request->torneo_juego_id;
-        $torneo->recompensas_id = $recompensa->id; // Asignar la recompensa
+        $torneo->recompensas_id = $recompensa->id;
         $torneo->moderador_id = $request->moderador_id;
-        $torneo->administrador_id = $request->user()->id; // Asignar el usuario actual como administrador
+        // Si decides manejar el administrador, aquí se podría hacer:
+        // $torneo->administrador_id = Auth::user()->id;
         $torneo->save();
 
-        return redirect()->route('admin.crud.torneo');
+        return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
     }
 
     public function search(Request $request)
@@ -107,9 +110,8 @@ class AtorneoController extends Controller
         $torneo = TorneoModel::find($id);
         $moderadores = ModerModel::all();
         $recompensasTipos = RecompensasTipoModel::all();
-        $administrador = Auth::user();
 
-        return view('admin.crud.torneo-edit', compact('torneo', 'moderadores', 'recompensasTipos', 'administrador'));
+        return view('admin.crud.torneoEdit', compact('torneo', 'moderadores', 'recompensasTipos'));
     }
 
     public function updateTorneos(Request $request, $id)
@@ -118,12 +120,13 @@ class AtorneoController extends Controller
             'nombre' => 'required|string|max:255',
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date',
-            'entrada' => 'required|integer',
+            'entrada' => 'required|string',
             'exp' => 'required|string',
             'descripcion' => 'required|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'torneo_juego_id' => 'required|exists:torneos_juegos,id',
-            'recompensas_cantidad' => 'required|integer|min:1|max:5', // Validar que la cantidad esté entre 1 y 5
+            'recompensas_tipo_id' => 'required|exists:recompensas_tipo,id',
+            'recompensas_cantidad' => 'required|integer|min:1|max:5',
             'moderador_id' => 'required|exists:moders,id',
         ]);
 
@@ -136,7 +139,7 @@ class AtorneoController extends Controller
         }
 
         // Restar la cantidad de recompensa seleccionada (opcional en actualización)
-        $recompensa = RecompensasTipoModel::first();
+        $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
         if ($recompensa) {
             $recompensa->cantidad -= $request->recompensas_cantidad;
             $recompensa->save();
@@ -145,6 +148,6 @@ class AtorneoController extends Controller
 
         $torneo->save();
 
-        return redirect()->route('admin.crud.torneo')->with('success', 'Torneo actualizado');
+        return redirect()->route('admin.crud.torneo')->with('success', 'Torneo actualizado exitosamente.');
     }
 }
