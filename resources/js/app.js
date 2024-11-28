@@ -119,3 +119,4 @@ document.getElementById("filterDropdownButton").addEventListener("click", functi
     // Toggling visibility of the filter dropdown
     filterDropdown.classList.toggle("hidden");
 });
+

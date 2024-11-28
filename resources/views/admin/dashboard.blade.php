@@ -29,7 +29,7 @@
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">👥 Gestión de Usuarios</a>
                 <a href="{{ route('admin.crud.evento') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🔒 CRUD Eventos</a>
                 <a href="{{ route('admin.crud.torneo') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📊 CRUD Torneos</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🔧 Configuración</a>
+                <a href="{{ route('admin.crud.recompensas') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">CRUD Recompensas</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📁 Backups</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📝 Logs del Sistema</a>
             </nav>            
