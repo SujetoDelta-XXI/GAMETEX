@@ -30,6 +30,7 @@ class LoginController extends Controller
     
             return redirect()->intended(route('dashboard'));
         }
+        
         return back()->withErrors([
             'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
         ])->withInput($request->except('password'));

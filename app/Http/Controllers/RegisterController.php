@@ -24,6 +24,8 @@ class RegisterController extends Controller
         Auth::guard('user')->login($user);
 
         return redirect()->route('login');
+
+
     }
 
     protected function validator(array $data)
