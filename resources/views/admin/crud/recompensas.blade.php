@@ -97,6 +97,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-4 pb-5 px-5">
+                        {{ $recompensas->links() }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -243,41 +246,6 @@
             </button>
         </div>
     </form>
-    <script>
-        // Obtener el modal y el botón de editar
-        const editButton = document.querySelectorAll('[data-drawer-show]');
-        const modal = document.getElementById('drawer-update-product');
-        const closeButton = document.querySelector('[data-drawer-dismiss]');
-
-        // Función para mostrar el modal
-        function showModal() {
-            modal.classList.remove('-translate-x-full'); // Eliminar la clase que lo oculta
-            modal.setAttribute('aria-hidden', 'false'); // Hacerlo accesible
-        }
-
-        // Función para cerrar el modal
-        function closeModal() {
-            modal.classList.add('-translate-x-full'); // Añadir la clase para ocultarlo
-            modal.setAttribute('aria-hidden', 'true'); // Desactivar la accesibilidad
-        }
-
-        // Añadir el evento de click para mostrar el modal cuando se hace clic en el botón de editar
-        editButton.forEach(button => {
-            button.addEventListener('click', () => {
-                showModal();
-            });
-        });
-
-        // Añadir el evento de click para cerrar el modal cuando se hace clic en el botón de cerrar
-        closeButton.addEventListener('click', () => {
-            closeModal();
-        });
-
-        // También cerrar el modal si se hace clic fuera de él
-        window.addEventListener('click', (e) => {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.js"></script>
+    <script src="/livewire/livewire.js?id=38dc8241" data-csrf="BGW9EdPbFlgx3x6zunuiT1IxnJYEeNNNUASQP0z5" data-update-uri="/livewire/update" data-navigate-once="true"></script>
 @endsection

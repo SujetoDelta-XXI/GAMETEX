@@ -12,12 +12,17 @@ use App\Http\Controllers\admin\AeventoController;
 use App\Http\Controllers\admin\AtorneoController;
 use App\Http\Controllers\ProfilePhotoController;
 use App\Http\Controllers\admin\RecompensasController;
+use App\Http\Controllers\admin\UsuariosController;
 use Illuminate\Support\Facades\Auth;
 
 
 #Route::get('/', function () {
     #return view('welcome');
 #});
+
+Route::get('usuarios', function () {
+    return view('usuarios');
+});
 
 Route::middleware([
     'auth:sanctum',
@@ -76,7 +81,8 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('torneo/search', [AtorneoController::class, 'search'])->name('torneo.search');
         /////////////////////////////// Recompensa /////////////////////////////////////
         Route::get('recompensas', [RecompensasController::class, 'showListado'])->name('recompensas');
-        
+
+        Route::get('usuarios', [UsuariosController::class, 'showListado'])->name('usuarios');
     });
 
 });
