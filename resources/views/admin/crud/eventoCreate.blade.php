@@ -3,7 +3,7 @@
 @section('crudAdm')
 <div class="container mx-auto my-8">
     <div class="max-w-2xl mx-auto bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8 rounded-lg shadow-lg">
-        <form action="{{ route('evento.store') }}" method="POST" enctype="multipart/form-data" class="bg-opacity-75 bg-black p-8 rounded shadow-md">
+        <form action="{{ route('admin.crud.evento.store') }}" method="POST" enctype="multipart/form-data" class="bg-opacity-75 bg-black p-8 rounded shadow-md">
             @csrf
             <h2 class="text-2xl font-bold mb-6 text-gray-200">Crear Nuevo Evento</h2>
             
