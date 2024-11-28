@@ -4,7 +4,7 @@
     <h3 class="text-lg font-medium text-indigo-600">Torneos</h3>
     <div class="mt-4">
         <!-- Formulario de búsqueda -->
-        <nav class="bg-blue-900">
+        <nav class="bg-gray-900">
             <form action="{{ route('admin.crud.torneo.search') }}" method="GET" class="mb-4">
                 <input type="text" name="search" placeholder="Buscar..." class="px-4 py-2 border rounded-lg" value="{{ request('search') }}">
                 <select name="search_type" class="px-4 py-2 border rounded-lg">
