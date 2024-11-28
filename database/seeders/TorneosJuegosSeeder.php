@@ -14,10 +14,14 @@ class TorneosJuegosSeeder extends Seeder
     public function run(): void
     {
         DB::table('torneos_juegos')->insert([
-            ['nombre' => 'Left4 Dead2'],
-            ['nombre' => 'plantas vs zoombies'],
-            ['nombre' => 'Empirer Earth'],
-            ['nombre' => 'Age of Mitology'],
+            ['nombre' => 'Left 4 Dead 2'],
+            ['nombre' => 'Counter Strike 2'],
+            ['nombre' => 'League of Legends'],
+            ['nombre' => 'Call of Duty Mobile'],
+            ['nombre' => 'Call of Duty Warzone'],
+            ['nombre' => 'Clash Royale'],
+            ['nombre' => 'Brawl Stars'],
+            ['nombre' => 'Dragon Fighter Z'],
         ]);
     }
 }

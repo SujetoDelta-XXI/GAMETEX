@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\AdminModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class AdminModelFactory extends Factory
 {
@@ -15,7 +16,8 @@ class AdminModelFactory extends Factory
         return [
             'name' => $this->faker->name(), // Nombre aleatorio
             'email' => $this->faker->unique()->safeEmail(), // Correo electrónico único
-            'password' => bcrypt('password123'), // Contraseña encriptada
+            'password' => Hash::make('password123'), // Contraseña encriptada
         ];
     }
 }
+
