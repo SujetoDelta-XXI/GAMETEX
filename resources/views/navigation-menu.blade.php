@@ -14,15 +14,15 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     @if(Auth::guard('admin')->check())
                         <x-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
-                            {{ __('Admin Dashboard') }}
+                            {{ __('Panel Administrador' ) }}
                         </x-nav-link>
                     @elseif(Auth::guard('moder')->check())
                         <x-nav-link href="{{ route('moder.dashboard') }}" :active="request()->routeIs('moder.dashboard')">
-                            {{ __('Moderator Dashboard') }}
+                            {{ __('Panel Moderador') }}
                         </x-nav-link>
                     @else
                         <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
+                            {{ __('Perfil') }}
                         </x-nav-link>
                     @endif
                 </div>
@@ -53,7 +53,7 @@
                             @else
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                        {{ __('Guest') }}
+                                        {{ __('Imvitado') }}
                                     </button>
                                 </span>
                             @endif
@@ -63,19 +63,19 @@
                         <x-slot name="content">
                             @if ($user)
                                 <x-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
+                                    {{ __('Perfil') }}
                                 </x-dropdown-link>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <x-dropdown-link href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      this.closest('form').submit();">
-                                        {{ __('Log Out') }}
+                                        {{ __('Cerrar Sesión') }}
                                     </x-dropdown-link>
                                 </form>
                             @else
                                 <x-dropdown-link href="{{ route('login') }}">
-                                    {{ __('Log in') }}
+                                    {{ __('Inciar Sesión') }}
                                 </x-dropdown-link>
                             @endif
                         </x-slot>
@@ -100,15 +100,15 @@
         <div class="pt-2 pb-3 space-y-1">
             @if(Auth::guard('admin')->check())
                 <x-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
-                    {{ __('Admin Dashboard') }}
+                    {{ __('Panel Administrador') }}
                 </x-responsive-nav-link>
             @elseif(Auth::guard('moder')->check())
                 <x-responsive-nav-link href="{{ route('moder.dashboard') }}" :active="request()->routeIs('moder.dashboard')">
-                    {{ __('Moderator Dashboard') }}
+                    {{ __('Panel Moderador') }}
                 </x-responsive-nav-link>
             @else
                 <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
             @endif
         </div>
@@ -127,19 +127,19 @@
             <div class="mt-3 space-y-1">
                 @if ($user)
                     <x-responsive-nav-link href="{{ route('profile.show') }}">
-                        {{ __('Profile') }}
+                        {{ __('Perfil') }}
                     </x-responsive-nav-link>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <x-responsive-nav-link href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Cerrar Sesión') }}
                         </x-responsive-nav-link>
                     </form>
                 @else
                     <x-responsive-nav-link href="{{ route('login') }}">
-                        {{ __('Log in') }}
+                        {{ __('Iniciar Sesión') }}
                     </x-responsive-nav-link>
                 @endif
             </div>
