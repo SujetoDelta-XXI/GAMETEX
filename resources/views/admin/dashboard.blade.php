@@ -25,14 +25,14 @@
 
             <!-- Navigation Menu -->
             <nav class="space-y-2">
-                <a href="{{route('admin.dashboard')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🏠 Panel Principal</a>
+                <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🏠 Panel Principal</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">👥 Gestión de Usuarios</a>
-                <a href="{{route('admin.crud.evento')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🔒 crud eventos</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📊 Analíticas</a>
+                <a href="{{ route('admin.crud.evento') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🔒 CRUD Eventos</a>
+                <a href="{{ route('admin.crud.torneo') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📊 CRUD Torneos</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🔧 Configuración</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📁 Backups</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📝 Logs del Sistema</a>
-            </nav>
+            </nav>            
         </div>
     </div>
     
