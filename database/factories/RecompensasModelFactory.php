@@ -19,7 +19,7 @@ class RecompensasModelFactory extends Factory
             'cantidad' => $this->faker->numberBetween(1, 15),
             'precio' => $this->faker->numberBetween(100, 300),
             'recompensa_tipo_id' => RecompensasTipoModel::all()->random()->id,
-            'torneo_id' => TorneosModel::all()->random()->id, 
+            /* 'torneo_id' => TorneosModel::all()->random()->id,  */
             /* 'evento_id' => eventosModel::all()->random()->id,  */
         ];
     }
