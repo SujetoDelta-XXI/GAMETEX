@@ -37,74 +37,25 @@
             <div class="container mx-auto px-0 py-0">
                 <div class="flex flex-wrap justify-center px-5 py-5 mx-auto space-x-0 sm:space-x-4 md:space-x-10">
 
+                @foreach ($torneos as $torneo)
                     <div class="px-0 py-4 md:w-1/3 sm:mb-0 mb-6 group relative w-full sm:w-1/2 lg:w-1/5"
-                        data-game="Left 4 Dead 2">
+                        data-game="{{$torneo->torneoJuego->nombre}}">
                         <div
                             class="rounded-lg h-96 overflow-hidden relative border-4 border-solid border-transparent hover:border-gray-300 hover:ring-2 hover:ring-opacity-60 hover:ring-gray-500 transition-all duration-300 ease-in-out">
                             <img alt="content"
                                 class="object-cover object-center h-full w-full transition duration-300 ease-in-out group-hover:brightness-50"
-                                src="https://image.api.playstation.com/vulcan/img/cfn/11307FnkczgCEIGhZeeO6hHoSw11DMjlR3c4q3dguXzAXXKsbv6A1qEejoiucwtjt43HO7RYWTDbMEq6ORkjpEg05rod2Opj.png?w=440">
+                                src="{{$torneo->imagen}}">
                             <div
                                 class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out px-5">
                                 <ul>
-                                    <h3 class="text-lg font-semibold">Supervivencia Extrema</h3><br>
-                                    <li>Premio: S/50 en Cartas de Regalo de Steam para el equipo ganador.</li><br>
-                                    <li>Creador: Comunidad "Survivor Legends".</li>
+                                    <h3 class="text-lg font-semibold">{{$torneo->torneoJuego->nombre}}</h3><br>
+                                    <li>{{$torneo->descripcion}}</li><br>
+                                    <li>Moderador: {{$torneo->moderador->name}}</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-
-                    <div class="px-0 py-4 md:w-1/3 sm:mb-0 mb-6 group relative w-full sm:w-1/2 lg:w-1/5"
-                        data-game="Counter Strike 2">
-                        <div class="rounded-lg h-96 overflow-hidden relative">
-                            <img alt="content"
-                                class="object-cover object-center h-full w-full transition duration-300 ease-in-out group-hover:brightness-50"
-                                src="https://ensigame.com/storage/uploads/posts/19105/1.jpg">
-                            <div
-                                class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out px-5">
-                                <ul>
-                                    <h3 class="text-lg font-semibold">Global Offensive - "Operación Cabeza Fría"</h3><br>
-                                    <li>Premio: S/100</li><br>
-                                    <li>Creador: Organizado por "Pro Gamers Arena".</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="px-0 py-4 md:w-1/3 sm:mb-0 mb-6 group relative w-full sm:w-1/2 lg:w-1/5"
-                        data-game="League of Legends">
-                        <div class="rounded-lg h-96 overflow-hidden relative">
-                            <img alt="content"
-                                class="object-cover object-center h-full w-full transition duration-300 ease-in-out group-hover:brightness-50"
-                                src="https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/19349214/jbareham_191158_ply0958_decade_lolengends.jpg?quality=90&strip=all&crop=22.864583333333,0,56.25,100">
-                            <div
-                                class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out px-5">
-                                <ul>
-                                    <h3 class="text-lg font-semibold">"La Copa de los Invocadores"</h3><br>
-                                    <li>Premio: S/80</li><br>
-                                    <li>Creador: Creado por la comunidad "Legends United".</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="px-0 py-4 md:w-1/3 sm:mb-0 mb-6 group relative w-full sm:w-1/2 lg:w-1/5"
-                        data-game="Dragon Ball Fighters Z">
-                        <div class="rounded-lg h-96 overflow-hidden relative">
-                            <img alt="content"
-                                class="object-cover object-center h-full w-full transition duration-300 ease-in-out group-hover:brightness-50"
-                                src="https://i.blogs.es/c906f5/portada-tier-list-db-fighterz/1366_2000.jpeg">
-                            <div
-                                class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out px-5">
-                                <ul>
-                                    <h3 class="text-lg font-semibold">"El Torneo del Poder"</h3><br>
-                                    <li>Premio: El juego de dragon ball fighters</li><br>
-                                    <li>Creador: Comunidad "Survivor Legends".</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                @endforeach
                 </div>
             </div>
         </section>
