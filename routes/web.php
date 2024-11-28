@@ -76,6 +76,7 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('torneo/search', [AtorneoController::class, 'search'])->name('torneo.search');
         /////////////////////////////// Recompensa /////////////////////////////////////
         Route::get('recompensas', [RecompensasController::class, 'showListado'])->name('recompensas');
+        Route::post('recompensa/store', [RecompensasController::class, 'store'])->name('recompensa.store');
         
     });
 
