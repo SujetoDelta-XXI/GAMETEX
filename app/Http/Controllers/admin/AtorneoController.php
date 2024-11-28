@@ -55,7 +55,6 @@ class AtorneoController extends Controller
             $rutaImagen = $request->file('imagen')->store('imagenes_torneos', 'public');
         }
 
-        // Restar la cantidad de recompensa seleccionada
         $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
         if ($recompensa) {
             $recompensa->cantidad -= $request->recompensas_cantidad;
@@ -77,7 +76,7 @@ class AtorneoController extends Controller
         // $torneo->administrador_id = Auth::user()->id;
         $torneo->save();
 
-        return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
+        return redirect()->route('admin.crud.torneo');
     }
 
     public function search(Request $request)
@@ -92,7 +91,7 @@ class AtorneoController extends Controller
                     $query->where('nombre', 'like', "%$search%");
                 });
             }
-        })->paginate(10);
+        })->paginate(4);
 
         return view('admin.crud.torneo', compact('torneos'));
     }
@@ -138,7 +137,6 @@ class AtorneoController extends Controller
             $torneo->imagen = $rutaImagen;
         }
 
-        // Restar la cantidad de recompensa seleccionada (opcional en actualización)
         $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
         if ($recompensa) {
             $recompensa->cantidad -= $request->recompensas_cantidad;
