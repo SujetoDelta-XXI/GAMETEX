@@ -4,6 +4,22 @@
     <h3 class="text-lg font-medium text-indigo-600">Torneos</h3>
     <div class="mt-4">
         <!-- Formulario de búsqueda -->
+<<<<<<< HEAD
+        <nav class="bg-gray-900">
+            <form action="{{ route('admin.crud.torneo.search') }}" method="GET" class="mb-4">
+                <input type="text" name="search" placeholder="Buscar..." class="px-4 py-2 border rounded-lg" value="{{ request('search') }}">
+                <select name="search_type" class="px-4 py-2 border rounded-lg">
+                    <option value="nombre" {{ request('search_type') == 'nombre' ? 'selected' : '' }}>Nombre</option>
+                    <option value="juego" {{ request('search_type') == 'juego' ? 'selected' : '' }}>Juego</option>
+                    <option value="moderador" {{ request('search_type') == 'moderador' ? 'selected' : '' }}>Moderador</option>
+                </select>
+                <button type="submit" class="btn btn-primary text-indigo-600">Buscar</button>
+                <div class="flex justify-end mb-4">
+                    <a href="{{ route('admin.crud.torneo.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Crear Nuevo Torneo</a>
+                </div>
+            </form>
+        </nav>
+=======
         <nav class="bg-blue-900 p-6">
     <form action="{{ route('admin.crud.torneo.search') }}" method="GET" class="flex flex-col sm:flex-row items-center gap-4">
         <!-- Input de búsqueda -->
@@ -43,6 +59,7 @@
     </div>
 </nav>
 
+>>>>>>> 2356a54a05d8424e97bdf8a291e003d53580bed9
 
         @foreach($torneos as $torneo)
 <div class="mb-6 p-6 bg-gray-800 rounded-xl shadow-lg border border-gray-700">

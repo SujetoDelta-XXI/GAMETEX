@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\ModerModel;
 use App\Models\recompensasTipoModel;
-use App\Models\torneoJuegoModel;
+use App\Models\TorneosJuegoModel;
 use App\Models\torneoModel;
 use Illuminate\Http\Request;
 
@@ -28,57 +28,59 @@ class AtorneoController extends Controller
     public function create()
     {
         $moderadores = ModerModel::all();
-        $recompensasTipos = RecompensasTipoModel::all();
-        $juegos = TorneoJuegoModel::all();
+        $recompensasTipos = recompensasTipoModel::all();
+        $juegos = TorneosJuegoModel::all();
 
         return view('admin.crud.torneoCreate', compact('moderadores', 'recompensasTipos', 'juegos'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'fecha_inicio' => 'required|date',
-            'fecha_fin' => 'required|date',
-            'entrada' => 'required|string',
-            'exp' => 'required|string',
-            'descripcion' => 'required|string',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'torneo_juego_id' => 'required|exists:torneos_juegos,id',
-            'recompensas_tipo_id' => 'required|exists:recompensas_tipo,id',
-            'recompensas_cantidad' => 'required|integer|min:1|max:5',
-            'moderador_id' => 'required|exists:moders,id',
-        ]);
-
-        $rutaImagen = null;
-        if ($request->hasFile('imagen')) {
-            $rutaImagen = $request->file('imagen')->store('imagenes_torneos', 'public');
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:255',
+                'fecha_inicio' => 'required|date',
+                'fecha_fin' => 'required|date',
+                'entrada' => 'required|string',
+                'exp' => 'required|string',
+                'descripcion' => 'required|string',
+                'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'torneo_juego_id' => 'required|exists:torneos_juegos,id',
+                'recompensas_tipo_id' => 'required|exists:recompensas_tipo,id',
+                'recompensas_cantidad' => 'required|integer|min:1|max:5',
+                'moderador_id' => 'required|exists:moders,id',
+            ]);
+    
+            $rutaImagen = null;
+            if ($request->hasFile('imagen')) {
+                $rutaImagen = $request->file('imagen')->store('imagenes_torneos', 'public');
+            }
+    
+            $recompensa = recompensasTipoModel::find($request->recompensas_tipo_id);
+            if ($recompensa) {
+                $recompensa->cantidad -= $request->recompensas_cantidad;
+                $recompensa->save();
+            }
+    
+            $torneo = new TorneoModel();
+            $torneo->nombre = $request->nombre;
+            $torneo->fecha_inicio = $request->fecha_inicio;
+            $torneo->fecha_fin = $request->fecha_fin;
+            $torneo->entrada = $request->entrada;
+            $torneo->exp = $request->exp;
+            $torneo->descripcion = $request->descripcion;
+            $torneo->imagen = $rutaImagen;
+            $torneo->torneo_juego_id = $request->torneo_juego_id;
+            $torneo->recompensas_id = $recompensa->id;
+            $torneo->moderador_id = $request->moderador_id;
+            $torneo->save();
+    
+            return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
-
-        // Restar la cantidad de recompensa seleccionada
-        $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
-        if ($recompensa) {
-            $recompensa->cantidad -= $request->recompensas_cantidad;
-            $recompensa->save();
-        }
-
-        $torneo = new TorneoModel();
-        $torneo->nombre = $request->nombre;
-        $torneo->fecha_inicio = $request->fecha_inicio;
-        $torneo->fecha_fin = $request->fecha_fin;
-        $torneo->entrada = $request->entrada;
-        $torneo->exp = $request->exp;
-        $torneo->descripcion = $request->descripcion;
-        $torneo->imagen = $rutaImagen;
-        $torneo->torneo_juego_id = $request->torneo_juego_id;
-        $torneo->recompensas_id = $recompensa->id;
-        $torneo->moderador_id = $request->moderador_id;
-        // Si decides manejar el administrador, aquí se podría hacer:
-        // $torneo->administrador_id = Auth::user()->id;
-        $torneo->save();
-
-        return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
     }
+    
 
     public function search(Request $request)
     {
@@ -92,7 +94,7 @@ class AtorneoController extends Controller
                     $query->where('nombre', 'like', "%$search%");
                 });
             }
-        })->paginate(10);
+        })->paginate(4);
 
         return view('admin.crud.torneo', compact('torneos'));
     }
@@ -109,7 +111,7 @@ class AtorneoController extends Controller
     {
         $torneo = TorneoModel::find($id);
         $moderadores = ModerModel::all();
-        $recompensasTipos = RecompensasTipoModel::all();
+        $recompensasTipos = recompensasTipoModel::all();
 
         return view('admin.crud.torneoEdit', compact('torneo', 'moderadores', 'recompensasTipos'));
     }
@@ -138,8 +140,7 @@ class AtorneoController extends Controller
             $torneo->imagen = $rutaImagen;
         }
 
-        // Restar la cantidad de recompensa seleccionada (opcional en actualización)
-        $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
+        $recompensa = recompensasTipoModel::find($request->recompensas_tipo_id);
         if ($recompensa) {
             $recompensa->cantidad -= $request->recompensas_cantidad;
             $recompensa->save();

@@ -49,6 +49,12 @@ return [
         'url' => env('APP_URL').'/storage/eventos', 
         'visibility' => 'public',
         ],
+        
+        'imagenes_torneos' => ['driver' => 'local', 
+        'root' => storage_path('app/public/imagenes_torneos'), 
+        'url' => env('APP_URL').'/storage/imagenes_torneos', 
+        'visibility' => 'public', 
+        ],
 
         's3' => [
             'driver' => 's3',
