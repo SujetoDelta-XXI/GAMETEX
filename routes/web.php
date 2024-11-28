@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RecompensasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -12,15 +11,13 @@ use App\Http\Controllers\admin\AdminDashController;
 use App\Http\Controllers\admin\AeventoController;
 use App\Http\Controllers\admin\AtorneoController;
 use App\Http\Controllers\ProfilePhotoController;
+use App\Http\Controllers\admin\RecompensasController;
 use Illuminate\Support\Facades\Auth;
 
 
 #Route::get('/', function () {
     #return view('welcome');
 #});
-
-
-Route::get('recompensas', [RecompensasController::class, 'showListado']);
 
 Route::middleware([
     'auth:sanctum',
@@ -69,7 +66,7 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::delete('evento/{id}', [AeventoController::class, 'deleteEventos'])->name('evento.delete');
         Route::get('evento/search', [AeventoController::class, 'search'])->name('evento.search');
         Route::post('evento/store', [AeventoController::class, 'store'])->name('evento.store');
-
+        /////////////////////////////// evento /////////////////////////////////////
         Route::get('torneo', [AtorneoController::class, 'show'])->name('torneo'); 
         Route::get('torneo/create', [AtorneoController::class, 'create'])->name('torneo.create'); 
         Route::post('torneo/store', [AtorneoController::class, 'store'])->name('torneo.store'); 
@@ -77,7 +74,8 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::put('torneo/{id}', [AtorneoController::class, 'updateTorneos'])->name('torneo.update'); 
         Route::delete('torneo/{id}', [AtorneoController::class, 'deleteTorneos'])->name('torneo.delete');
         Route::get('torneo/search', [AtorneoController::class, 'search'])->name('torneo.search');
-
+        /////////////////////////////// Recompensa /////////////////////////////////////
+        Route::get('recompensas', [RecompensasController::class, 'showListado'])->name('recompensas');
         
     });
 
