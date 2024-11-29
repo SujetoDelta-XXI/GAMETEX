@@ -21,6 +21,7 @@ class TorneosModelFactory extends Factory
             'nombre' => $this->faker->word(), // Un nombre de juego aleatorio
             'fecha_inicio' => $this->faker->dateTimeBetween('-1 month', 'now'), // Fecha de inicio aleatoria dentro del último mes
             'fecha_fin' => $this->faker->dateTimeBetween('now', '+1 month'), // Fecha de fin aleatoria dentro del próximo mes
+            'entrada' => $this->faker->randomElement([0, 10, 15, 30, 50]), // Nivel de experiencia aleatorio
             'exp' => $this->faker->randomElement([100, 200, 300, 400, 500]), // Nivel de experiencia aleatorio
             'descripcion' => $this->faker->sentence(),
 /*             'imagen' => 'referencia.jpeg', */

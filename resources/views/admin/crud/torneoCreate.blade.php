@@ -33,7 +33,7 @@
             <div class="mb-4">
                 <label for="entrada" class="block text-white">Entrada</label>
                 <select id="entrada" type="number" name="entrada" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white">
-                    <option value="gratuito">Gratuito</option>
+                    <option value="0">Gratuito</option>
                     <option value="5">s/5</option>
                     <option value="15">s/15</option>
                     <option value="30">s/30</option>

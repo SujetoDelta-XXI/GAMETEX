@@ -22,6 +22,8 @@ class TorneosJuegosSeeder extends Seeder
             ['nombre' => 'Clash Royale'],
             ['nombre' => 'Brawl Stars'],
             ['nombre' => 'Dragon Fighter Z'],
+            ['nombre' => 'Plantas VS Zombies'],
+            ['nombre' => 'Age of empires'],
         ]);
     }
 }
