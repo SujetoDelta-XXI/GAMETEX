@@ -71,7 +71,7 @@ class AtorneoController extends Controller
             $torneo->torneo_juego_id = $request->torneo_juego_id;
             $torneo->recompensas_id = $recompensa->id;
             $torneo->moderador_id = $request->moderador_id;
-            $torneo->administrador_id = 1;
+            $torneo->administrador_id = auth()->id();
             $torneo->imagen = 'asdfasfd';
             $torneo->save();
     
