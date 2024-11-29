@@ -9,6 +9,10 @@ class eventosModel extends Model
     protected $table = 'eventos';
     protected $fillable = [
         'id',
+        'nombre',
+        'descripcion',
+        'reglas',
+        'imagen',
         'fecha_inicio',
         'fecha_fin',
         'created_at',
@@ -23,6 +27,10 @@ class eventosModel extends Model
     public function moderador() 
     { 
         return $this->belongsTo(ModerModel::class, 'moderador_id');
+    }
+    public function recompensa() 
+    { 
+        return $this->belongsTo(RecompensasModel::class, 'recompensas_id');
     }
 
     public static function search($search, $searchType)

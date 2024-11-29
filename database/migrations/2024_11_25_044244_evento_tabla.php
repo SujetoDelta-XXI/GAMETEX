@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
+            $table->string("nombre");
+            $table->string("descripcion");
+            $table->string("reglas");
+            $table->string("imagen")->nullable();
             $table->timestamp('fecha_inicio')->default(DB::raw('CURRENT_TIMESTAMP')); 
             $table->timestamp('fecha_fin')->default(DB::raw('CURRENT_TIMESTAMP'));
-/*             $table->foreignId('evento_tipo_id')->constrained('eventos_tipo')->onDelete('cascade'); */
-            $table->foreignId('recompensa_tipo_id')->constrained('recompensas_tipo')->onDelete('cascade');
+            $table->foreignId('recompensa_id')->constrained('recompensas')->onDelete('cascade');
             $table->foreignId('moderador_id')->constrained('moders')->onDelete('cascade');
             $table->timestamps();
         });
