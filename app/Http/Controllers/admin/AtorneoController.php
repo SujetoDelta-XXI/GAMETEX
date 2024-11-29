@@ -39,16 +39,15 @@ class AtorneoController extends Controller
         try {
             $request->validate([
                 'nombre' => 'required|string|max:255',
-                'fecha_inicio' => 'required|date',
-                'fecha_fin' => 'required|date',
-                'entrada' => 'required|string',
-                'exp' => 'required|string',
-                'descripcion' => 'required|string',
-                'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'fecha_inicio' => 'date',
+                'fecha_fin' => 'date',
+                'entrada' => 'required|numeric',
+                'exp' => 'string',
+                'descripcion' => 'string',
                 'torneo_juego_id' => 'required|exists:torneos_juegos,id',
                 'recompensas_tipo_id' => 'required|exists:recompensas_tipo,id',
-                'recompensas_cantidad' => 'required|integer|min:1|max:5',
                 'moderador_id' => 'required|exists:moders,id',
+                'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:6048',
             ]);
     
             $rutaImagen = null;
@@ -69,10 +68,11 @@ class AtorneoController extends Controller
             $torneo->entrada = $request->entrada;
             $torneo->exp = $request->exp;
             $torneo->descripcion = $request->descripcion;
-            $torneo->imagen = $rutaImagen;
             $torneo->torneo_juego_id = $request->torneo_juego_id;
             $torneo->recompensas_id = $recompensa->id;
             $torneo->moderador_id = $request->moderador_id;
+            $torneo->administrador_id = auth()->id();
+            $torneo->imagen = $rutaImagen;
             $torneo->save();
     
             return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');

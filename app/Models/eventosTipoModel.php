@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+#me parece que ya no se usara este model
 class eventosTipoModel extends Model
 {
     protected $table = 'eventos_tipo';

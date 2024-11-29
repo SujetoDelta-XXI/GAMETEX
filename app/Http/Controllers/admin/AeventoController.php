@@ -6,6 +6,7 @@ use App\Models\eventosModel;
 use App\Models\ModerModel;
 use App\Models\recompensasTipoModel;
 use App\Models\eventosTipoModel;
+use App\Models\RecompensasModel;
 use Illuminate\Http\Request;
 
 class AeventoController extends Controller
@@ -23,52 +24,49 @@ class AeventoController extends Controller
 
     public function create()
     {
-        $moderadores = ModerModel::all();  
-        $recompensasTipos = recompensasTipoModel::all();
-        return view('admin.crud.eventoCreate', compact('moderadores', 'recompensasTipos'));
+        $moderadores = ModerModel::all();
+        $recompensas = RecompensasModel::all();
+
+        return view('admin.crud.eventoCreate', compact('moderadores', 'recompensas'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'descripcion' => 'required|string|max:255',
-            'categoria' => 'required|string|max:255',
-            'reglas' => 'required|string|max:255',
-            'fecha_inicio' => 'required|date',
-            'fecha_fin' => 'required|date',
-            'evento_tipo_nombre' => 'required|string|max:50',
+            'descripcion' => 'required|string',
+            'reglas' => 'required|string',
+            'fecha_inicio' => 'required|date_format:Y-m-d\TH:i',
+            'fecha_fin' => 'required|date_format:Y-m-d\TH:i',
             'moderador_id' => 'required|exists:moders,id',
-            'recompensa_tipo_id' => 'required|exists:recompensas_tipo,id',
+            'recompensa_id' => 'required|exists:recompensas,id',
+            'recompensas_cantidad' => 'required|integer|min:1|max:5',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $rutaImagen = null;
         if ($request->hasFile('imagen')) {
-            $rutaImagen = $request->file('imagen')->store('', 'eventos');
+            $rutaImagen = $request->file('imagen')->store('imagenes_eventos', 'public');
         }
 
-        $eventoTipo = new eventosTipoModel();
-        $eventoTipo->nombre = $request->nombre;
-        $eventoTipo->descripcion = $request->descripcion;
-        $eventoTipo->categoria = $request->categoria;
-        $eventoTipo->reglas = $request->reglas;
-        $eventoTipo->imagen = $rutaImagen;
-        $eventoTipo->save();
-
-        $recompensa = recompensasTipoModel::find($request->recompensa_tipo_id);
-        $recompensa->cantidad -= 1;
-        $recompensa->save();
+        $recompensa = RecompensasModel::find($request->recompensa_id);
+        if ($recompensa && $request->recompensas_cantidad > 0) {
+            $recompensa->cantidad -= $request->recompensas_cantidad;
+            $recompensa->save();
+        }
 
         $evento = new eventosModel();
+        $evento->nombre = $request->nombre;
+        $evento->descripcion = $request->descripcion;
+        $evento->reglas = $request->reglas;
         $evento->fecha_inicio = $request->fecha_inicio;
         $evento->fecha_fin = $request->fecha_fin;
-        $evento->evento_tipo_id = $eventoTipo->id;
+        $evento->imagen = $rutaImagen;
         $evento->moderador_id = $request->moderador_id;
-        $evento->recompensa_tipo_id = $request->recompensa_tipo_id;
+        $evento->recompensa_id = $request->recompensa_id;
         $evento->save();
 
-        return redirect()->route('admin.crud.evento');
+        return redirect()->route('admin.crud.evento')->with('success', 'Evento creado exitosamente.');
     }
 
     public function search(Request $request)
