@@ -6,7 +6,11 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TorneosController;
 use App\Http\Controllers\user\UserDashController;
+use App\Http\Controllers\user\Torneos_UserController;
+use App\Http\Controllers\user\EventosController;
+
 use App\Http\Controllers\moder\ModerDashController;
+
 use App\Http\Controllers\admin\AdminDashController;
 use App\Http\Controllers\admin\AeventoController;
 use App\Http\Controllers\admin\AtorneoController;
@@ -48,6 +52,9 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
     Route::get('profile/show',[UserDashController::class,'show'])->name('profiles.show');
+    Route::get('users-torneos', [Torneos_UserController::class, 'index'])->name('users-torneos');
+    Route::get('users-eventos', [EventosController::class, 'index'])->name('users-eventos');
+    Route::get('torneos-users', [TorneosController::class, 'torneos_usuarios'])->name('torneos.usuarios');
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -81,10 +88,10 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('torneo/search', [AtorneoController::class, 'search'])->name('torneo.search');
         /////////////////////////////// Recompensa /////////////////////////////////////
         Route::get('recompensas', [RecompensasController::class, 'showListado'])->name('recompensas');
-
+        Route::post('recompensa/store', [RecompensasController::class, 'store'])->name('recompensa.store');
+        
         Route::get('usuarios', [UsuariosController::class, 'showListado'])->name('usuarios');
     });
-
 });
 
 

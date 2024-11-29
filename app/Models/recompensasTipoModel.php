@@ -13,7 +13,7 @@ class RecompensasTipoModel extends Model
     protected $table = 'recompensas_tipo';
 
     // Campos asignables masivamente
-    protected $fillable = ['nombre', 'cantidad'];
+    protected $fillable = ['nombre', 'cantidad','categoria'];
 
     // Si deseas relaciones con otras tablas, las puedes agregar aquí.
     // Ejemplo de relación:

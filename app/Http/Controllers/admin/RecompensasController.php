@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\RecompensasModel;
-
+use App\Models\recompensasTipoModel;
 use Illuminate\Http\Request;
 
 class RecompensasController extends Controller
@@ -20,6 +20,4 @@ class RecompensasController extends Controller
         $totalQuantity = $recompensas->sum('cantidad');
         return view('admin.crud.recompensas', compact('recompensas', 'totalQuantity'));
     }
-    
-
 }

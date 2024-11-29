@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('cantidad')->nullable();
+            $table->string('categoria')->nullable();
             $table->timestamps();
         });
     }
