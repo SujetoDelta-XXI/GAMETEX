@@ -47,7 +47,7 @@ class AtorneoController extends Controller
                 'torneo_juego_id' => 'required|exists:torneos_juegos,id',
                 'recompensas_tipo_id' => 'required|exists:recompensas_tipo,id',
                 'moderador_id' => 'required|exists:moders,id',
-                'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:6048',
             ]);
     
             $rutaImagen = null;
@@ -72,7 +72,7 @@ class AtorneoController extends Controller
             $torneo->recompensas_id = $recompensa->id;
             $torneo->moderador_id = $request->moderador_id;
             $torneo->administrador_id = auth()->id();
-            $torneo->imagen = 'asdfasfd';
+            $torneo->imagen = $rutaImagen;
             $torneo->save();
     
             return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
