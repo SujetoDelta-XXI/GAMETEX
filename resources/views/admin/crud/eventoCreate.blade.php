@@ -1,75 +1,68 @@
 @extends('admin.dashboard')
 
 @section('crudAdm')
-<div class="container mx-auto my-8">
-    <div class="max-w-2xl mx-auto bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8 rounded-lg shadow-lg">
-        <form action="{{ route('admin.crud.evento.store') }}" method="POST" enctype="multipart/form-data" class="bg-opacity-75 bg-black p-8 rounded shadow-md">
+
+<div class="mt-6 flex justify-center">
+    <div class="bg-gray-900 border-4 border-indigo-500 shadow-lg rounded-lg p-6 w-full max-w-md">
+        <h3 class="text-xl font-medium text-indigo-600 mb-4">Crear Nuevo Evento</h3>
+        <form action="{{ route('admin.crud.evento.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <h2 class="text-2xl font-bold mb-6 text-gray-200">Crear Nuevo Evento</h2>
-            
             <div class="mb-4">
-                <label for="nombre" class="block text-sm font-medium text-gray-300">Nombre del Evento</label>
-                <input type="text" name="nombre" id="nombre" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required>
+                <label for="nombre" class="block text-white">Nombre del Evento</label>
+                <input type="text" id="nombre" name="nombre" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
             </div>
-            
             <div class="mb-4">
-                <label for="descripcion" class="block text-sm font-medium text-gray-300">Descripción</label>
-                <input type="text" name="descripcion" id="descripcion" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required>
+                <label for="descripcion" class="block text-white">Descripción</label>
+                <textarea id="descripcion" name="descripcion" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required></textarea>
             </div>
-            
             <div class="mb-4">
-                <label for="categoria" class="block text-sm font-medium text-gray-300">Categoría</label>
-                <input type="text" name="categoria" id="categoria" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required>
+                <label for="reglas" class="block text-white">Reglas</label>
+                <textarea id="reglas" name="reglas" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required></textarea>
             </div>
-            
             <div class="mb-4">
-                <label for="reglas" class="block text-sm font-medium text-gray-300">Reglas</label>
-                <textarea name="reglas" id="reglas" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required maxlength="255"></textarea>
+                <label for="fecha_inicio" class="block text-white">Fecha y Hora de Inicio</label>
+                <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
             </div>
-            
             <div class="mb-4">
-                <label for="fecha_inicio" class="block text-sm font-medium text-gray-300">Fecha Inicio</label>
-                <input type="date" name="fecha_inicio" id="fecha_inicio" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required>
+                <label for="fecha_fin" class="block text-white">Fecha y Hora de Fin</label>
+                <input type="datetime-local" id="fecha_fin" name="fecha_fin" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
             </div>
-            
             <div class="mb-4">
-                <label for="fecha_fin" class="block text-sm font-medium text-gray-300">Fecha Fin</label>
-                <input type="date" name="fecha_fin" id="fecha_fin" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" min="{{ date('Y-m-d') }}" required>
-            </div>
-            
-            <div class="mb-4">
-                <label for="evento_tipo_nombre" class="block text-sm font-medium text-gray-300">Nombre del Tipo de Evento</label>
-                <input type="text" name="evento_tipo_nombre" id="evento_tipo_nombre" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required maxlength="50">
-            </div>
-            
-            <div class="mb-4">
-                <label for="moderador_id" class="block text-sm font-medium text-gray-300">Moderador</label>
-                <select name="moderador_id" id="moderador_id" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required>
-                    @foreach ($moderadores as $moderador)
+                <label for="moderador_id" class="block text-white">Moderador</label>
+                <select id="moderador_id" name="moderador_id" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
+                    @foreach($moderadores as $moderador)
                         <option value="{{ $moderador->id }}">{{ $moderador->name }}</option>
                     @endforeach
                 </select>
             </div>
-            
             <div class="mb-4">
-                <label for="recompensa_tipo_id" class="block text-sm font-medium text-gray-300">Tipo de Recompensa</label>
-                <select name="recompensa_tipo_id" id="recompensa_tipo_id" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300" required>
-                    @foreach ($recompensasTipos as $recompensaTipo)
-                        <option value="{{ $recompensaTipo->id }}">{{ $recompensaTipo->nombre }} - {{ $recompensaTipo->cantidad }} disponibles</option>
+                <label for="recompensa_id" class="block text-white">Recompensa</label>
+                <select id="recompensa_id" name="recompensa_id" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
+                    @foreach($recompensas as $recompensa)
+                        <option value="{{ $recompensa->id }}">{{ $recompensa->nombre }}</option>
                     @endforeach
                 </select>
             </div>
-            
             <div class="mb-4">
-                <label for="imagen" class="block text-sm font-medium text-gray-300">Imagen del Evento</label>
-                <input type="file" name="imagen" id="imagen" class="mt-1 block w-full border border-gray-600 rounded-md p-2 shadow-sm focus:ring focus:border-indigo-300">
+                <label for="recompensas_cantidad" class="block text-white">Cantidad a Descontar</label>
+                <select id="recompensas_cantidad" name="recompensas_cantidad" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
             </div>
-            
+            <div class="mb-4">
+                <label for="imagen" class="block text-white">Imagen</label>
+                <input type="file" id="imagen" name="imagen" class="mt-1 p-2 w-full border-2 border-indigo-500 rounded-lg bg-gray-800 text-white">
+            </div>
             <div class="flex justify-end">
                 <a href="{{ route('admin.crud.evento') }}" class="bg-red-600 text-white px-4 py-2 rounded mr-2 hover:bg-red-700">Cancelar</a>
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Guardar</button>
+                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Crear Evento</button>
             </div>
         </form>
     </div>
 </div>
+
 @endsection
