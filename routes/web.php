@@ -77,6 +77,10 @@ Route::middleware(['auth.admin'])->group(function () {
         /////////////////////////////// Recompensa /////////////////////////////////////
         Route::get('recompensas', [RecompensasController::class, 'showListado'])->name('recompensas');
         Route::post('recompensa/store', [RecompensasController::class, 'store'])->name('recompensa.store');
+        Route::post('recompensa', [RecompensasController::class, 'store'])->name('recompensa.store');
+        Route::get('recompensa/{id}/edit', [RecompensasController::class, 'edit'])->name('recompensa.edit');
+        Route::put('recompensa/{id}', [RecompensasController::class, 'update'])->name('recompensa.update');
+        Route::delete('recompensa/{id}', [RecompensasController::class, 'delete'])->name('recompensa.delete');
         
     });
 
