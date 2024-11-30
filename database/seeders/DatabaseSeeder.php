@@ -11,6 +11,7 @@ use App\Models\TorneosModel;
 use App\Models\eventosModel;
 use App\Models\UserModel;
 use App\Models\TorneosHasUsuariosModel;
+use App\Models\UsuariosHasRecompensasModel;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -44,6 +45,7 @@ class DatabaseSeeder extends Seeder
 /*         $this->call([ TorneosHasUsuariosSeeder::class ]); */
         TorneosHasUsuariosModel::factory(30)->create();
         $recompensas = RecompensasModel::factory(30)->create();
+        $recompensas = UsuariosHasRecompensasModel::factory(30)->create();
 
     }
 }
