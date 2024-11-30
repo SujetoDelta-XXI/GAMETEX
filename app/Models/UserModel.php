@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Storage;
 class UserModel extends Authenticatable
 {
     use Notifiable;
+
     protected $table = 'users';
+
     protected $fillable = [
         'name',
         'email',
@@ -16,11 +18,6 @@ class UserModel extends Authenticatable
         'profile_photo_path',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -28,27 +25,18 @@ class UserModel extends Authenticatable
         'two_factor_secret',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
     protected $appends = [
         'profile_photo_url',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
+
     public function getProfilePhotoUrlAttribute()
     {
         if ($this->profile_photo_path) {

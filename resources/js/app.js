@@ -1,4 +1,35 @@
 import './bootstrap';
+import $ from 'jquery';
+
+// Función para mostrar la pantalla de carga
+function showLoadingScreen() {
+    $('#loading-screen').removeClass('hidden');
+}
+
+// Función para ocultar la pantalla de carga
+function hideLoadingScreen() {
+    $('#loading-screen').addClass('hidden');
+    setTimeout(() => {
+        $('#loading-screen').hide();
+    }, 500); // Tiempo de la transición en milisegundos
+}
+
+// Mostrar la pantalla de carga al hacer clic en botones de cambio de vista
+$(document).on('click', '.load-view-button', function(event) {
+    showLoadingScreen();
+});
+
+// Ocultar la pantalla de carga al cargar el documento
+$(document).ready(function() {
+    hideLoadingScreen();
+});
+
+// Exportar las funciones para que puedan ser llamadas desde otros scripts
+window.showLoadingScreen = showLoadingScreen;
+window.hideLoadingScreen = hideLoadingScreen;
+
+
+
 
 
 //////////////////Lógica Torneos/////////////////

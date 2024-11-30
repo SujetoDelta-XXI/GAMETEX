@@ -23,30 +23,44 @@ class ProfilePhotoController extends Controller
         $request->validate([
             'photo' => ['required', 'image', 'max:2048']
         ]);
-
+    
         try {
-            $user = $this->getAuthenticatedUser();
             $guard = $this->getCurrentGuard();
-
+    
+            // Determinar el modelo de usuario en función del guard
+            switch ($guard) {
+                case 'admin':
+                    $user = Auth::guard('admin')->user();
+                    break;
+                case 'moder':
+                    $user = Auth::guard('moder')->user();
+                    break;
+                case 'user':
+                default:
+                    $user = Auth::guard('user')->user();
+                    break;
+            }
+    
             // Procesar y guardar la imagen
             $image = $request->file('photo');
             $filename = $this->saveImage($image, $guard);
-
+    
             // Actualizar el modelo del usuario
             $user->profile_photo_path = $filename;
             $user->save();
-
+    
             return response()->json([
                 'message' => 'Foto de perfil actualizada correctamente',
                 'path' => Storage::url($filename)
             ]);
-
+    
         } catch (\Exception $e) {
             return response()->json([
                 'error' => 'Error al subir la imagen: ' . $e->getMessage()
             ], 500);
         }
     }
+    
 
     public function destroy()
     {
@@ -75,15 +89,10 @@ class ProfilePhotoController extends Controller
         ]);
     }
 
-
     private function saveImage($image, $guard)
     {
-        // Crear un nombre único para la imagen
         $filename = $guard . '/' . Str::uuid() . '.' . $image->getClientOriginalExtension();
-
-        // Guardar la imagen
         Storage::putFileAs('public/profile-photos', $image, $filename);
-
         return 'profile-photos/' . $filename;
     }
 

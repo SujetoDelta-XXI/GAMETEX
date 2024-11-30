@@ -9,6 +9,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $this->showLoadingScreen();
+        
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -30,6 +32,7 @@ class LoginController extends Controller
     
             return redirect()->intended(route('dashboard'));
         }
+        $this->hideLoadingScreen();
         
         return back()->withErrors([
             'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
