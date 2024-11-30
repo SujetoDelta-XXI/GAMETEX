@@ -44,4 +44,10 @@ class TorneosModel extends Model
     {
         return $this->belongsTo(AdminModel::class, 'administrador_id');
     }
+
+    public function usuarios()
+    {
+        return $this->belongsToMany(UserModel::class, 'torneos_has_usuarios', 'torneo_id', 'usuario_id')
+                    ->withTimestamps();
+    }
 }

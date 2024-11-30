@@ -10,7 +10,7 @@
         <span class="p-1 text-sm">
             Pendiente
         </span>
-        <button type="button" data-modal-target="delete-modal" data-modal-toggle="delete-modal"
+        <button type="button"
             class="ml-auto flex items-center text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewBox="0 0 20 20"
                 fill="currentColor" aria-hidden="true">

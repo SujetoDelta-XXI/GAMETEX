@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Axel',
             'email' => 'ax@gametex.com',
+            'estado' => 'activo',
             'email_verified_at' => now(),
             'password' => bcrypt('123'),
             'remember_token' => Str::random(10),
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Armando',
             'email' => 'ar@gametex.com',
+            'estado' => 'activo',
             'email_verified_at' => now(),
             'password' => bcrypt('123'), 
             'remember_token' => Str::random(10),
