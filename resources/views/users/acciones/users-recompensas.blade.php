@@ -8,7 +8,7 @@
                     Half Life
                 </x-slot>
                 <x-slot name="tipo">
-                    Calve de Juego
+                    Clave de Juego
                 </x-slot>
                 <x-slot name="fecha">
                     08/12/2024
@@ -19,7 +19,7 @@
                     Half Life
                 </x-slot>
                 <x-slot name="tipo">
-                    Calve de Juego
+                    Clave de Juego
                 </x-slot>
                 <x-slot name="fecha">
                     08/12/2024
@@ -30,7 +30,7 @@
                     Half Life
                 </x-slot>
                 <x-slot name="tipo">
-                    Calve de Juego
+                    Clave de Juego
                 </x-slot>
                 <x-slot name="fecha">
                     08/12/2024
@@ -41,7 +41,7 @@
                     Half Life
                 </x-slot>
                 <x-slot name="tipo">
-                    Calve de Juego
+                    Clave de Juego
                 </x-slot>
                 <x-slot name="fecha">
                     08/12/2024
@@ -52,7 +52,7 @@
                     Half Life
                 </x-slot>
                 <x-slot name="tipo">
-                    Calve de Juego
+                    Clave de Juego
                 </x-slot>
                 <x-slot name="fecha">
                     08/12/2024
@@ -68,7 +68,7 @@
                         Half Life
                     </x-slot>
                     <x-slot name="tipo">
-                        Calve de Juego
+                        Clave de Juego
                     </x-slot>
                     <x-slot name="fecha">
                         08/12/2024
@@ -79,7 +79,7 @@
                         Half Life
                     </x-slot>
                     <x-slot name="tipo">
-                        Calve de Juego
+                        Clave de Juego
                     </x-slot>
                     <x-slot name="fecha">
                         08/12/2024
