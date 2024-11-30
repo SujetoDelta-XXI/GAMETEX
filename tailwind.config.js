@@ -19,6 +19,14 @@ export default {
         },
     },
 
+    theme: {
+        extend: {
+            screens: {
+                'xs': { 'max': '640px' }, // Pantallas menores a 650px
+            },
+        },
+    },
+      
     plugins: [forms, typography],
 };
 
