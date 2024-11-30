@@ -7,6 +7,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TorneosController;
 use App\Http\Controllers\user\UserDashController;
 use App\Http\Controllers\user\Torneos_UserController;
+use App\Http\Controllers\user\Recompensas_UserController;
+use App\Http\Controllers\user\Perfil_UserController;
 use App\Http\Controllers\user\EventosController;
 
 use App\Http\Controllers\moder\ModerDashController;
@@ -53,6 +55,9 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
     Route::get('profile/show',[UserDashController::class,'show'])->name('profiles.show');
     Route::get('users-torneos', [Torneos_UserController::class, 'index'])->name('users-torneos');
+    Route::get('users-recompensas', [Recompensas_UserController::class, 'index'])->name('users-recompensas');
+    Route::get('users-perfil', [Perfil_UserController::class, 'index'])->name('users-perfil');
+
     Route::get('users-eventos', [EventosController::class, 'index'])->name('users-eventos');
     Route::get('torneos-users', [TorneosController::class, 'torneos_usuarios'])->name('torneos.usuarios');
 });
@@ -89,6 +94,11 @@ Route::middleware(['auth.admin'])->group(function () {
         /////////////////////////////// Recompensa /////////////////////////////////////
         Route::get('recompensas', [RecompensasController::class, 'showListado'])->name('recompensas');
         Route::post('recompensa/store', [RecompensasController::class, 'store'])->name('recompensa.store');
+        Route::post('recompensa', [RecompensasController::class, 'store'])->name('recompensa.store');
+        Route::get('recompensa/{id}/edit', [RecompensasController::class, 'edit'])->name('recompensa.edit');
+        Route::put('recompensa/{id}', [RecompensasController::class, 'update'])->name('recompensa.update');
+        Route::delete('recompensa/{id}', [RecompensasController::class, 'delete'])->name('recompensa.delete');
+
         
         Route::get('usuarios', [UsuariosController::class, 'showListado'])->name('usuarios');
     });
