@@ -13,7 +13,7 @@ class TorneosJuegoModel extends Model
     protected $table = 'torneos_juegos';
 
     // Campos asignables para la asignación masiva
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre','imagen'];
 
     // Si deseas usar timestamps (created_at y updated_at), no necesitas hacer nada, ya que están habilitados por defecto.
 

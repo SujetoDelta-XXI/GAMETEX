@@ -20,6 +20,7 @@ class TorneosJuegoModelFactory extends Factory
     {
         return [
             'nombre' => $this->faker->word(), // Genera un nombre aleatorio.
+            //Falta campo imagen pero para utilizar el factory se tiene que aumentar
         ];
     }
 }

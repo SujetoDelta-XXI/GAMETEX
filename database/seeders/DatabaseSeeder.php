@@ -9,6 +9,8 @@ use App\Models\ModerModel;
 use App\Models\AdminModel;
 use App\Models\TorneosModel;
 use App\Models\eventosModel;
+use App\Models\UserModel;
+use App\Models\TorneosHasUsuariosModel;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -27,17 +29,20 @@ class DatabaseSeeder extends Seeder
         /* $this->call([ RecompensasTipoSeeder::class, ]); */
         $this->call([ TorneosJuegosSeeder::class]);
         $this->call([ RecompensasTipoSeeder::class]);
-
-                // Ejecutar todos los factories necesarios para poblar las tablas
-
+        
+        // Ejecutar todos los factories necesarios para poblar las tablas
+        
         // Factori anterior para recompensas tipo
         /* $recompensaTipo = RecompensasTipoModel::factory(5)->create(); */
-
-
+        
+        
         // Crear moderador y administrador
         $moderador = ModerModel::factory(5)->create();
         $administrador = AdminModel::factory(2)->create();
         $torneos = TorneosModel::factory(20)->create();
+        UserModel::factory(10)->create();
+/*         $this->call([ TorneosHasUsuariosSeeder::class ]); */
+        TorneosHasUsuariosModel::factory(30)->create();
         $recompensas = RecompensasModel::factory(30)->create();
 
     }

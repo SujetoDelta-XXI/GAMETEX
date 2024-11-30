@@ -46,4 +46,8 @@ class torneoModel extends Model
     {
         return $this->belongsTo(AdminModel::class, 'administrador_id');
     }
+
+
+
+
 }

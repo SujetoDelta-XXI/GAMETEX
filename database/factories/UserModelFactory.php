@@ -12,7 +12,7 @@ use Laravel\Jetstream\Features;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class UserFactory extends Factory
+class UserModelFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -29,6 +29,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'estado' => $this->faker->randomElement(['nuevo','activo','inactivo']),   // Generar un usuario relacionado
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'two_factor_secret' => null,
