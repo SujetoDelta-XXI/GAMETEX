@@ -21,7 +21,7 @@ class AtorneoController extends Controller
 
     public function show()
     {
-        $torneos = TorneoModel::with(['torneoJuego', 'moderador', 'recompensas'])->paginate(10);
+        $torneos = TorneoModel::with(['torneoJuego', 'moderador', 'recompensas'])->paginate(5);
         return view('admin.crud.torneo', compact('torneos'));
     }
 
