@@ -54,6 +54,7 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
     Route::get('profile/show',[UserDashController::class,'show'])->name('profiles.show');
     Route::get('users-torneos', [Torneos_UserController::class, 'index'])->name('users-torneos');
+
     Route::get('users-recompensas', [Recompensas_UserController::class, 'index'])->name('users-recompensas');
 
     Route::get('users-eventos', [EventosController::class, 'index'])->name('users-eventos');
