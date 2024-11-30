@@ -14,8 +14,8 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         DB::table('admins')->insert([
-            'name' => 'Pedro López',
-            'email' => 'pe@gametex.com',
+            'name' => 'Brandon Arias',
+            'email' => 'bn@gametex.com',
             'password' => bcrypt('123'),
             'telefono' => 986523258,
             'remember_token' => Str::random(10),
@@ -26,10 +26,22 @@ class AdminSeeder extends Seeder
         ]);
 
         DB::table('admins')->insert([
-            'name' => 'Mario',
-            'email' => 'mr@gametex.com',
+            'name' => 'Axcel Loayza',
+            'email' => 'ax@gametex.com',
             'password' => bcrypt('123'),
-            'telefono' => 987654321,
+            'telefono' => 253685177,
+            'remember_token' => Str::random(10),
+            'sueldo' => 1700,
+            'profile_photo_path' => 'images/profile_maria.jpg',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('admins')->insert([
+            'name' => 'Carlos Asparrin',
+            'email' => 'ca@gametex.com',
+            'password' => bcrypt('123'),
+            'telefono' => 426525588,
             'remember_token' => Str::random(10),
             'sueldo' => 1700,
             'profile_photo_path' => 'images/profile_maria.jpg',
