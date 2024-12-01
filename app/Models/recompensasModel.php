@@ -51,4 +51,5 @@ class RecompensasModel extends Model
     {
         return $this->belongsTo(eventosModel::class, 'evento_id');
     } */
+   
 }

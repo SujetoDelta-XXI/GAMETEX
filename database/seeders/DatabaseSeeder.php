@@ -11,6 +11,7 @@ use App\Models\TorneosModel;
 use App\Models\eventosModel;
 use App\Models\UserModel;
 use App\Models\TorneosHasUsuariosModel;
+use App\Models\UsuariosHasRecompensasModel;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -23,7 +24,6 @@ class DatabaseSeeder extends Seeder
         
         $this->call([ UserSeeder::class, ]);
         /* $this->call([ ModerSeeder::class, ]); */
-        /* $this->call([ AdminSeeder::class, ]); */
         /* $this->call([ eventosSeeder::class, ]); */
         /* $this->call([ eventosTipoSeeder::class, ]); */
         /* $this->call([ RecompensasTipoSeeder::class, ]); */
@@ -38,12 +38,14 @@ class DatabaseSeeder extends Seeder
         
         // Crear moderador y administrador
         $moderador = ModerModel::factory(5)->create();
+        $this->call([ AdminSeeder::class, ]);
         $administrador = AdminModel::factory(2)->create();
         $torneos = TorneosModel::factory(20)->create();
         UserModel::factory(10)->create();
 /*         $this->call([ TorneosHasUsuariosSeeder::class ]); */
         TorneosHasUsuariosModel::factory(30)->create();
         $recompensas = RecompensasModel::factory(30)->create();
+        $recompensas = UsuariosHasRecompensasModel::factory(30)->create();
 
     }
 }

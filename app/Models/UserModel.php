@@ -61,4 +61,9 @@ class UserModel extends Authenticatable
                     ->withTimestamps(); // Si necesitas los timestamps
     }
 
+    public function recompensas()
+    {
+        return $this->belongsToMany(RecompensasModel::class, 'usuarios_has_recompensas', 'usuario_id', 'recompensa_id')->withTimestamps();
+    }
+
 }

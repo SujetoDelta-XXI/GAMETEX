@@ -64,6 +64,10 @@
                         <p><span class="font-semibold text-gray-400">🕒 Última Modificación:</span>
                             {{ $torneo->updated_at->format('d/m/Y H:i') }}</p>
                     </div>
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-300">
+                        <img src="{{ Str::startsWith($torneo->imagen, ['http://', 'https://']) ? $torneo->imagen : Storage::url($torneo->imagen) }}" alt="Imagen circular" class="w-full h-full object-cover">
+                    </div>
+
                     <div class="flex justify-end mt-4 space-x-3">
                         <a href="{{ route('admin.crud.torneo.edit', $torneo->id) }}"
                             class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 transition">

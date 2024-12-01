@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\eventosModel;
 use App\Models\ModerModel;
-use App\Models\recompensasTipoModel;
+use App\Models\RecompensasTipoModel;
 use App\Models\eventosTipoModel;
 use App\Models\RecompensasModel;
 use Illuminate\Http\Request;
