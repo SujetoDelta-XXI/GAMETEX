@@ -59,6 +59,8 @@ Route::middleware(['auth.user'])->group(function () {
 
     Route::get('torneos-panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');
     Route::get('torneos-descripcion', [PanelTorneoController::class, 'descripcion'])->name('torneos-descripcion');
+    Route::get('torneos-partidas', [PanelTorneoController::class, 'partidas'])->name('torneos-partidas');
+    Route::get('torneos-equipos', [PanelTorneoController::class, 'equipo'])->name('torneos-equipos');
 });
 
 ///////////////////////////////////////////////////////////////////////////

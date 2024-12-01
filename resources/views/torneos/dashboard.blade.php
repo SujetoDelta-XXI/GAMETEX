@@ -46,7 +46,7 @@
                                 </div>
                             </a>
 
-                            <a href="#"
+                            <a href="{{ route('torneos-equipos') }}"
                                 class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-1 group">
                                 <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                                     <div>
@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="#"
+                            <a href="{{ route('torneos-partidas') }}"
                                 class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
                                 <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                                     <div>

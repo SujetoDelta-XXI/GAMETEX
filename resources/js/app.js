@@ -110,3 +110,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+document.querySelectorAll('[data-drawer-target]').forEach(button => {
+    button.addEventListener('click', () => {
+        const drawerId = button.getAttribute('data-drawer-target');
+        const drawer = document.getElementById(drawerId);
+        drawer.classList.toggle('-translate-x-full'); // Abrir y cerrar el modal
+    });
+});
+
+document.querySelectorAll('[data-drawer-dismiss]').forEach(button => {
+    button.addEventListener('click', () => {
+        const drawerId = button.getAttribute('aria-controls');
+        const drawer = document.getElementById(drawerId);
+        drawer.classList.add('-translate-x-full'); // Cerrar el modal
+    });
+});
