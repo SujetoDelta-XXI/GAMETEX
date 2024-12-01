@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
 
-class Perfil_UserController extends Controller
+class RegistroController extends Controller
 {
     public function __construct()
     {
@@ -15,6 +15,6 @@ class Perfil_UserController extends Controller
 
     public function index()
     {
-        return view('users.acciones.users-perfil');
+        return view('torneos.register_torneo');
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\torneos;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
 
-class EventosController extends Controller
+class PanelTorneoController extends Controller
 {
     public function __construct()
     {
@@ -15,6 +15,11 @@ class EventosController extends Controller
 
     public function index()
     {
-        return view('users.acciones.users-eventos');
+        return view('torneos.dashboard');
+    }
+
+    public function descripcion()
+    {
+        return view('torneos.panel.descripcion');
     }
 }

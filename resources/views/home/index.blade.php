@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
 @section('contenido')
-    <!-- component -->
-    <html>
     <main>
         <section class="h-dvh w-full max-h-[80rem] relative">
             <div class="absolute inset-0 z-[1]">
