@@ -3,8 +3,6 @@
 /public/build
 /public/hot
 /public/storage
-!/public/storage/imagenes_juegos
-!/public/storage/imagenes_juegos/*
 /storage/*.key
 /storage/pail
 /vendor
@@ -23,3 +21,5 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+!/storage/app/public
+!/storage/app/public/imagenes_juegos
