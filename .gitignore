@@ -23,4 +23,4 @@ yarn-error.log
 /.zed
 !/storage/app/public
 !/storage/app/public/imagenes_juegos
-/storage/app/public/imagenes_juegos
+/storage/app/public/imagenes_torneos
