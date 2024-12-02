@@ -3,6 +3,8 @@
 /public/build
 /public/hot
 /public/storage
+!/public/storage/imagenes_juegos
+!/public/storage/imagenes_juegos/*
 /storage/*.key
 /storage/pail
 /vendor
