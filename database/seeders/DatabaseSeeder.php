@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         
         // Crear moderador y administrador
         $moderador = ModerModel::factory(5)->create();
-        $this->call([ AdminSeeder::class, ]);
+        $this->call([ AdminSeeder::class ]);
         $administrador = AdminModel::factory(2)->create();
         $torneos = TorneosModel::factory(20)->create();
         UserModel::factory(10)->create();
@@ -46,6 +46,9 @@ class DatabaseSeeder extends Seeder
         TorneosHasUsuariosModel::factory(30)->create();
         $recompensas = RecompensasModel::factory(30)->create();
         $recompensas = UsuariosHasRecompensasModel::factory(30)->create();
+        $this->call([ FasesModelSeeder::class ]);
+        $this->call([ PartidasModelSeeder::class ]);
+        $this->call([ EquiposModelSeeder::class ]);
 
     }
 }
