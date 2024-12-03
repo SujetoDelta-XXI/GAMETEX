@@ -66,4 +66,10 @@ class UserModel extends Authenticatable
         return $this->belongsToMany(RecompensasModel::class, 'usuarios_has_recompensas', 'usuario_id', 'recompensa_id')->withTimestamps();
     }
 
+    public function equipos()
+    {
+        return $this->belongsToMany(EquiposModel::class, 'torneos_has_usuarios', 'usuario_id', 'equipo_id')
+                    ->withTimestamps(); // Si necesitas los timestamps
+    }
+
 }
