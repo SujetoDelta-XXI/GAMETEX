@@ -29,6 +29,30 @@ window.showLoadingScreen = showLoadingScreen;
 window.hideLoadingScreen = hideLoadingScreen;
 
 
+document.getElementById('torneos-container').addEventListener('mousemove', function(e) {
+    const container = e.currentTarget;
+    const carousel = document.getElementById('carousel');
+
+    const containerWidth = container.offsetWidth;
+    const carouselWidth = carousel.scrollWidth;
+
+    // Calcular la posición del cursor dentro del contenedor
+    const mouseX = e.clientX - container.getBoundingClientRect().left;
+    
+    // Calcular el porcentaje del movimiento del cursor
+    const scrollPercent = mouseX / containerWidth;
+
+    // Definir un factor de velocidad
+    const speedFactor = 1.5;  // Aumenta este valor para mayor velocidad
+
+    // Calcular el desplazamiento horizontal ajustado por la velocidad
+    const scrollPosition = (carouselWidth - containerWidth) * scrollPercent * speedFactor;
+
+    // Aplicar el desplazamiento horizontal al carrusel
+    carousel.scrollLeft = scrollPosition;
+});
+
+
 
 
 
@@ -67,48 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const recompensasFilter = document.getElementById('recompensa-filter'); // Renombrado a recompensasFilter
-    const recompensaContainers = document.querySelectorAll('[data-recompensa]'); // Renombrado a recompensaContainers
-    const searchInput = document.getElementById('search-dropdown');
-
-    // Filtrar recompensas por el tipo de juego seleccionado en el dropdown
-    recompensasFilter.addEventListener('change', function () {
-        const selectedRecompensa = recompensasFilter.value; // Renombrado a selectedRecompensa
-
-        recompensaContainers.forEach(function (container) {
-            const recompensaType = container.getAttribute('data-recompensa'); // Renombrado a recompensaType
-            if (selectedRecompensa === 'all' || recompensaType === selectedRecompensa) {
-                container.style.display = "";  // Muestra el contenedor, mantiene su espacio en el layout
-            } else {
-                container.style.display = "none";  // Oculta el contenedor sin mover los demás
-            }
-        });
-    });
-
-
-    const rows = document.querySelectorAll('#recompensas-table tr'); // Seleccionamos todas las filas dentro del tbody
-
-    // Función que filtra las filas según el texto de búsqueda
-    searchInput.addEventListener('input', function () {
-        const searchTerm = searchInput.value.toLowerCase(); // Convertimos el término de búsqueda a minúsculas
-
-        rows.forEach(function (row) {
-            // Buscar el contenido del nombre del producto en el slot "producto"
-            const productoCell = row.querySelector('td'); // La primera celda es donde se encuentra el nombre del producto
-            const productoText = productoCell ? productoCell.textContent.toLowerCase() : '';
-
-            if (productoText.includes(searchTerm)) {
-                row.style.display = ''; // Muestra la fila si el nombre del producto coincide
-            } else {
-                row.style.display = 'none'; // Oculta la fila si no coincide
-            }
-        });
-    });
-
-});
-
-
 
 document.querySelectorAll('[data-drawer-target]').forEach(button => {
     button.addEventListener('click', () => {
@@ -125,3 +107,5 @@ document.querySelectorAll('[data-drawer-dismiss]').forEach(button => {
         drawer.classList.add('-translate-x-full'); // Cerrar el modal
     });
 });
+
+

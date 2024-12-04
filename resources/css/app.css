@@ -64,3 +64,8 @@
   background: url('images/loading.webp') no-repeat;
 }
 
+
+#content {
+  max-height: 80vh; /* Puedes ajustar esta altura según tus necesidades */
+  overflow-y: auto; /* Habilita el desplazamiento vertical */
+}

@@ -1,15 +1,17 @@
 @extends('torneos.dashboard')
 
 @section('content-torneos')
-    <div class="rounded-lg shadow-xl overflow-hidden flex">
+    <div class="lg:w-1/2 block sm:hidden mb-4">
+        <img src="{{ asset('torneos_img/lol1.jpeg') }}" class="h-full object-cover rounded-lg">
+    </div>
+    <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
         <!-- Imagen a la izquierda -->
-        <div class="w-1/2 h-full">
-            <img src="{{ asset('torneos_img/EGS_LeagueofLegends_RiotGames_S2_1200x1600-905a96cea329205358868f5871393042.jpg') }}"
-                class="w-full h-full object-cover rounded-lg">
+        <div class="lg:w-1/2 sm:block hidden">
+            <img src="{{ asset('torneos_img/lol1.jpeg') }}" class="h-full object-cover rounded-lg">
         </div>
 
         <!-- Contenedor para la información personal y la descripción -->
-        <div class="w-2/3 pl-4 flex flex-col space-y-4">
+        <div class="lg:w-2/3 flex flex-col space-y-4">
             <!-- Información personal -->
             <div class="rounded-lg shadow-xl p-8 bg-gray-500">
                 <h4 class="text-[30px] text-gray-900 font-bold">Victoria Legendaria</h4>

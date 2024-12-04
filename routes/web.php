@@ -51,7 +51,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 /////////////////////////////// user /////////////////////////////////////
 Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
-    Route::get('profile/show',[UserDashController::class,'show'])->name('profiles.show');
+    Route::get('profile-show',[UserDashController::class,'show'])->name('profile-show');
     Route::get('users-torneos', [UserDashController::class, 'torneos'])->name('users-torneos');
     Route::get('users-recompensas', [UserDashController::class, 'recompensas'])->name('users-recompensas');
     Route::get('users-perfil', [UserDashController::class, 'perfil'])->name('users-perfil');

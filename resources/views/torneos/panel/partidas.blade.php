@@ -2,6 +2,8 @@
 @section('content-torneos')
     <section id="24h">
         <h1 class="font-bold py-4 uppercase text-2xl text-center">Cronograma de Partidas</h1>
+        <br>
+        <hr>
         <h2 class="font-bold pt-4 uppercase text-2x1 mt-1">Fase 1</h2>
         <div>
             <h3 class="font-bold py-4 uppercase text-1x1 mt-1">Ronda 1 - 12/11/2024 - 3:00pm</h3>
@@ -110,6 +112,7 @@
             </div>
         </div>
         <br>
+        <hr>
         <div>
             <h2 class="font-bold pt-4 uppercase text-2x1 mt-1">Fase 2</h2>
             <h3 class="font-bold py-4 uppercase text-1x1 mt-1">Ronda 1 - 12/11/2024 - 3:00pm</h3>

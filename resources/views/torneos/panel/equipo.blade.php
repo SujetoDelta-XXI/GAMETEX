@@ -3,11 +3,11 @@
     <section id="24h">
         <h1 class="font-bold py-4 uppercase text-2xl text-center">Equipo 1</h1>
         <h2 class="font-bold pt-4 uppercase text-2x1">Link de Discord</h2>
-        <div class="w-1/2">
+        <div class="w-1/2 lg:w-1/2 sm:w-[70%]">
             <div
                 class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
                 <div class="ml-4">
-                    <dt class="text-xl font-semibold text-gray-900 dark:text-white" id="discord-link">
+                    <dt class="lg:text-xl font-semibold text-gray-900 dark:text-white hidden sm:block" id="discord-link">
                         https://discord.gg/c9kAhmSQ
                     </dt>
                 </div>
@@ -18,7 +18,6 @@
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M7 5h10M7 5a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2M7 5V3m10 2V3" />
-                        <!-- Tres líneas horizontales dentro del cuaderno -->
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 8h6M9 12h6M9 16h6" />
                     </svg>
                 </button>
@@ -29,7 +28,7 @@
         <div>
             <div
                 class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
-                <div class="w-[5%]">
+                <div class="w-[5%] hidden sm:block">
                     <img src="{{ asset('usuarios_img/gaming.gif') }}" alt="Imagen del jugador" class="rounded-lg">
                 </div>
                 <!-- Información del jugador -->
@@ -52,7 +51,7 @@
         <div>
             <div
                 class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
-                <div class="w-[5%]">
+                <div class="w-[5%] hidden sm:block">
                     <img src="{{ asset('usuarios_img/gaming.gif') }}" alt="Imagen del jugador" class="rounded-lg">
                 </div>
                 <!-- Información del jugador -->
