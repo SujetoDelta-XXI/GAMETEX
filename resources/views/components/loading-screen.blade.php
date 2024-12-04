@@ -1,4 +1,4 @@
-<!-- resources/views/components/loading-screen.blade.php -->
+
 <div id="loading-screen" class="loading-screen hidden">
     <img src="{{ asset('loading.webp') }}" alt="Cargando..." class="loading-gif">
 </div>
@@ -24,8 +24,7 @@
     }
 
     .loading-gif {
-        width: 120px; /* Ajusta el tamaño del WebP según sea necesario */
-        height: 120px; /* Ajusta el tamaño del WebP según sea necesario */
+        width: 120px;
+        height: 120px;
     }
 </style>
-

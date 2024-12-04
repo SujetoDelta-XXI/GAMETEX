@@ -24,13 +24,13 @@
 
             <!-- Navigation Menu -->
             <nav class="space-y-2">
-                <a href="{{ route('admin.dashboard') }}" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🏠 Panel Principal</a>
-                <a href="{{ route('admin.crud.usuarios') }}" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">👥 Gestión de Usuarios</a>
-                <a href="{{ route('admin.crud.evento') }}" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🔒 CRUD Eventos</a>
-                <a href="{{ route('admin.crud.torneo') }}" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📊 CRUD Torneos</a>
-                <a href="{{ route('admin.crud.recompensas') }}" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">CRUD Recompensas</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📁 Backups</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📝 Logs del Sistema</a>
+                <a href="{{ route('admin.dashboard') }}" onclick="showLoadingScreen()" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🏠 Panel Principal</a>
+                <a href="{{ route('admin.crud.usuarios') }}" onclick="showLoadingScreen()" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">👥 Gestión de Usuarios</a>
+                <a href="{{ route('admin.crud.evento') }}" onclick="showLoadingScreen()" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">🔒 CRUD Eventos</a>
+                <a href="{{ route('admin.crud.torneo') }}" onclick="showLoadingScreen()" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📊 CRUD Torneos</a>
+                <a href="{{ route('admin.crud.recompensas') }}" onclick="showLoadingScreen()" class="load-view-button block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">CRUD Recompensas</a>
+                <a href="#" onclick="showLoadingScreen()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📁 Backups</a>
+                <a href="#" onclick="showLoadingScreen()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📝 Logs del Sistema</a>
             </nav>            
         </div>
     </div>
@@ -45,5 +45,9 @@
         }
         reader.readAsDataURL(input.files[0]);
     }
+
+    $(document).ready(function() {
+        addClickEventHandler();
+    });
     </script>
 </x-app-layout>
