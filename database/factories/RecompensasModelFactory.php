@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use App\Models\RecompensasModel;
 use App\Models\RecompensasTipoModel;
 use App\Models\TorneosModel;
@@ -16,7 +17,7 @@ class RecompensasModelFactory extends Factory
     {
         return [
             'nombre' => $this->faker->word(), // Nombre aleatorio para la recompensa
-            'cantidad' => $this->faker->numberBetween(1, 15),
+            'clave_producto' => Str::random(16),
             'precio' => $this->faker->numberBetween(100, 300),
             'recompensa_tipo_id' => RecompensasTipoModel::all()->random()->id,
             /* 'torneo_id' => TorneosModel::all()->random()->id,  */

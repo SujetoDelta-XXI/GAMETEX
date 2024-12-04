@@ -50,4 +50,21 @@ class TorneosModel extends Model
         return $this->belongsToMany(UserModel::class, 'torneos_has_usuarios', 'torneo_id', 'usuario_id')
                     ->withTimestamps();
     }
+
+    public function equipos()
+    {
+        return $this->belongsToMany(EquiposModel::class, 'equipo_torneo_fase_partida_models', 'torneo_id', 'equipo_id')
+                    ->withTimestamps();
+    }
+
+    public function fases()
+    {
+        return $this->belongsToMany(FasesModel::class, 'equipo_torneo_fase_partida_models', 'torneo_id', 'fase_id')
+                    ->withTimestamps();
+    }
+    public function partidas()
+    {
+        return $this->belongsToMany(PartidasModel::class, 'equipo_torneo_fase_partida_models', 'torneo_id', 'partida_id')
+                    ->withTimestamps();
+    }
 }

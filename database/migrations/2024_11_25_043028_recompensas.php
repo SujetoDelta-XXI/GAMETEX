@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('recompensas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->integer('cantidad');
+            $table->string('clave_producto');
             $table->integer('precio');
             $table->foreignId('recompensa_tipo_id')->constrained('recompensas_tipo')->onDelete('cascade');
             /* $table->foreignId('torneo_id')->constrained('torneos')->onDelete('cascade'); */

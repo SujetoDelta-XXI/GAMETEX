@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\TorneosHasUsuariosModel;
 use App\Models\TorneosModel;
 use App\Models\UserModel;
+use App\Models\EquiposModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TorneosHasUsuariosModelFactory extends Factory
@@ -26,6 +27,7 @@ class TorneosHasUsuariosModelFactory extends Factory
         return [
             'torneo_id' => TorneosModel::all()->random()->id, // Generar un torneo relacionado
             'usuario_id' => UserModel::all()->random()->id,   // Generar un usuario relacionado
+            'equipo_id' => EquiposModel::all()->random()->id,   // Generar un usuario relacionado
             'created_at' => now(),
             'updated_at' => now(),
         ];
