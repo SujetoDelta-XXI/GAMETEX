@@ -7,10 +7,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css'])
+    @vite(['resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased hide-scroll-bar">
     @include('components.loading-screen') <!-- Incluir el componente de pantalla de carga -->
 
     <x-banner />
@@ -39,7 +40,5 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/7k07F+2dUAdB+v3Jp1Ey0T+kfctdyg2kZdj5aD" crossorigin="anonymous"></script>
-    <!-- Vite -->
-    @vite(['resources/js/app.js'])
 </body>
 </html>

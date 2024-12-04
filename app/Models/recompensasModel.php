@@ -15,7 +15,7 @@ class RecompensasModel extends Model
     // Campos asignables masivamente
     protected $fillable = [
         'nombre',
-        'cantidad',
+        'clave_producto',
         'precio',
         'recompensa_tipo_id',
         'torneo_id',
@@ -51,4 +51,5 @@ class RecompensasModel extends Model
     {
         return $this->belongsTo(eventosModel::class, 'evento_id');
     } */
+   
 }

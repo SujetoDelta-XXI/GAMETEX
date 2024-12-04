@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
 
-class EventosController extends Controller
+class RegistroController extends Controller
 {
     public function __construct()
     {
@@ -15,6 +15,6 @@ class EventosController extends Controller
 
     public function index()
     {
-        return view('users.acciones.users-eventos');
+        return view('torneos.register_torneo');
     }
 }

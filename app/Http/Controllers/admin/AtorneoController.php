@@ -6,7 +6,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\ModerModel;
-use App\Models\recompensasTipoModel;
+use App\Models\RecompensasTipoModel;
 use App\Models\TorneosJuegoModel;
 use App\Models\torneoModel;
 use Illuminate\Http\Request;
@@ -28,7 +28,7 @@ class AtorneoController extends Controller
     public function create()
     {
         $moderadores = ModerModel::all();
-        $recompensasTipos = recompensasTipoModel::all();
+        $recompensasTipos = RecompensasTipoModel::all();
         $juegos = TorneosJuegoModel::all();
 
         return view('admin.crud.torneoCreate', compact('moderadores', 'recompensasTipos', 'juegos'));
@@ -55,7 +55,7 @@ class AtorneoController extends Controller
                 $rutaImagen = $request->file('imagen')->store('imagenes_torneos', 'public');
             }
     
-            $recompensa = recompensasTipoModel::find($request->recompensas_tipo_id);
+            $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
             if ($recompensa) {
                 $recompensa->cantidad -= $request->recompensas_cantidad;
                 $recompensa->save();
@@ -111,7 +111,7 @@ class AtorneoController extends Controller
     {
         $torneo = TorneoModel::find($id);
         $moderadores = ModerModel::all();
-        $recompensasTipos = recompensasTipoModel::all();
+        $recompensasTipos = RecompensasTipoModel::all();
 
         return view('admin.crud.torneoEdit', compact('torneo', 'moderadores', 'recompensasTipos'));
     }
@@ -140,7 +140,7 @@ class AtorneoController extends Controller
             $torneo->imagen = $rutaImagen;
         }
 
-        $recompensa = recompensasTipoModel::find($request->recompensas_tipo_id);
+        $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
         if ($recompensa) {
             $recompensa->cantidad -= $request->recompensas_cantidad;
             $recompensa->save();

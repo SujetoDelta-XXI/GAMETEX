@@ -6,10 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TorneosController;
 use App\Http\Controllers\user\UserDashController;
-use App\Http\Controllers\user\Torneos_UserController;
-use App\Http\Controllers\user\Recompensas_UserController;
-use App\Http\Controllers\user\Perfil_UserController;
-use App\Http\Controllers\user\EventosController;
+
+use App\Http\Controllers\torneos\PanelTorneoController;
 
 use App\Http\Controllers\moder\ModerDashController;
 
@@ -53,13 +51,16 @@ Route::post('/register', [RegisterController::class, 'register']);
 /////////////////////////////// user /////////////////////////////////////
 Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
-    Route::get('profile/show',[UserDashController::class,'show'])->name('profiles.show');
-    Route::get('users-torneos', [Torneos_UserController::class, 'index'])->name('users-torneos');
-    Route::get('users-recompensas', [Recompensas_UserController::class, 'index'])->name('users-recompensas');
-    Route::get('users-perfil', [Perfil_UserController::class, 'index'])->name('users-perfil');
+    Route::get('profile-show',[UserDashController::class,'show'])->name('profile-show');
+    Route::get('users-torneos', [UserDashController::class, 'torneos'])->name('users-torneos');
+    Route::get('users-recompensas', [UserDashController::class, 'recompensas'])->name('users-recompensas');
+    Route::get('users-perfil', [UserDashController::class, 'perfil'])->name('users-perfil');
+    Route::get('users-eventos', [UserDashController::class, 'eventos'])->name('users-eventos');
 
-    Route::get('users-eventos', [EventosController::class, 'index'])->name('users-eventos');
-    Route::get('torneos-users', [TorneosController::class, 'torneos_usuarios'])->name('torneos.usuarios');
+    Route::get('torneos-panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');
+    Route::get('torneos-descripcion', [PanelTorneoController::class, 'descripcion'])->name('torneos-descripcion');
+    Route::get('torneos-partidas', [PanelTorneoController::class, 'partidas'])->name('torneos-partidas');
+    Route::get('torneos-equipos', [PanelTorneoController::class, 'equipo'])->name('torneos-equipos');
 });
 
 ///////////////////////////////////////////////////////////////////////////

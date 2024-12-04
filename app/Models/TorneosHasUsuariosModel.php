@@ -23,6 +23,11 @@ class TorneosHasUsuariosModel extends Model
         return $this->belongsTo(UserModel::class, 'usuario_id');
     }
 
+    public function equipo()
+    {
+        return $this->belongsTo(EquiposModel::class, 'equipo_id');
+    }
+
     // Si deseas personalizar el nombre de las columnas de timestamps
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -31,6 +36,8 @@ class TorneosHasUsuariosModel extends Model
     protected $fillable = [
         'torneo_id',
         'usuario_id',
+        'equipo_id',
+        'rol',
     ];
 
     // Si solo necesitas los campos de las relaciones

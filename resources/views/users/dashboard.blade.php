@@ -1,22 +1,9 @@
 <!-- resources/views/admin/dashboard.blade.php -->
 <x-app-layout>
     <div class="flex">
-        <div class="antialiased bg-black w-full min-h-screen text-slate-300 relative py-4">
+        <div class="antialiased bg-black w-full text-slate-300 relative">
             <div class="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
                 <div id="menu" class="bg-white/10 col-span-3 rounded-lg p-4 ">
-                    <a href="{{ route('users-perfil') }}"
-                        class="flex flex-col space-y-2 md:space-y-0 md:flex-row mb-5 items-center md:space-x-2 hover:bg-white/10 group transition duration-150 ease-linear rounded-lg group w-full py-3 px-2">
-                        <div>
-                            <img class="rounded-full w-10 h-10 relative object-cover"
-                                src="https://img.freepik.com/free-photo/no-problem-concept-bearded-man-makes-okay-gesture-has-everything-control-all-fine-gesture-wears-spectacles-jumper-poses-against-pink-wall-says-i-got-this-guarantees-something_273609-42817.jpg?w=1800&t=st=1669749937~exp=1669750537~hmac=4c5ab249387d44d91df18065e1e33956daab805bee4638c7fdbf83c73d62f125"
-                                alt="">
-                        </div>
-                        <div>
-                            <p class="font-medium group-hover:text-indigo-400 leading-4">Carlos Asparrin</p>
-                            <span class="text-xs text-slate-400">Gamer de Shooter</span>
-                        </div>
-                    </a>
-                    <hr class="my-2 border-slate-700">
                     <div id="menu" class="flex flex-col space-y-2 my-5">
                         <a href="{{ '/' }}"
                             class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
@@ -24,7 +11,7 @@
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="h-6 w-6">
+                                        stroke-linejoin="round" class="h-6 w-6 group-hover:text-indigo-400">
                                         <path
                                             d="M3 9L12 2L21 9V20C21 20.553 20.553 21 20 21H4C3.447 21 3 20.553 3 20V9Z">
                                         </path>
@@ -91,16 +78,15 @@
                                 <div>
                                     <p
                                         class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-                                        Recompensas
+                                        Premios
                                     </p>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <p class="text-sm text-center text-gray-600">v2.0.0.3 | &copy; 2022 Pantazi Soft</p>
                 </div>
 
-                <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6">
+                <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6 hide-scroll-bar">
                     @yield('content-user')
                 </div>
             </div>

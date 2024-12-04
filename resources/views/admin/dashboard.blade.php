@@ -1,9 +1,5 @@
 <x-app-layout>
     <div class="flex">
-        <div class="flex-1 py-12 px-4 bg-gray-900">
-            @yield('crudAdm')
-        </div>
-
         <div class="w-64 bg-gray-400 shadow-xl p-4 hidden lg:block">
             <div class="mb-6 text-center">
                 <div class="relative w-32 h-32 mx-auto mb-4">
@@ -33,6 +29,11 @@
                 <a href="#" onclick="showLoadingScreen()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">📝 Logs del Sistema</a>
             </nav>            
         </div>
+
+        <div class="flex-1 py-12 px-4 bg-gray-900">
+            @yield('crudAdm')
+        </div>
+        
     </div>
     
     <script>
