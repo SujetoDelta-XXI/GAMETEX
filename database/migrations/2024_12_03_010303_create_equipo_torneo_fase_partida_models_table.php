@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('equipo_torneo_fase_partida_models', function (Blueprint $table) {
             $table->id();
+            
+            $table->unique(['equipo_id', 'torneo_id'], 'equipo_torneo_unique');
+
             $table->foreignId('equipo_id')->constrained('equipos_models')->onDelete('cascade');
             $table->foreignId('torneo_id')->constrained('torneos')->onDelete('cascade');
             $table->foreignId('fase_id')->constrained('fases_models')->onDelete('cascade');

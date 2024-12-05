@@ -13,5 +13,5 @@
     <h3 class="text-xl font-medium title-font text-white mt-5">
         {{ $titulo }}
     </h3>
-    <button class="mt-3 text-indigo-500">Participar</button>
+    <a class="mt-3 text-indigo-500" href='{{ $enlace }}'>Participar</a>
 </div>
