@@ -12,10 +12,10 @@
                     {{ $recompensa->recompensa->nombre }}
                 </x-slot>
                 <x-slot name="tipo">
-                    {{ $recompensa->recompensa->tipo }}
+                    {{ $recompensa->recompensa->tipo->nombre }}
                 </x-slot>
                 <x-slot name="fecha">
-                    {{ $recompensa->created_at }}
+                    {{ $recompensa->recompensa->updated_at }}
                 </x-slot>
                 <x-slot name="clave_producto">
                     {{ $recompensa->recompensa->clave_producto }}
@@ -39,10 +39,10 @@
                         {{ $recompensa->recompensa->nombre }}
                     </x-slot>
                     <x-slot name="tipo">
-                        {{ $recompensa->recompensa->tipo }}
+                        {{ $recompensa->recompensa->tipo->nombre }}
                     </x-slot>
                     <x-slot name="fecha">
-                        {{ $recompensa->created_at }}
+                        {{ $recompensa->recompensa->updated_at }}
                     </x-slot>
                     <x-slot name="clave_producto">
                         {{ $recompensa->recompensa->clave_producto }}
@@ -72,7 +72,6 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        // Redirigir a la misma página después de aceptar el mensaje
                         window.location.href = window.location.href;
                     }
                 });

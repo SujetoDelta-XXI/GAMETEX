@@ -17,10 +17,6 @@ class RecompensaController extends Controller
     public function showUserRecompensas()
     {
         $user = Auth::guard('user')->user();
-        if (!$user) {
-            return redirect()->route('login')->withErrors('Debes iniciar sesión para ver tus recompensas.');
-        }
-
         $userId = $user->id;
 
         $recompensasPendientes = UsuariosHasRecompensasModel::where('usuario_id', $userId)
