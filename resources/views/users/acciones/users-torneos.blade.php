@@ -1,7 +1,7 @@
 @extends('users.dashboard')
 @section('content-user')
     <div id="24h">
-        <h1 class="font-bold py-4 uppercase">Torneos Activos</h1>
+        <h1 class="font-bold py-4 uppercase text-[18px] sm:text-[20px]">Torneos Activos</h1>
         <div id="stats" class="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($torneosActivos as $torneo)
                 <x-home.torneos_card>
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div id="last-incomes">
-        <h1 class="font-bold py-4 uppercase">Torneos Concluidos</h1>
+        <h1 class="font-bold py-4 uppercase text-[18px] sm:text-[20px]">Torneos Concluidos</h1>
         <div id="stats" class="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($torneosConcluidos as $torneo)
                 <x-home.torneos_card>

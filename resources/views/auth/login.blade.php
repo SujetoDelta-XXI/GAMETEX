@@ -59,7 +59,7 @@
                     {{ __('¿No tienes una cuenta?') }}
                 </a>
 
-                <x-button class="load-view-button ms-4 bg-gray-900 hover:bg-black">
+                <x-button onclick="showLoadingScreen()" class="ms-4 bg-gray-900 hover:bg-black">
                     {{ __('Iniciar Sesión') }}
                 </x-button>
             </div>

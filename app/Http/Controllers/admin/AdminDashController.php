@@ -14,6 +14,6 @@ class AdminDashController extends Controller
     public function index()
     {   $this->showLoadingScreen();
         $this->hideLoadingScreen();
-        return view('admin.dashboard');
+        return view('admin.crud.usuarios');
     }
 }

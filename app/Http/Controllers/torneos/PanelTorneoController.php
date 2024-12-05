@@ -16,7 +16,7 @@ class PanelTorneoController extends Controller
 
     public function index()
     {
-        return view('torneos.dashboard');
+        return view('torneos.panel.descripcion');
     }
 
     public function descripcion()

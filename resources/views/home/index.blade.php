@@ -115,11 +115,11 @@
 
         <section class="bg-blue-900 text-white spx-8 border p-4 pb-20">
             <!-- component -->
-            <div class="flex flex-col m-auto p-auto overflow-x-auto max-w-full hide-scroll-bar">
+            <div class="flex flex-col m-auto p-auto overflow-x-auto max-w-full hide-scroll-bar" id="torneos-container">
                 <h2 class="lg:px-20 md:px-10 px-5 lg:mx-0 md:mx-20 mx-5 font-bold text-4xl text-white text-center pt-8">
                     TORNEOS
                 </h2>
-                <div class="flex overflow-x-scroll py-8 hide-scroll-bar">
+                <div class="flex overflow-x-scroll py-8 hide-scroll-bar" id="carousel">
                     <div class="flex flex-nowrap lg:ml-10 my-8 md:ml-20 ml-10 mr-10">
                         <!-- Imagen 1 - Left 4 Dead 2 -->
                         <div class="inline-block px-3 h-[110%]" data-juego="Left 4 Dead 2">

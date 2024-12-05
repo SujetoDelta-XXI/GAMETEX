@@ -18,7 +18,7 @@ class UserDashController extends Controller
     public function index()
     {
         $actividades = []; 
-        return view('users.dashboard', compact('actividades'));
+        return view('users.acciones.users-perfil', compact('actividades'));
     }
 
     public function perfil()
@@ -28,8 +28,7 @@ class UserDashController extends Controller
 
     public function recompensas()
     {
-        $recompensas = RecompensasModel::all();
-        return view('users.acciones.users-recompensas', compact('recompensas'));
+        return redirect()->action([RecompensaController::class, 'showUserRecompensas']);
     }
 
     public function torneos()
@@ -57,4 +56,6 @@ class UserDashController extends Controller
 
         return view('profile.show', compact('user')); 
     }
+
+
 }

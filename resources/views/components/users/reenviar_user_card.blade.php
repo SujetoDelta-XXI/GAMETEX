@@ -7,9 +7,7 @@
         </div>
     </div>
     <div class="border-t border-white/5 p-2 flex">
-        <span class="p-1 text-sm">
-            Reclamado
-        </span>
+        <span class="p-1 text-sm">Reclamado</span>
         <button type="button" data-modal-target="delete-modal" data-modal-toggle="delete-modal"
             class="ml-auto flex items-center text-yellow-700 hover:text-white border border-yellow-700 hover:bg-yellow-800 focus:ring-4 
             focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-yellow-500 dark:text-yellow-500 dark:hover:text-white dark:hover:bg-yellow-600 dark:focus:ring-yellow-900">
