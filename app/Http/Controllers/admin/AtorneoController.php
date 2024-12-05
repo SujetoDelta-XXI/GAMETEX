@@ -10,6 +10,7 @@ use App\Models\RecompensasTipoModel;
 use App\Models\TorneosJuegoModel;
 use App\Models\torneoModel;
 use Illuminate\Http\Request;
+use Discord\Discord;
 
 class AtorneoController extends Controller
 {
@@ -73,14 +74,49 @@ class AtorneoController extends Controller
             $torneo->moderador_id = $request->moderador_id;
             $torneo->administrador_id = auth()->id();
             $torneo->imagen = $rutaImagen;
+            $this->crearCanalDiscord($torneo);
             $torneo->save();
-    
+
             return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
         } catch (\Exception $e) {
             return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
     
+
+
+    private function crearCanalDiscord(TorneoModel $torneo)
+    {
+        $discord = new Discord([
+            'token' => env('DISCORD_BOT_TOKEN'), // Carga el token desde .env
+        ]);
+
+        $discord->on('ready', function ($discord) use ($torneo) {
+            // ID del servidor donde se creará el canal (reemplaza con tu ID de servidor)
+            $guildId = '1314002945628704800'; // Asegúrate de obtener el ID de tu servidor
+
+            // Obtener el servidor (guild)
+            $guild = $discord->guilds->get('id', $guildId);
+
+            if ($guild) {
+                // Crear el canal con el nombre del torneo
+                $guild->channels->create([
+                    'name' => $torneo->nombre, // Nombre del canal con el nombre del torneo
+                    'type' => 0, // 0 para canal de texto, 2 para canal de voz
+                ])->done(function ($channel) use ($torneo) {
+                    // Imprimir en consola (o realizar otras acciones)
+                    echo "Canal '{$torneo->nombre}' creado en Discord con ID: {$channel->id}" . PHP_EOL;
+                }, function ($e) {
+                    echo "Error al crear el canal: {$e->getMessage()}" . PHP_EOL;
+                });
+            } else {
+                echo "No se encontró el servidor con ID {$guildId}" . PHP_EOL;
+            }
+        });
+
+        $discord->run(); // Ejecuta el bot
+    }
+
 
     public function search(Request $request)
     {
