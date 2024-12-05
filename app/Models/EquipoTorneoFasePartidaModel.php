@@ -12,6 +12,26 @@ class EquipoTorneoFasePartidaModel extends Model
 
     protected $table = 'equipo_torneo_fase_partida_models';
 
+    public static function boot()
+    {
+        parent::boot();
+
+        // Validar antes de guardar
+        static::creating(function ($model) {
+            // Verificar si el equipo ya está en el torneo
+            $exists = self::where('equipo_id', $model->equipo_id)
+                          ->where('torneo_id', $model->torneo_id)
+                          ->exists();
+
+            if ($exists) {
+                $existente = self::where('equipo_id', $model->equipo_id)
+                ->where('torneo_id', $model->torneo_id);
+                echo $existente->first();
+                throw new \Exception('El equipo ya está registrado en este torneo.');
+            }
+        });
+    }
+
     public function equipo()
     {
         return $this->belongsTo(EquiposModel::class, 'equipo_id');

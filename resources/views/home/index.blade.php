@@ -71,6 +71,9 @@
                             <x-slot name="titulo">
                                 Desafío del Guerrero Legendario
                             </x-slot>
+                            <x-slot name="enlace">
+                                /login
+                            </x-slot>
                         </x-home.evento_card>
 
                         <!--Evento 2-->
@@ -85,6 +88,9 @@
                             <x-slot name="titulo">
                                 Concurso de Creadores de Estrategias
                             </x-slot>
+                            <x-slot name="enlace">
+                                /login
+                            </x-slot>
                         </x-home.evento_card>
 
                         <!--Evento 3-->
@@ -97,6 +103,9 @@
                             </x-slot>
                             <x-slot name="titulo">
                                 Evento del Fin de Semana Épico
+                            </x-slot>
+                            <x-slot name="enlace">
+                                /login
                             </x-slot>
                         </x-home.evento_card>
                     </div>
