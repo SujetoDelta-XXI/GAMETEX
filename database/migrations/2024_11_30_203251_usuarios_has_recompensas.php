@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('usuarios_has_recompensas', function (Blueprint $table) {
             $table->id();
+            $table->boolean("estado")->default(false);
             $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('recompensa_id')->constrained('recompensas')->onDelete('cascade');
             $table->timestamps();

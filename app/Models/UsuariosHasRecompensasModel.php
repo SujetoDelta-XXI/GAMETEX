@@ -25,6 +25,7 @@ class UsuariosHasRecompensasModel extends Model
     protected $fillable = [
         'usuario_id',
         'recompensa_id',
+        'estado'
     ];
 
     // Si solo necesitas los campos de las relaciones
