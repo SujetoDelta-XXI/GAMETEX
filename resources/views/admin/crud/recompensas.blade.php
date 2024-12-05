@@ -82,9 +82,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="mt-4 pb-5 px-5">
-                        {{ $recompensas->links() }}
-                    </div>
                 </div>
             </div>
         </div>

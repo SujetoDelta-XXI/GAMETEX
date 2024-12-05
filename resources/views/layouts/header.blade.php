@@ -122,101 +122,10 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-    @yield('contenido')
+    <main class="h-full">
+        @yield('contenido')
+    </main>
+    
 
-    <footer class="relative bg-gray-800 pt-8 pb-4">
-        <div class="container mx-auto px-4 text-white ">
-            <div class="flex flex-wrap text-left lg:text-left">
-                <div class="w-full lg:w-6/12 px-4">
-                    <h4 class="text-3xl font-semiboldpb-2">SIGUENOS EN:</h4>
-                    <h5 class="text-lg mt-0 mb-2 text-white">
-                        Entérate de las novedades sobre el desarrollo del sitio web y las actividades futuras a través
-                        de nuestras redes sociales.
-                    </h5>
-                    <div class="mt-6 lg:mb-0 mb-6">
-                        <a href="https://x.com/GAMETEX2024" target="_blank">
-                            <button
-                                class="bg-white text-blue-400 shadow-lg font-normal h-14 w-14 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                                type="button">
-                                <i class="fab fa-twitter text-3xl"></i>
-                            </button>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61555013789282" target="_blank">
-                            <button
-                                class="bg-white text-blue-700 shadow-lg font-normal h-14 w-14 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                                type="button">
-                                <i class="fab fa-facebook-square text-3xl"></i>
-                            </button>
-                        </a>
-                        <a href="https://discord.gg/eTHuf32W" target="_blank">
-                            <button
-                                class="bg-white text-blue-800 shadow-lg font-normal h-14 w-14 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                                type="button">
-                                <i class="fab fa-discord text-3xl"></i>
-                            </button>
-                        </a>
-                        <a href="https://www.youtube.com/@GAMETEX2024" target="_blank">
-                            <button
-                                class="bg-white text-red-600 shadow-lg font-normal h-14 w-14 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                                type="button">
-                                <i class="fab fa-youtube text-3xl"></i>
-                            </button>
-                        </a>
-                        <a href="https://www.twitch.tv/gametex2024" target="_blank">
-                            <button
-                                class="bg-white text-purple-700 shadow-lg font-normal h-14 w-14 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                                type="button">
-                                <i class="fab fa-twitch text-3xl"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-full lg:w-6/12 px-4">
-                    <div class="flex flex-wrap items-top mb-0">
-                        <div class="w-full lg:w-4/12 px-4 ml-auto py-5">
-                            <span class="block uppercase text-white text-sm font-semibold mb-2">ACERCA</span>
-                            <ul class="list-unstyled">
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_nosotros' }}">Nosotros</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_metodos_pago' }}">Métodos de Pago</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_tienda' }}">Tienda</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_torneos' }}">Torneos</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_eventos' }}">Eventos</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_categorias' }}">Categorías</a></li>
-                            </ul>
-                        </div>
-                        <div class="w-full lg:w-4/12 px-4 py-5">
-                            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Términos</span>
-                            <ul class="list-unstyled">
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_poli_privacidad' }}">Políticas de Privacidad</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_termin_condiciones' }}">Términos y Condiciones</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_poli_reembolsos' }}">Política de Reembolsos</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_poli_cookies' }}">Política de Cookies</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr class="mb-4 mt-2 border-gray-600">
-            <div class="flex flex-wrap items-center md:justify-between justify-center">
-                <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-                    <div class="text-sm text-blueGray-500 font-semibold py-1">
-                        Copyright © <span id="get-current-year">2021</span><a href="{{ '/' }}"
-                            class="text-blueGray-500 hover:text-gray-800" target="_blank"> GAMETEX</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
-
 </html>

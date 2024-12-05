@@ -27,7 +27,7 @@
                 <select id="game-filter"
                     class="bg-gray-100 text-gray-900 border border-gray-300 rounded-lg py-2.5 px-4 text-sm font-medium focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-gray-800">
                     <option value="all">Mostrar todo</option>
-                    
+
                     @foreach ($torneos->unique('torneoJuego.nombre') as $torneo)
                         <option value="{{ $torneo->torneoJuego->nombre }}">{{ $torneo->torneoJuego->nombre }}</option>
                     @endforeach
@@ -37,29 +37,66 @@
 
         <section class="bg-blue-900 text-white pb-8 px-8 pt-5">
             <div class="container mx-auto px-0 py-0">
-                <div class="flex flex-wrap justify-center px-5 py-5 mx-auto space-x-0 sm:space-x-4 md:space-x-10">
-
+                <div class="flex flex-wrap justify-center px-5 py-5 mx-auto gap-x-4">
                     @foreach ($torneos as $torneo)
-                        <div class="px-0 py-4 md:w-1/3 sm:mb-0 mb-6 group relative w-full sm:w-1/2 lg:w-1/5"
+                        <div class="px-0 py-4 sm:mb-0 mb-6 group relative w-full sm:w-1/2 md:w-1/3 lg:1/4 xl:w-1/5"
                             data-game="{{ $torneo->torneoJuego->nombre }}">
-                            <div
-                                class="rounded-lg h-96 overflow-hidden relative border-4 border-solid border-transparent hover:border-gray-300 hover:ring-2 hover:ring-opacity-60 hover:ring-gray-500 transition-all duration-300 ease-in-out">
-                                <img alt="content"
-                                    class="object-cover object-center h-full w-full transition duration-300 ease-in-out group-hover:brightness-50"
-                                    src="\storage\{{$torneo->imagen}}">
+                            <a href="{{ route('torneos-register') }}">
                                 <div
-                                    class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out px-5">
-                                    <ul>
-                                        <h3 class="text-lg font-semibold">{{ $torneo->torneoJuego->nombre }}</h3><br>
-                                        <li>{{ $torneo->descripcion }}</li><br>
-                                        <li>Moderador: {{ $torneo->moderador->name }}</li>
-                                    </ul>
+                                    class="rounded-lg h-96 overflow-hidden relative border-4 border-solid border-transparent hover:border-gray-300 hover:ring-2 hover:ring-opacity-60 hover:ring-gray-500 transition-all duration-300 ease-in-out">
+                                    <img alt="content"
+                                        class="object-cover object-center h-full w-full transition duration-300 ease-in-out group-hover:brightness-50"
+                                        src="\storage\{{ $torneo->imagen }}">
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out px-5">
+                                        <ul>
+                                            <h3 class="text-lg font-semibold">{{ $torneo->torneoJuego->nombre }}</h3><br>
+                                            <li>{{ $torneo->descripcion }}</li><br>
+                                            <li>Moderador: {{ $torneo->moderador->name }}</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
             </div>
         </section>
     </main>
+    <script>
+        //////////////////Lógica Torneos/////////////////
+        document.addEventListener("DOMContentLoaded", function() {
+            const gameFilter = document.getElementById('game-filter');
+            const torneoContainers = document.querySelectorAll('[data-game]');
+            const searchInput = document.getElementById('search-dropdown');
+
+            // Filtrar torneos por el tipo de juego seleccionado en el dropdown
+            gameFilter.addEventListener('change', function() {
+                const selectedGame = gameFilter.value;
+
+                torneoContainers.forEach(function(container) {
+                    const gameType = container.getAttribute('data-game');
+                    if (selectedGame === 'all' || gameType === selectedGame) {
+                        container.style.display = "block"; // Mostrar el contenedor
+                    } else {
+                        container.style.display = "none"; // Ocultar el contenedor
+                    }
+                });
+            });
+
+
+            // Filtrar los torneos por búsqueda
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                torneoContainers.forEach(function(container) {
+                    const title = container.querySelector('h3').textContent.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        container.style.display = "block"; // Mostrar el contenedor
+                    } else {
+                        container.style.display = "none"; // Ocultar el contenedor
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 #Route::get('/', function () {
-    #return view('welcome');
+#return view('welcome');
 #});
 
 Route::get('usuarios', function () {
@@ -50,8 +50,8 @@ Route::post('/register', [RegisterController::class, 'register']);
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////////// user /////////////////////////////////////
 Route::middleware(['auth.user'])->group(function () {
-    Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
-    Route::get('profile-show',[UserDashController::class,'show'])->name('profile-show');
+    Route::get('dashboard', [UserDashController::class, 'index'])->name('dashboard');
+    Route::get('profile-show', [UserDashController::class, 'show'])->name('profile-show');
     Route::get('users-torneos', [UserDashController::class, 'torneos'])->name('users-torneos');
     Route::get('users-recompensas', [UserDashController::class, 'recompensas'])->name('users-recompensas');
     Route::get('users-perfil', [UserDashController::class, 'perfil'])->name('users-perfil');
@@ -61,21 +61,22 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('torneos-descripcion', [PanelTorneoController::class, 'descripcion'])->name('torneos-descripcion');
     Route::get('torneos-partidas', [PanelTorneoController::class, 'partidas'])->name('torneos-partidas');
     Route::get('torneos-equipos', [PanelTorneoController::class, 'equipo'])->name('torneos-equipos');
+
+    Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register');
 });
 
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////////// moder /////////////////////////////////////
 Route::middleware(['auth.moder'])->group(function () {
-    Route::get('moder/dashboard',[ModerDashController::class,'index'])->name('moder.dashboard');
-    
+    Route::get('moder/dashboard', [ModerDashController::class, 'index'])->name('moder.dashboard');
 });
 
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////////// admin /////////////////////////////////////
 
 Route::middleware(['auth.admin'])->group(function () {
-    Route::get('admin/dashboard',[AdminDashController::class,'index'])->name('admin.dashboard');
-    
+    Route::get('admin/dashboard', [AdminDashController::class, 'index'])->name('admin.dashboard');
+
     Route::prefix('admin/crud')->name('admin.crud.')->group(function () {
         /////////////////////////////// evento /////////////////////////////////////
         Route::get('evento', [AeventoController::class, 'show'])->name('evento');
@@ -85,11 +86,11 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('evento/search', [AeventoController::class, 'search'])->name('evento.search');
         Route::post('evento/store', [AeventoController::class, 'store'])->name('evento.store');
         /////////////////////////////// evento /////////////////////////////////////
-        Route::get('torneo', [AtorneoController::class, 'show'])->name('torneo'); 
-        Route::get('torneo/create', [AtorneoController::class, 'create'])->name('torneo.create'); 
-        Route::post('torneo/store', [AtorneoController::class, 'store'])->name('torneo.store'); 
-        Route::get('torneo-edit/{id}/edit', [AtorneoController::class, 'editTorneos'])->name('torneo.edit'); 
-        Route::put('torneo/{id}', [AtorneoController::class, 'updateTorneos'])->name('torneo.update'); 
+        Route::get('torneo', [AtorneoController::class, 'show'])->name('torneo');
+        Route::get('torneo/create', [AtorneoController::class, 'create'])->name('torneo.create');
+        Route::post('torneo/store', [AtorneoController::class, 'store'])->name('torneo.store');
+        Route::get('torneo-edit/{id}/edit', [AtorneoController::class, 'editTorneos'])->name('torneo.edit');
+        Route::put('torneo/{id}', [AtorneoController::class, 'updateTorneos'])->name('torneo.update');
         Route::delete('torneo/{id}', [AtorneoController::class, 'deleteTorneos'])->name('torneo.delete');
         Route::get('torneo/search', [AtorneoController::class, 'search'])->name('torneo.search');
         /////////////////////////////// Recompensa /////////////////////////////////////
@@ -99,8 +100,10 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('recompensa/{id}/edit', [RecompensasController::class, 'edit'])->name('recompensa.edit');
         Route::put('recompensa/{id}', [RecompensasController::class, 'update'])->name('recompensa.update');
         Route::delete('recompensa/{id}', [RecompensasController::class, 'delete'])->name('recompensa.delete');
-        
+
         Route::get('usuarios', [UsuariosController::class, 'showListado'])->name('usuarios');
+        Route::post('/usuario/detalles', [UsuariosController::class, 'getUsuarioDetalles'])->name('usuario.detalles');
+
     });
 });
 
@@ -124,4 +127,3 @@ Route::get('f_poli_privacidad', [HomeController::class, 'fPoliticasPrivacidad'])
 Route::get('f_termin_condiciones', [HomeController::class, 'fTerminosCondiciones']);
 Route::get('f_poli_reembolsos', [HomeController::class, 'fPoliticasReembolso']);
 Route::get('f_poli_cookies', [HomeController::class, 'fPoliticasCookies']);
-

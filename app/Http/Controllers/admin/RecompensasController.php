@@ -16,7 +16,7 @@ class RecompensasController extends Controller
 
     public function showListado(Request $request)
     {
-        $recompensas = RecompensasModel::paginate(10);
+        $recompensas = RecompensasModel::all();
         $totalQuantity = $recompensas->sum('cantidad');
         $recompensasTipos = RecompensasTipoModel::all();
         return view('admin.crud.recompensas', compact('recompensas', 'totalQuantity', 'recompensasTipos'));
