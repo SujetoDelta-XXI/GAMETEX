@@ -16,22 +16,26 @@ class RecompensaController extends Controller
 
     public function showUserRecompensas()
     {
-        // Usar el guard 'user' para obtener el usuario autenticado
         $user = Auth::guard('user')->user();
         if (!$user) {
-            // Redirigir al usuario a la página de login si no está autenticado
             return redirect()->route('login')->withErrors('Debes iniciar sesión para ver tus recompensas.');
         }
-        
+
         $userId = $user->id;
 
-        $recompensasPendientes = UsuariosHasRecompensasModel::where('usuario_id', $userId)->where('estado', false)->with('recompensa')->get();
-        $recompensasReclamadas = UsuariosHasRecompensasModel::where('usuario_id', $userId)->where('estado', true)->with('recompensa')->get();
+        $recompensasPendientes = UsuariosHasRecompensasModel::where('usuario_id', $userId)
+            ->where('estado', false)
+            ->with('recompensa')
+            ->get();
 
-        // Depurar los datos obtenidos
+        $recompensasReclamadas = UsuariosHasRecompensasModel::where('usuario_id', $userId)
+            ->where('estado', true)
+            ->with('recompensa')
+            ->get();
 
         return view('users.acciones.users-recompensas', compact('recompensasPendientes', 'recompensasReclamadas'));
     }
+
 
 
     public function updateEstado(Request $request)
