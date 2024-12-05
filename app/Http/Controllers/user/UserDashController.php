@@ -28,8 +28,7 @@ class UserDashController extends Controller
 
     public function recompensas()
     {
-        $recompensas = RecompensasModel::all();
-        return view('users.acciones.users-recompensas', compact('recompensas'));
+        return redirect()->action([RecompensaController::class, 'showUserRecompensas']);
     }
 
     public function torneos()

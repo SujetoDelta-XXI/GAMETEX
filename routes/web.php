@@ -17,6 +17,7 @@ use App\Http\Controllers\admin\AtorneoController;
 use App\Http\Controllers\ProfilePhotoController;
 use App\Http\Controllers\admin\RecompensasController;
 use App\Http\Controllers\admin\UsuariosController;
+use App\Http\Controllers\user\RecompensaController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -53,8 +54,8 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard',[UserDashController::class,'index'])->name('dashboard');
     Route::get('profile-show',[UserDashController::class,'show'])->name('profile-show');
     Route::get('users-torneos', [UserDashController::class, 'torneos'])->name('users-torneos');
-    Route::get('users-recompensas', [UserDashController::class, 'recompensas'])->name('users-recompensas');
-    Route::get('users-perfil', [UserDashController::class, 'perfil'])->name('users-perfil');
+    Route::get('users-recompensas', [RecompensaController::class, 'showUserRecompensas'])->name('users-recompensas');
+    Route::post('recompensa/updateEstado', [RecompensaController::class, 'updateEstado'])->name('recompensa.updateEstado');    Route::get('users-perfil', [UserDashController::class, 'perfil'])->name('users-perfil');
     Route::get('users-eventos', [UserDashController::class, 'eventos'])->name('users-eventos');
 
     Route::get('torneos-panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');
