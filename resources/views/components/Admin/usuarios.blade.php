@@ -12,17 +12,17 @@
     </td>
     <td class="px-4 py-3">
         <span class="bg-primary-100 text-primary-800 text-x1 font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">
-            20
+            5
+        </span>
+    </td>
+    <td class="px-4 py-3">
+        <span class="bg-primary-100 text-primary-800 text-x1 font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">
+            2
         </span>
     </td>
     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
         <div class="flex items-center">
             {{ $f_cre }}
-        </div>
-    </td>
-    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        <div class="flex items-center">
-            {{ $f_actu }}
         </div>
     </td>
     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-gray-400">

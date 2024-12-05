@@ -61,17 +61,5 @@
                 {{ $f_cre }}
             </dd>
         </div>
-        <div
-            class="col-span-2 p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 sm:col-span-1 dark:border-gray-600">
-            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Fecha de actualización</dt>
-            <dd class="flex items-center text-gray-500 dark:text-gray-400">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    class="w-6 h-6 pr-2">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M8 7V3m8 4V3m-9 4h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V9a2 2 0 012-2zm0 4h10" />
-                </svg>
-                {{ $f_actu }}
-            </dd>
-        </div>
     </dl>
 </div>

@@ -1,7 +1,7 @@
 @extends('users.dashboard')
 @section('content-user')
     <div id="24h">
-        <h1 class="font-bold py-4 uppercase">Recompensas Obtenidas</h1>
+        <h1 class="font-bold py-4 text-[18px] sm:text-[20px] uppercase">Recompensas Obtenidas</h1>
         <div id="stats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             @foreach($recompensasPendientes as $recompensa)
             <x-users.recompensa_user_card>

@@ -17,6 +17,6 @@
             </svg>
             Reclamar
         </button>
-        <p id="hiddenText_{{ $recompensaId }}" class="hidden">{{ $clave_producto }}</p>
+        <p class="hidden" id="hiddenText_{{ $recompensaId }}" class="hidden">{{ $clave_producto }}</p>
     </div>
 </div>

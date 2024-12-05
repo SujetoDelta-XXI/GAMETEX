@@ -4,7 +4,7 @@
 
     <div class="flex justify-center w-full px-10">
         <div class="bg-gray-900 border-4 border-indigo-500 shadow-lg rounded-lg p-6 w-full">
-            <h3 class="text-xl font-medium text-indigo-600 mb-4">Crear Nuevo Torneo</h3>
+            <h3 class="text-xl font-medium text-indigo-600 mb-4">Actualizar datos del Torneo</h3>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -182,7 +182,7 @@
                 <div class="grid grid-cols-2 gap-4 mt-6 sm:w-[50%] pt-4">
                     <button type="submit"
                         class="border text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        Crear Torneo
+                        Actualizar Torneo
                     </button>
                     <button type="button"
                         class="border text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"

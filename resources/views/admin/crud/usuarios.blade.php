@@ -2,7 +2,7 @@
 
 @section('crudAdm')
     <!-- Start block -->
-    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+    <section class="bg-gray-50 dark:bg-gray-900 antialiased">
         <div class="mx-auto max-w-screen-2xl">
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                 <div
@@ -35,9 +35,9 @@
                             <tr>
                                 <th scope="col" class="p-4 text-center">Nombre</th>
                                 <th scope="col" class="p-4">Correo Electrónico</th>
-                                <th scope="col" class="p-4">Actividad</th>
+                                <th scope="col" class="p-4">Actividad Torneos</th>
+                                <th scope="col" class="p-4">Actividad Eventos</th>
                                 <th scope="col" class="p-4">Fecha de creación</th>
-                                <th scope="col" class="p-4">Fecha de actualización</th>
                                 <th scope="col" class="p-4">Estado</th>
                             </tr>
                         </thead>
@@ -55,9 +55,6 @@
                                     </x-slot>
                                     <x-slot name="f_cre">
                                         {{ $usuario->created_at->format('d/m/Y') }}
-                                    </x-slot>
-                                    <x-slot name="f_actu">
-                                        {{ $usuario->updated_at->format('d/m/Y') }}
                                     </x-slot>
                                 </x-admin.usuarios>
                             @endforeach
@@ -88,9 +85,6 @@
             </x-slot>
             <x-slot name="f_cre">
                 {{ $usuario->created_at }}
-            </x-slot>
-            <x-slot name="f_actu">
-                {{ $usuario->updated_at }}
             </x-slot>
         @endforeach
     </x-admin.usuarios_datos>

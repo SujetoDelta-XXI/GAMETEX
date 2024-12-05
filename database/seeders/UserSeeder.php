@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'name' => 'Axel',
-            'email' => 'ax@gametex.com',
+            'name' => 'Axel Loayza',
+            'email' => 'usera@gametex.com',
             'estado' => 'activo',
             'email_verified_at' => now(),
             'password' => bcrypt('123'),
@@ -27,8 +27,20 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Armando',
-            'email' => 'ar@gametex.com',
+            'name' => 'Carlos Asparrin',
+            'email' => 'userc@gametex.com',
+            'estado' => 'activo',
+            'email_verified_at' => now(),
+            'password' => bcrypt('123'), 
+            'remember_token' => Str::random(10),
+            'current_team_id' => null,
+            'profile_photo_path' => 'images/profile_ana.jpg',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Brandon Arias',
+            'email' => 'userb@gametex.com',
             'estado' => 'activo',
             'email_verified_at' => now(),
             'password' => bcrypt('123'), 
