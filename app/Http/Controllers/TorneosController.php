@@ -11,4 +11,10 @@ class TorneosController extends Controller
         $torneos = TorneosModel::all();
         return view('torneos.index', compact('torneos'));
     }
+
+    public function register()
+    {
+        $this->middleware('auth.user'); 
+        return view('torneos.register_torneos');
+    }
 }
