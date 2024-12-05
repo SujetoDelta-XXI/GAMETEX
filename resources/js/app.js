@@ -14,11 +14,6 @@ function hideLoadingScreen() {
     }, 500); // Tiempo de la transición en milisegundos
 }
 
-// Mostrar la pantalla de carga al hacer clic en botones de cambio de vista
-$(document).on('click', '.load-view-button', function(event) {
-    showLoadingScreen();
-});
-
 // Ocultar la pantalla de carga al cargar el documento
 $(document).ready(function() {
     hideLoadingScreen();
@@ -50,6 +45,44 @@ document.getElementById('torneos-container').addEventListener('mousemove', funct
 
     // Aplicar el desplazamiento horizontal al carrusel
     carousel.scrollLeft = scrollPosition;
+});
+
+
+
+
+//////////////////Lógica Torneos/////////////////
+document.addEventListener("DOMContentLoaded", function () {
+    const gameFilter = document.getElementById('game-filter');
+    const torneoContainers = document.querySelectorAll('[data-game]');
+    const searchInput = document.getElementById('search-dropdown');
+
+    // Filtrar torneos por el tipo de juego seleccionado en el dropdown
+    gameFilter.addEventListener('change', function () {
+        const selectedGame = gameFilter.value;
+
+        torneoContainers.forEach(function (container) {
+            const gameType = container.getAttribute('data-game');
+            if (selectedGame === 'all' || gameType === selectedGame) {
+                container.style.display = "block"; // Mostrar el contenedor
+            } else {
+                container.style.display = "none"; // Ocultar el contenedor
+            }
+        });
+    });
+
+
+    // Filtrar los torneos por búsqueda
+    searchInput.addEventListener('input', function () {
+        const searchTerm = searchInput.value.toLowerCase();
+        torneoContainers.forEach(function (container) {
+            const title = container.querySelector('h3').textContent.toLowerCase();
+            if (title.includes(searchTerm)) {
+                container.style.display = "block"; // Mostrar el contenedor
+            } else {
+                container.style.display = "none"; // Ocultar el contenedor
+            }
+        });
+    });
 });
 
 

@@ -142,5 +142,10 @@
             }
             reader.readAsDataURL(input.files[0]);
         }
+        reader.readAsDataURL(input.files[0]);
+
+        $(document).ready(function() {
+            addClickEventHandler();
+        });
     </script>
 </x-app-layout>
