@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Discord\Discord;
+use App\Services\DiscordService;
+use Exception;
+
 
 class TorneosModel extends Model
 {
@@ -66,5 +70,13 @@ class TorneosModel extends Model
     {
         return $this->belongsToMany(PartidasModel::class, 'equipo_torneo_fase_partida_models', 'torneo_id', 'partida_id')
                     ->withTimestamps();
+    }
+    
+
+    public function crearCanalDiscord()
+    {
+        $discordService = new DiscordService();
+
+        return $discordService->crearCanal('1314002945628704800', 'Prueba');
     }
 }
