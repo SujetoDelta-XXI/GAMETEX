@@ -20,16 +20,11 @@ class UsuariosHasRecompensasModel extends Model
     }
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
-
-    // Definir los campos que pueden ser asignados masivamente
     protected $fillable = [
         'usuario_id',
         'recompensa_id',
         'estado'
     ];
-
-    // Si solo necesitas los campos de las relaciones
     protected $guarded = [
-        // Aquí puedes especificar qué campos no se deben permitir para asignación masiva
     ];
 }
