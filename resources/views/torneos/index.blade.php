@@ -53,9 +53,17 @@
                                     <div
                                         class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out px-5">
                                         <ul>
-                                            <h3 class="text-lg font-semibold">{{ $torneo->torneoJuego->nombre }}</h3><br>
-                                            <li>{{ $torneo->descripcion }}</li><br>
-                                            <li>Moderador: {{ $torneo->moderador->name }}</li>
+                                            <h3 class="text-lg font-semibold">{{ $torneo->nombre }}</h3><br>
+                                            <li><b>Juego:</b> {{ $torneo->torneoJuego->nombre }}</li><br>
+                                            <li><b>Descripción:</b><br>{{ $torneo->descripcion }}</li><br>
+
+                                            <span class="absolute bottom-3 left-4 title-font font-medium text-2xl text-white z-10">
+                                            <p class="text-gray-200 line-through text-lg">${{$torneo->entrada}}</p>
+                                            <p class="text-green-300 text-2xl font-bold">$0.00</p>
+                                            </span>
+                                            
+                                            
+                                            <!-- <li><b>Moderador:</b> {{ $torneo->moderador->name }}</li> -->
                                         </ul>
                                     </div>
                                 </div>
