@@ -29,26 +29,13 @@
                             placeholder="Escribe el nombre del torneo" required>
                     </div>
                     <div class="w-1/2 space-y-4">
-                        <label for="moderator" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Moderador:
+                        <label for="administrador" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Administrador
                         </label>
-                        <select name="moderator" id="moderator"
+                        <input type="administrador" name="administrador" id="administrador"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 
-                            block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option>Juego</option>
-                            <option>Tarjeta de regalo</option>
-                        </select>
-                    </div>
-                    <div class="w-1/2 space-y-4">
-                        <label for="administrator" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Administrador:
-                        </label>
-                        <select name="administrator" id="administrator"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 
-                            block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option>Administrador 1</option>
-                            <option>Administrador 2</option>
-                        </select>
+                            block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="Admin" required>
                     </div>
                 </div>
                 <br>
@@ -110,18 +97,6 @@
                             <option>S/5</option>
                             <option>S/10</option>
                             <option>S/15</option>
-                        </select>
-                    </div>
-                    <div class="w-1/2 space-y-4">
-                        <label for="experience" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Experiencia:
-                        </label>
-                        <select name="experience" id="experience"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 
-                            block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option>10</option>
-                            <option>20</option>
-                            <option>30</option>
                         </select>
                     </div>
                     <div class="w-1/2 space-y-4">

@@ -2,7 +2,7 @@
 
 @section('contenido')
     <main>
-        <section class="bg-blue-900 text-white px-8 p-0">
+        <section class="bg-customBlue text-white px-8 p-0">
             <h1 class="lg:px-20 md:px-10 px-5 lg:mx-0 md:mx-20 mx-5 font-bold text-6xl text-white text-center pt-14">
                 Torneos
             </h1>
@@ -12,7 +12,7 @@
                 <!-- Buscador -->
                 <div class="relative w-1/2">
                     <input type="search" id="search-dropdown"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
+                        class="block p-2.5 w-full text-sm bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 text-white dark:focus:border-blue-500"
                         placeholder="Buscar" required />
                     <button type="submit"
                         class="absolute top-0 right-0 p-2.5 h-full text-sm font-medium text-white bg-yellow-700 rounded-r-lg border border-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
@@ -26,16 +26,19 @@
                 <!-- Filtro dropdown -->
                 <select id="game-filter"
                     class="bg-gray-100 text-gray-900 border border-gray-300 rounded-lg py-2.5 px-4 text-sm font-medium focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-gray-800">
-                    <option value="all">Mostrar todo</option>
-
+                    <option value="all" {{ $gameFilter === 'all' ? 'selected' : '' }}>Mostrar todo</option>
                     @foreach ($torneos->unique('torneoJuego.nombre') as $torneo)
-                        <option value="{{ $torneo->torneoJuego->nombre }}">{{ $torneo->torneoJuego->nombre }}</option>
+                        <option value="{{ $torneo->torneoJuego->nombre }}"
+                            {{ $torneo->torneoJuego->nombre ? 'selected' : '' }}>
+                            {{ $torneo->torneoJuego->nombre }}
+                        </option>
                     @endforeach
                 </select>
+
             </div>
         </section>
 
-        <section class="bg-blue-900 text-white pb-8 px-8 pt-5">
+        <section class="bg-customBlue text-white pb-8 px-8 pt-5">
             <div class="container mx-auto px-0 py-0">
                 <div class="flex flex-wrap justify-center px-5 py-5 mx-auto gap-x-4">
                     @foreach ($torneos as $torneo)
@@ -64,36 +67,47 @@
         </section>
     </main>
     <script>
-        //////////////////Lógica Torneos/////////////////
         document.addEventListener("DOMContentLoaded", function() {
-            const gameFilter = document.getElementById('game-filter');
-            const torneoContainers = document.querySelectorAll('[data-game]');
-            const searchInput = document.getElementById('search-dropdown');
+            const gameFilter = document.getElementById("game-filter");
+            const torneoContainers = document.querySelectorAll("[data-game]");
+            const searchInput = document.getElementById("search-dropdown");
 
-            // Filtrar torneos por el tipo de juego seleccionado en el dropdown
-            gameFilter.addEventListener('change', function() {
+            // Aplicar el filtro inicial basado en el parámetro de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialGame = urlParams.get("game") || "all";
+
+            gameFilter.value = initialGame;
+            torneoContainers.forEach(function(container) {
+                const gameType = container.getAttribute("data-game");
+                if (initialGame === "all" || gameType === initialGame) {
+                    container.style.display = "block";
+                } else {
+                    container.style.display = "none";
+                }
+            });
+
+            // Filtrar torneos al cambiar el valor del dropdown
+            gameFilter.addEventListener("change", function() {
                 const selectedGame = gameFilter.value;
-
                 torneoContainers.forEach(function(container) {
-                    const gameType = container.getAttribute('data-game');
-                    if (selectedGame === 'all' || gameType === selectedGame) {
-                        container.style.display = "block"; // Mostrar el contenedor
+                    const gameType = container.getAttribute("data-game");
+                    if (selectedGame === "all" || gameType === selectedGame) {
+                        container.style.display = "block";
                     } else {
-                        container.style.display = "none"; // Ocultar el contenedor
+                        container.style.display = "none";
                     }
                 });
             });
 
-
             // Filtrar los torneos por búsqueda
-            searchInput.addEventListener('input', function() {
+            searchInput.addEventListener("input", function() {
                 const searchTerm = searchInput.value.toLowerCase();
                 torneoContainers.forEach(function(container) {
-                    const title = container.querySelector('h3').textContent.toLowerCase();
+                    const title = container.querySelector("h3").textContent.toLowerCase();
                     if (title.includes(searchTerm)) {
-                        container.style.display = "block"; // Mostrar el contenedor
+                        container.style.display = "block";
                     } else {
-                        container.style.display = "none"; // Ocultar el contenedor
+                        container.style.display = "none";
                     }
                 });
             });

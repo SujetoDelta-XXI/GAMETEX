@@ -16,17 +16,16 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
-        },
-    },
-
-    theme: {
-        extend: {
             screens: {
-                'xs': { 'max': '640px' }, // Pantallas menores a 650px
+                'xs': { 'max': '640px' }, // Pantallas menores a 640px
+            },
+            colors: {
+                customBlue: '#1e1b4b', // Color personalizado
+                plata: '#22c55e',
             },
         },
     },
-      
+
     plugins: [forms, typography],
 };
 
