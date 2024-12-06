@@ -1,7 +1,7 @@
 <!-- resources/views/admin/dashboard.blade.php -->
 <x-app-layout>
     <div class="flex">
-        <div class="antialiased bg-black w-full text-slate-300 relative">
+        <div class="antialiased bg-gray-900 w-full text-slate-300 relative">
             <div class="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
                 <div id="menu" class="bg-white/10 col-span-3 rounded-lg p-4 ">
                     <div id="menu" class="flex flex-col space-y-2 my-5">

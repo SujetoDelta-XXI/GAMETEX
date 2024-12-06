@@ -51,7 +51,7 @@
             </div>
         </section>
 
-        <section class="bg-blue-900 text-white py-14 px-8 border p-0">
+        <section class="bg-customBlue text-white py-14 px-8 border p-0">
             <div class="container mx-auto px-0 py-0">
                 <!-- Subtítulo de la sección -->
                 <h2 class="lg:px-20 md:px-10 px-5 lg:mx-0 md:mx-20 mx-5 font-bold text-4xl text-white text-center pb-5">
@@ -113,132 +113,97 @@
             </div>
         </section>
 
-        <section class="bg-blue-900 text-white spx-8 border p-4 pb-20">
+        <section class="bg-customBlue text-white spx-8 border p-4 pb-20">
             <!-- component -->
-            <div class="flex flex-col m-auto p-auto overflow-x-auto max-w-full hide-scroll-bar" id="torneos-container">
+            <div class="flex flex-col m-auto p-auto overflow-x-auto max-w-full hide-scroll-bar">
                 <h2 class="lg:px-20 md:px-10 px-5 lg:mx-0 md:mx-20 mx-5 font-bold text-4xl text-white text-center pt-8">
                     TORNEOS
                 </h2>
-                <div class="flex overflow-x-scroll py-8 hide-scroll-bar" id="carousel">
-                    <div class="flex flex-nowrap lg:ml-10 my-8 md:ml-20 ml-10 mr-10">
-                        <!-- Imagen 1 - Left 4 Dead 2 -->
-                        <div class="inline-block px-3 h-[110%]" data-juego="Left 4 Dead 2">
-                            <a href="#">
-                                <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-green-500 transform hover:scale-110 cursor-pointer"
-                                    src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/550/capsule_616x353.jpg?t=1729702523"
-                                    alt="Imagen 1">
-                        </div>
+                <div id="torneos-container">
+                    <div class="flex overflow-x-scroll py-8 hide-scroll-bar" id="carousel">
+                        <div class="flex flex-nowrap lg:ml-10 my-8 md:ml-20 ml-10 mr-10">
+                            <!-- Imagen 1 - Left 4 Dead 2 -->
+                            <div class="inline-block px-3 h-[110%]" data-juego="Left 4 Dead 2">
+                                <a>
+                                    <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-green-500 transform hover:scale-110 cursor-pointer"
+                                        src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/550/capsule_616x353.jpg?t=1729702523"
+                                        alt="Imagen 1">
+                                </a>
+                            </div>
 
-                        <!-- Imagen 2 - Counter Strike 2 -->
-                        <div class="inline-block px-3 h-[110%]" data-juego="Counter Strike 2">
-                            <a href="#">
-                                <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-red-500 transform hover:scale-110 cursor-pointer"
-                                    src="https://i.3djuegos.com/juegos/19026/counterstrike_2/fotos/ficha/counterstrike_2-5835305.webp"
-                                    alt="Imagen 2">
-                        </div>
+                            <!-- Imagen 2 - Counter Strike 2 -->
+                            <div class="inline-block px-3 h-[110%]" data-juego="Counter Strike 2">
+                                <a href="#">
+                                    <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-red-500 transform hover:scale-110 cursor-pointer"
+                                        src="https://i.3djuegos.com/juegos/19026/counterstrike_2/fotos/ficha/counterstrike_2-5835305.webp"
+                                        alt="Imagen 2">
+                            </div>
 
-                        <!-- Imagen 3 -->
-                        <div class="inline-block px-3 h-[110%]">
-                            <a href="#">
-                                <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-blue-500 transform hover:scale-110"
-                                    src="https://cdn1.epicgames.com/offer/24b9b5e323bc40eea252a10cdd3b2f10/EGS_LeagueofLegends_RiotGames_S2_1200x1600-905a96cea329205358868f5871393042"
-                                    alt="Imagen 3">
-                            </a>
+                            <!-- Imagen 3 -->
+                            <div class="inline-block px-3 h-[110%]" data-juego="League of Legends">
+                                <a href="#">
+                                    <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-blue-500 transform hover:scale-110"
+                                        src="https://cdn1.epicgames.com/offer/24b9b5e323bc40eea252a10cdd3b2f10/EGS_LeagueofLegends_RiotGames_S2_1200x1600-905a96cea329205358868f5871393042"
+                                        alt="Imagen 3">
+                                </a>
+                            </div>
+                            <!-- Imagen 4 -->
+                            <div class="inline-block px-3 h-[110%]" data-juego="Call of Duty Mobile">
+                                <a href="#">
+                                    <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-yellow-500 transform hover:scale-110"
+                                        src="https://media.vandal.net/m/78025/call-of-duty-mobile-2019102104887_1.jpg"
+                                        alt="Imagen 4">
+                                </a>
+                            </div>
+                            <!-- Imagen 5 -->
+                            <div class="inline-block px-3 h-[110%]" data-juego="Brawl Stars">
+                                <a href="#">
+                                    <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-purple-500 transform hover:scale-110"
+                                        src="https://supercell.com/images/e93a34598d3723641a72eb9ce02691f6/790/games_thumbnail_brawlstars.5cd76330.webp"
+                                        alt="Imagen 5">
+                                </a>
+                            </div>
+                            <!-- Imagen 6 -->
+                            <div class="inline-block px-3 h-[110%]" data-juego="Clash Royale">
+                                <a href="#">
+                                    <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-orange-500 transform hover:scale-110"
+                                        src="https://yt3.googleusercontent.com/ytc/AIdro_m0DtuBhZUI1Mie9JUspzzqediBM76hO49vWA8hM5hwu9s=s900-c-k-c0x00ffffff-no-rj"
+                                        src="Imagen 6">
+                                </a>
+                            </div>
+                            <!-- Imagen 7 -->
+                            <div class="inline-block px-3 h-[110%]" data-juego="Dragon Ball Fighters Z">
+                                <a href="#">
+                                    <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-yellow-500 transform hover:scale-110"
+                                        src="https://image.api.playstation.com/cdn/UP0700/CUSA09072_00/2eBPISxxvTv5foYSDlqiBJfmRj5LZxv3.png"
+                                        alt="Imagen 7">
+                                </a>
+                            </div>
+                            <!-- Imagen 8 -->
+                            <div class="inline-block px-3 h-[110%]" data-juego="Call of Duty Warzone">
+                                <a href="#">
+                                    <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-teal-500 transform hover:scale-110"
+                                        src="https://image.api.playstation.com/vulcan/ap/rnd/202312/0123/978efa66c9645e4692ac7036a31aa002a49d0efb4b88b45c.png"
+                                        alt="Imagen 8">
+                                </a>
+                            </div>
                         </div>
-                        <!-- Imagen 4 -->
-                        <div class="inline-block px-3 h-[110%]">
-                            <a href="#">
-                                <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-yellow-500 transform hover:scale-110"
-                                    src="https://media.vandal.net/m/78025/call-of-duty-mobile-2019102104887_1.jpg"
-                                    alt="Imagen 4">
-                            </a>
-                        </div>
-                        <!-- Imagen 5 -->
-                        <div class="inline-block px-3 h-[110%]">
-                            <a href="#">
-                                <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-purple-500 transform hover:scale-110"
-                                    src="https://supercell.com/images/e93a34598d3723641a72eb9ce02691f6/790/games_thumbnail_brawlstars.5cd76330.webp"
-                                    alt="Imagen 5">
-                            </a>
-                        </div>
-                        <!-- Imagen 6 -->
-                        <div class="inline-block px-3 h-[110%]">
-                            <a href="#">
-                                <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-orange-500 transform hover:scale-110"
-                                    src="https://yt3.googleusercontent.com/ytc/AIdro_m0DtuBhZUI1Mie9JUspzzqediBM76hO49vWA8hM5hwu9s=s900-c-k-c0x00ffffff-no-rj"
-                                    src="Imagen 6">
-                            </a>
-                        </div>
-                        <!-- Imagen 7 -->
-                        <div class="inline-block px-3 h-[110%]">
-                            <a href="#">
-                                <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-yellow-500 transform hover:scale-110"
-                                    src="https://image.api.playstation.com/cdn/UP0700/CUSA09072_00/2eBPISxxvTv5foYSDlqiBJfmRj5LZxv3.png"
-                                    alt="Imagen 7">
-                            </a>
-                        </div>
-                        <!-- Imagen 8 -->
-                        <div class="inline-block px-3 h-[110%]">
-                            <a href="#">
-                                <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-teal-500 transform hover:scale-110"
-                                    src="https://image.api.playstation.com/vulcan/ap/rnd/202312/0123/978efa66c9645e4692ac7036a31aa002a49d0efb4b88b45c.png"
-                                    alt="Imagen 8">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-blue-900 text-white py-16 px-8 border p-4">
-            <div class="flex justify-center items-center">
-                <div class="max-w-7xl mx-auto px-4">
-                    <h2 class="lg:px-20 md:px-10 px-5 lg:mx-0 md:mx-20 mx-5 font-bold text-4xl text-white text-center pb-10">
-                        RANKING SEMANAL
-                    </h2>
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center text-center">
-                        <!-- Card 1 -->
-                        <x-home.ranking_card class="bg-gray-400">
-                            <x-slot name="imagen">
-                                https://i.pinimg.com/originals/22/b9/39/22b939e9dbefd23f513f189de558da24.gif
-                            </x-slot>
-                            <x-slot name="name">
-                                Chicharron
-                            </x-slot>
-                            <x-slot name="fecha">
-                                09/23 - 09/24
-                            </x-slot>
-                        </x-home.ranking_card>
-
-                        <!-- Card 2 -->
-                        <x-home.ranking_card class="bg-yellow-400">
-                            <x-slot name="imagen">
-                                https://i.pinimg.com/originals/8b/a4/8d/8ba48db13ca10021f9d14aa91a0d8cb1.gif
-                            </x-slot>
-                            <x-slot name="name">
-                                SINAY
-                            </x-slot>
-                            <x-slot name="fecha">
-                                09/23 - 09/24
-                            </x-slot>
-                        </x-home.ranking_card>
-
-                        <!-- Card 3 -->
-                        <x-home.ranking_card class="bg-orange-700">
-                            <x-slot name="imagen">
-                                https://media.tenor.com/xhC6NZETIzMAAAAM/simon-ghost-riley.gif
-                            </x-slot>
-                            <x-slot name="name">
-                                TIREN PARO
-                            </x-slot>
-                            <x-slot name="fecha">
-                                09/23 - 09/24
-                            </x-slot>
-                        </x-home.ranking_card>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const torneoContainers = document.querySelectorAll('[data-juego]');
+
+            torneoContainers.forEach(function(container) {
+                container.addEventListener("click", function() {
+                    const juego = container.getAttribute("data-juego");
+                    const url = `/torneos?game=${encodeURIComponent(juego)}`;
+                    window.location.href = url;
+                });
+            });
+        });
+    </script>
 @endsection
