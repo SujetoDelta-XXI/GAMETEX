@@ -51,15 +51,11 @@
                         <p><span class="font-semibold text-gray-400">📅 Fecha Fin:</span> {{ $torneo->fecha_fin }}
                         </p>
                         <p><span class="font-semibold text-gray-400">💰 Entrada:</span> {{ $torneo->entrada }}</p>
-                        <p><span class="font-semibold text-gray-400">⭐ EXP:</span> {{ $torneo->exp }}</p>
                         <p><span class="font-semibold text-gray-400">🎮 Juego:</span>
                             {{ $torneo->torneoJuego->nombre }}
                         </p>
                         <p><span class="font-semibold text-gray-400">🎁 Recompensas:</span>
                             {{ $torneo->recompensas->nombre }}</p>
-                        <p><span class="font-semibold text-gray-400">👨‍💼 Moderador:</span>
-                            {{ $torneo->moderador->name }}
-                        </p>
                         <p><span class="font-semibold text-gray-400">👑 Administrador:</span>
                             {{ $torneo->administrador->name }}</p>
                         <p><span class="font-semibold text-gray-400">🕒 Última Modificación:</span>

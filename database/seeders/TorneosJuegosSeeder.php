@@ -21,9 +21,7 @@ class TorneosJuegosSeeder extends Seeder
             ['nombre' => 'Call of Duty Warzone', 'imagen' => 'imagenes_juegos/callOfDutyWarzonejpg.jpg'],
             ['nombre' => 'Clash Royale', 'imagen' => 'imagenes_juegos/CrashRoyalljpeg.jpeg'],
             ['nombre' => 'Brawl Stars', 'imagen' => 'imagenes_juegos/BrawlStarsjpeg.jpeg'],
-            ['nombre' => 'Dragon Fighter Z', 'imagen' => 'imagenes_juegos/DragonFighterZjpeg.jpeg'],
-            ['nombre' => 'Plantas VS Zombies', 'imagen' => 'imagenes_juegos/PlantasVSZombies.jpeg'],
-            ['nombre' => 'Age of empires', 'imagen' => 'imagenes_juegos/Ageofempiresjpeg.jpeg'],
+            ['nombre' => 'Dragon Ball Fighter Z', 'imagen' => 'imagenes_juegos/DragonFighterZjpeg.jpeg'],
         ]);
         
     }
