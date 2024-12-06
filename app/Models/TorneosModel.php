@@ -76,7 +76,8 @@ class TorneosModel extends Model
     public function crearCanalDiscord()
     {
         $discordService = new DiscordService();
+        dump($discordService);
 
-        return $discordService->crearCanal('1314002945628704800', 'Prueba');
+        return $discordService->crearCanal('1314002945628704800', 'Prueba_2');
     }
 }
