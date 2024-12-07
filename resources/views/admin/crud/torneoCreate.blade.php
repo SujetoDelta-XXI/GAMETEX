@@ -131,7 +131,7 @@
                 <div class="w-1/2 space-y-4">
                     <label for="dropzone-file-background"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Imagen de Torneo
+                        Imagen de Fondo
                     </label>
                     <div class="flex justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                         onclick="document.getElementById('dropzone-file-background').click();">
@@ -147,8 +147,14 @@
                             </p>
                             <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                         </div>
+                        <input id="dropzone-file-background" type="file" class="hidden"
+                            onchange="previewBackgroundImage(event)">
                     </div>
-                    <input id="dropzone-file-background" type="file" class="hidden" name="background_image">
+                    <!-- Contenedor para mostrar la imagen de fondo cargada -->
+                    <div id="background-image-preview-container" class="mt-4">
+                        <img id="background-image-preview" src="" alt="Vista previa de fondo"
+                            class="hidden w-full h-auto rounded-lg">
+                    </div>
                 </div>
 
 
@@ -166,5 +172,50 @@
             </form>
         </div>
     </div>
+    
+    <script>
+        // Función para previsualizar la imagen
+        function previewImage(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Obtener el contenedor de la imagen y mostrar la vista previa
+                var imagePreview = document.getElementById('image-preview');
+                var imageContainer = document.getElementById('image-preview-container');
+
+                // Mostrar la imagen en el contenedor
+                imagePreview.src = e.target.result;
+                imagePreview.classList.remove('hidden');
+                imageContainer.classList.remove('hidden');
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+    <script>
+        // Función para previsualizar la imagen de fondo
+        function previewBackgroundImage(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Obtener el contenedor de la imagen y mostrar la vista previa
+                var backgroundImagePreview = document.getElementById('background-image-preview');
+                var backgroundImageContainer = document.getElementById('background-image-preview-container');
+
+                // Mostrar la imagen en el contenedor
+                backgroundImagePreview.src = e.target.result;
+                backgroundImagePreview.classList.remove('hidden');
+                backgroundImageContainer.classList.remove('hidden');
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 
 @endsection
