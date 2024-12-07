@@ -11,7 +11,7 @@
         <h1 class="pr-7 text-2xl font-semibold mb-4 text-center text-white">
             {{ $titulo }}
         </h1>
-        <div class="w-full text-white sm:max-w-md mt-6 xl:mx-[60px] px-6 py-4 bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+        <div class="w-full text-white sm:max-w-md mt-6 px-6 py-4 bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
     </div>
