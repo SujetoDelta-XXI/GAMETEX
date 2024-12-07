@@ -6,99 +6,66 @@
             <div class="mb-10">
                 <h2 class="text-3xl font-bold text-white mb-4">Acerca de GameTex: Donde los Gamers Compiten y Ganan Recompensas</h2>
                 <p class="text-lg leading-relaxed">
-                    En Gametex, entendemos que el mundo de los videojuegos es mucho más que solo entretenimiento; es una pasión,
-                    una comunidad, y un estilo de vida. Nuestra plataforma ha sido creada con un propósito claro: ofrecer a
-                    jugadores de todos los niveles la oportunidad de competir en torneos y ganar recompensas por su destreza y
-                    dedicación. En Gametex, cada partida importa, y cada victoria te acerca un paso más a obtener premios reales.
+                    GameTex es la plataforma definitiva para gamers de todas las edades y niveles. Aquí encontrarás una amplia gama de torneos, eventos únicos, y desafíos diseñados para ofrecerte no solo diversión, sino también increíbles recompensas. Únete a nuestra comunidad y lleva tu experiencia de juego al siguiente nivel.
                 </p>
             </div>
 
             <article class="space-y-8">
-                <!-- Quiénes somos -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">¿Quiénes somos?</h3>
-                    <p>
-                        Gametex surge de la combinación de dos grandes pasiones: los videojuegos y la competencia. Somos un
-                        equipo de amantes de los esports y desarrolladores dedicados, con la misión de ofrecer un espacio donde
-                        cada jugador pueda encontrar un desafío a su medida. Sabemos que competir no solo es divertido, sino que
-                        también representa una oportunidad de crecimiento personal y profesional. Nos enorgullecemos de brindar
-                        una experiencia que se adapta tanto a jugadores ocasionales como a los que buscan enfrentar a los
-                        mejores.
-                    </p>
-                </div>
+                @php
+                    $sections = [
+                        [
+                            'title' => '¿Quiénes somos?',
+                            'content' => 'GameTex combina la pasión por los videojuegos y la competencia para crear una plataforma única donde cada jugador puede encontrar su lugar. Con una visión clara, buscamos ofrecer oportunidades tanto a gamers ocasionales como a los más experimentados. Creemos que los videojuegos no son solo entretenimiento, sino también un medio para conectar personas, fomentar la creatividad y desarrollar habilidades. Nuestro equipo está formado por entusiastas del gaming que trabajan para brindarte experiencias inolvidables en cada torneo, construyendo una comunidad vibrante y diversa.'
+                        ],
+                        [
+                            'title' => 'Nuestra misión: Competencia justa y gratificante',
+                            'content' => 'En GameTex, creemos firmemente en recompensar la habilidad y el esfuerzo de cada jugador. Nuestra misión es crear un entorno donde todos puedan competir en igualdad de condiciones, disfrutando de experiencias emocionantes y gratificantes. Desde principiantes hasta jugadores avanzados, cada torneo está diseñado para destacar lo mejor de tu talento. Además, nos esforzamos por garantizar que las recompensas reflejen el compromiso y la dedicación de nuestra comunidad, ofreciendo premios tangibles que hacen la diferencia.'
+                        ],
+                        [
+                            'title' => 'Nuestra visión: Construir la comunidad de gamers más grande y unida',
+                            'content' => 'Nuestra visión es ir más allá de ser una simple plataforma de torneos; queremos ser el hogar de la comunidad gamer más inclusiva y dinámica. Creemos que los videojuegos tienen el poder de unir personas de diferentes lugares y culturas, fomentando el respeto y la amistad. En GameTex, trabajamos para construir un espacio donde cada jugador se sienta valorado, donde las experiencias compartidas y la pasión por los videojuegos fortalezcan los lazos entre los miembros de nuestra comunidad.'
+                        ],
+                        [
+                            'title' => 'Torneos para todos los niveles',
+                            'content' => 'En GameTex, todos los jugadores tienen un lugar, sin importar su nivel de experiencia. Organizamos torneos diseñados específicamente para principiantes que buscan mejorar y aprender, así como competiciones de alto nivel para los expertos que desean poner a prueba sus habilidades. Ya sea un evento casual o un torneo competitivo con grandes premios, siempre encontrarás un desafío que se adapte a ti. Nuestra meta es que cada participante disfrute, crezca y sienta la emoción de competir.'
+                        ],
+                        [
+                            'title' => 'Recompensas que hacen la diferencia',
+                            'content' => 'Sabemos que la dedicación merece ser recompensada. En GameTex, ofrecemos premios que van más allá de lo común: desde dinero en efectivo hasta artículos exclusivos como hardware gamer y productos tecnológicos. Nuestros torneos están diseñados para que cada victoria tenga un impacto tangible en tu experiencia como jugador. Además, continuamente buscamos nuevas formas de innovar en nuestras recompensas, asegurándonos de que sean tan emocionantes como los desafíos que enfrentas en cada partida.'
+                        ],
+                        [
+                            'title' => 'Seguridad y juego justo',
+                            'content' => 'En GameTex, la seguridad y la transparencia son pilares fundamentales. Implementamos tecnologías avanzadas para garantizar que cada torneo se desarrolle de manera justa y sin inconvenientes. Nuestro sistema protege a los jugadores contra el fraude y promueve un entorno competitivo saludable. Además, contamos con un equipo de soporte dedicado a resolver cualquier problema rápidamente, porque queremos que disfrutes de la experiencia sin preocupaciones. Aquí, todos tienen la misma oportunidad de destacar.'
+                        ],
+                        [
+                            'title' => 'Únete a GameTex',
+                            'content' => 'GameTex es más que una plataforma; es una comunidad que celebra la pasión por los videojuegos. Únete para descubrir un mundo de oportunidades donde puedes competir, ganar recompensas y conectar con otros gamers apasionados. Ya sea que busques divertirte, mejorar tus habilidades o convertirte en un jugador profesional, aquí encontrarás el apoyo y los recursos necesarios para alcanzar tus metas. ¡La arena te espera, y estamos emocionados de que formes parte de nuestra familia gamer!'
+                        ],
+                    ];
+                @endphp
 
-                <!-- Nuestra misión -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">Nuestra misión: Competencia justa y gratificante</h3>
-                    <p>
-                        Nuestra misión es simple: queremos que cada partida en Gametex cuente. Buscamos recompensar el esfuerzo
-                        y la habilidad de nuestros jugadores de una forma que realmente marque la diferencia. No importa si eres
-                        un jugador que apenas comienza o un experto en su campo, siempre encontrarás torneos que te ofrezcan una
-                        experiencia de alto nivel y premios increíbles. Desde premios en efectivo hasta objetos exclusivos, en
-                        Gametex cada logro se convierte en una recompensa.
-                    </p>
-                </div>
+                @foreach ($sections as $section)
+                    <div x-data="{ open: false }" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex justify-between items-center cursor-pointer" @click="open = !open">
+                            <h3 class="text-2xl font-semibold text-blue-400">{{ $section['title'] }}</h3>
+                            <button class="text-white bg-blue-400 rounded-full p-2 focus:outline-none">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
 
-                <!-- Visión -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">Nuestra visión: Construir la comunidad de gamers más grande y unida</h3>
-                    <p>
-                        Queremos que Gametex sea más que una plataforma de torneos; aspiramos a crear una comunidad donde cada
-                        jugador pueda crecer, conocer a otros apasionados del gaming, y, por supuesto, competir. Nos enfocamos
-                        en fomentar la camaradería y el respeto entre los jugadores, sin importar su nivel de experiencia.
-                        Gametex no es solo un lugar para jugar y ganar, sino un espacio para conectarte y formar parte de algo
-                        más grande.
-                    </p>
-                </div>
-                
-                <!-- Torneos para todos los niveles -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">Torneos para todos los niveles</h3>
-                    <p>
-                        En Gametex creemos que todos merecen la oportunidad de competir y ganar. Es por eso que diseñamos
-                        nuestros torneos para que sean accesibles a una amplia variedad de jugadores. Algunos torneos están
-                        orientados a principiantes, mientras que otros están dedicados a jugadores avanzados que desean
-                        enfrentarse a desafíos de alto nivel. Nuestra plataforma incluye torneos diarios, semanales y eventos
-                        especiales que ofrecen premios significativos. Así, cada vez que te unes a un torneo, tienes la
-                        oportunidad de medirte con otros jugadores, mejorar tus habilidades y ganar recompensas.
-                    </p>
-                </div>
-
-                <!-- Recompensas -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">Recompensas que hacen la diferencia</h3>
-                    <p>
-                        Para nosotros, cada esfuerzo merece ser recompensado. Los premios en Gametex no solo se limitan a
-                        monedas virtuales; también puedes ganar premios en efectivo, productos tecnológicos, artículos de
-                        nuestros patrocinadores, y más. Creemos en brindar recompensas que reflejen el esfuerzo y la habilidad
-                        de nuestros jugadores, y trabajamos constantemente para traer nuevos premios y patrocinadores a la
-                        plataforma. Cuando juegas en Gametex, sabes que estás compitiendo por algo real.
-                    </p>
-                </div>
-
-                <!-- Seguridad y juego justo -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">Seguridad y juego justo</h3>
-                    <p>
-                        La integridad de nuestros torneos es fundamental. Hemos implementado sistemas avanzados de seguridad
-                        para garantizar que cada jugador pueda competir en igualdad de condiciones. En Gametex, valoramos el
-                        juego justo y la honestidad. Desde la verificación de usuarios hasta la supervisión de partidas, nos
-                        aseguramos de que todos los jugadores puedan disfrutar de una experiencia segura y transparente. Además,
-                        contamos con un equipo de soporte listo para ayudarte en caso de que surjan dudas o inconvenientes.
-                    </p>
-                </div>
-                
-                <!-- Únete a Gametex -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">Únete a Gametex</h3>
-                    <p>
-                        Te invitamos a unirte a nuestra comunidad y llevar tu experiencia de juego al siguiente nivel. En
-                        Gametex, cada partida es una oportunidad de demostrar lo que sabes y obtener algo valioso a cambio. No
-                        importa si estás buscando diversión, desafíos, o premios; en Gametex, lo encontrarás todo. Únete hoy, y
-                        forma parte de un ecosistema diseñado por y para gamers. ¡Nos vemos en la arena!
-                    </p>
-                </div>
+                        <div x-show="open" x-transition class="mt-4 text-gray-300">
+                            <p>{{ $section['content'] }}</p>
+                        </div>
+                    </div>
+                @endforeach
             </article>
         </div>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 @endsection

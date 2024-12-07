@@ -5,80 +5,51 @@
         <div class="max-w-6xl mx-auto p-6 bg-gray-900 rounded-lg shadow-lg">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-center mb-4 text-white">Participa en los Eventos de GameTex</h2>
-                <p class="text-lg text-center">En GameTex, los eventos son una parte fundamental de la comunidad gamer. Son oportunidades para conectar, competir y disfrutar de la pasión por los videojuegos. A continuación, te presentamos todo lo que necesitas saber sobre nuestros emocionantes eventos:</p>
+                <p class="text-lg text-center">
+                    En GameTex, los eventos son una parte fundamental de la comunidad gamer. Son oportunidades para conectar,
+                    competir y disfrutar de la pasión por los videojuegos. A continuación, te presentamos todo lo que necesitas
+                    saber sobre nuestros emocionantes eventos:
+                </p>
             </div>
 
             <article class="space-y-8">
-                <!-- Variedad de Eventos -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400">1. Variedad de Eventos</h3>
-                    <p class="text-gray-300">
-                        Organizamos una amplia gama de eventos que incluyen desde competencias en videojuegos hasta encuentros
-                        comunitarios y actividades especiales. Ya sea que te guste competir o simplemente disfrutar del
-                        ambiente, encontrarás un evento que se adapte a tus intereses.
-                    </p>
-                </div>
+                @php
+                    $sections = [
+                        ['title' => '1. Variedad de Eventos', 'content' => 'En GameTex organizamos una gran variedad de eventos que van desde torneos en los videojuegos más populares hasta competiciones especiales de nicho. Los jugadores de todos los niveles encontrarán algo para disfrutar, ya sea que busquen retos competitivos o eventos más relajados para conectarse con otros gamers. Además, nuestros eventos se actualizan constantemente para ofrecer siempre nuevas experiencias.'],
+                        ['title' => '2. Recompensas y Premios', 'content' => 'Los eventos de GameTex ofrecen una variedad de recompensas que van desde premios en efectivo hasta productos tecnológicos de última generación, como consolas de videojuegos y accesorios exclusivos. Al participar, no solo tienes la oportunidad de ganar premios tangibles, sino que también puedes obtener reconocimiento en nuestra comunidad, lo que te permitirá destacar entre otros jugadores.'],
+                        ['title' => '3. Registro Abierto', 'content' => 'Es fácil unirte a cualquier evento de GameTex. Solo debes visitar nuestra página de eventos, elegir el torneo que más te interese y completar tu registro en línea. Recomendamos hacerlo con tiempo, ya que muchos eventos tienen plazas limitadas. ¡No dejes pasar la oportunidad de competir y ganar en nuestros emocionantes torneos, y asegúrate de asegurarte un lugar!'],
+                        ['title' => '4. Actividades Interactivas', 'content' => 'Además de las competencias, GameTex organiza actividades interactivas diseñadas para mejorar la experiencia de todos los participantes. Desde talleres de formación sobre las mejores tácticas hasta concursos y pruebas de juegos nuevos, nuestras actividades permiten a los jugadores aprender de expertos y mejorar sus habilidades. Estas actividades son una excelente oportunidad para interactuar con la comunidad y conocer a otros gamers con intereses similares.'],
+                        ['title' => '5. Conexión con la Comunidad', 'content' => 'Participar en eventos de GameTex no es solo una forma de competir, sino también de formar parte de una comunidad global de jugadores. A través de nuestras competiciones y actividades interactivas, tendrás la oportunidad de conocer a otros gamers, compartir estrategias y consejos, y, lo más importante, hacer nuevos amigos. Los eventos son una excelente oportunidad para fortalecer la conexión dentro de nuestra comunidad y disfrutar del verdadero espíritu competitivo.'],
+                        ['title' => '6. Transmisiones en Vivo', 'content' => 'Todos los eventos importantes de GameTex se transmiten en vivo para que puedas disfrutar de la emoción y la competitividad desde la comodidad de tu hogar. Además, nuestras transmisiones permiten la interacción en tiempo real, donde los espectadores pueden comentar y debatir sobre las partidas. Si no puedes participar en un torneo, no te preocupes, puedes seguir la acción en vivo y animar a tus jugadores favoritos mientras compiten.'],
+                        ['title' => '7. Normas y Condiciones', 'content' => 'Es fundamental que todos los participantes se familiaricen con las normas y condiciones de cada evento antes de registrarse. En GameTex nos aseguramos de que todos los torneos y actividades sean justos y transparentes, por lo que es importante cumplir con las reglas establecidas. Lee cuidadosamente los términos y condiciones para asegurarte de tener una experiencia segura y sin contratiempos, y de disfrutar de un ambiente de competencia saludable.']
+                    ];
+                @endphp
 
-                <!-- Recompensas y Premios -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400">2. Recompensas y Premios</h3>
-                    <p class="text-gray-300">
-                        Los eventos de GameTex ofrecen la oportunidad de ganar recompensas emocionantes. Participa en
-                        actividades para obtener premios en efectivo, videojuegos y otros artículos exclusivos. Cada evento
-                        tiene su propio conjunto de premios, así que asegúrate de revisar los detalles.
-                    </p>
-                </div>
+                @foreach ($sections as $section)
+                    <div x-data="{ open: false }" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <!-- Header con el título y el ícono -->
+                        <div class="flex justify-between items-center cursor-pointer" @click="open = !open">
+                            <h3 class="text-2xl font-semibold text-blue-400">{{ $section['title'] }}</h3>
+                            <button class="text-white bg-blue-400 rounded-full p-2 focus:outline-none">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
 
-                <!-- Registro Abierto -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400">3. Registro Abierto</h3>
-                    <p class="text-gray-300">
-                        Participar en nuestros eventos es sencillo. Visita nuestra sección de eventos en el sitio web,
-                        selecciona el que más te interese y completa el proceso de registro. Recomendamos registrarte con
-                        anticipación, ya que los espacios pueden ser limitados y se llenan rápidamente.
-                    </p>
-                </div>
-
-                <!-- Actividades Interactivas -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400">4. Actividades Interactivas</h3>
-                    <p class="text-gray-300">
-                        Nuestros eventos no solo se limitan a competiciones. A menudo, organizamos actividades interactivas como
-                        talleres, sesiones de preguntas y respuestas con expertos, y oportunidades para probar nuevos juegos.
-                        Estas actividades están diseñadas para enriquecer tu experiencia y permitirte aprender algo nuevo.
-                    </p>
-                </div>
-
-                <!-- Conexión con la Comunidad -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400">5. Conexión con la Comunidad</h3>
-                    <p class="text-gray-300">
-                        Los eventos de GameTex son una excelente manera de conocer a otros jugadores que comparten tus pasiones.
-                        Conéctate con amigos y haz nuevos contactos dentro de la comunidad gamer. Comparte experiencias,
-                        estrategias y disfruta de la camaradería que solo se encuentra en estos eventos.
-                    </p>
-                </div>
-
-                <!-- Transmisiones en Vivo -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400">6. Transmisiones en Vivo</h3>
-                    <p class="text-gray-300">
-                        Muchos de nuestros eventos se transmiten en vivo, lo que te permite seguir la acción desde cualquier
-                        lugar. Participa desde casa o anímate a unirte a la transmisión y disfrutar del ambiente. Interactúa con
-                        otros espectadores y comparte la emoción de cada momento.
-                    </p>
-                </div>
-
-                <!-- Normas y Condiciones -->
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-400">7. Normas y Condiciones</h3>
-                    <p class="text-gray-300">
-                        Es fundamental que todos los participantes conozcan las normas y condiciones de cada evento. Asegúrate
-                        de leer toda la información disponible antes de registrarte para garantizar una experiencia fluida y
-                        justa para todos.
-                    </p>
-                </div>
+                        <!-- Contenido oculto -->
+                        <div x-show="open" x-transition class="mt-4 text-gray-300">
+                            <p>{{ $section['content'] }}</p>
+                        </div>
+                    </div>
+                @endforeach
             </article>
         </div>
     </main>
+
+    <!-- Alpine.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 @endsection

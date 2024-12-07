@@ -120,7 +120,6 @@ Route::get('torneos', [TorneosController::class, 'index']);
 
 
 Route::get('f_nosotros', [HomeController::class, 'fNosotros']);
-Route::get('f_metodos_pago', [HomeController::class, 'fMetodosPago']);
 Route::get('f_torneos', [HomeController::class, 'fTorneos']);
 Route::get('f_eventos', [HomeController::class, 'fEventos']);
 

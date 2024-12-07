@@ -10,8 +10,13 @@
         </p>
     </div>
     <!-- Título del evento -->
-    <h3 class="text-xl font-medium title-font text-white mt-5">
+    <h3 class="text-xl font-medium title-font text-white mt-5 text-center">
         {{ $titulo }}
     </h3>
-    <a class="mt-3 text-indigo-500" href='{{ $enlace }}'>Participar</a>
+    <!-- Botón Participar -->
+    <div class="mt-3 flex justify-center">
+        <a class="py-2 px-6 text-center text-indigo-500 border-2 border-indigo-500 rounded-lg transition duration-300 ease-in-out transform hover:bg-indigo-500 hover:text-white hover:border-indigo-500">
+            Participar
+        </a>
+    </div>
 </div>
