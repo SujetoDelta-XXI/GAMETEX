@@ -7,7 +7,7 @@
         <div class="flex flex-col items-center -mt-20">
             <img src="{{ asset('usuarios_img/gaming.gif') }}" class="w-40 border-4 border-white rounded-full">
             <div class="flex items-center space-x-2 mt-2">
-                <p class="text-2xl text-white">SujetoDelta</p>
+                <p class="text-2xl text-white">{{ $usuario->name }}</p>
             </div>
             <p class="text-black">Carlos Alfonso Asparrin Martin</p>
         </div>
@@ -20,10 +20,10 @@
                 <ul class="mt-2 text-black">
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Nombre:</span>
-                        <span class="text-gray-100">Carlos Alfonso Asparrin Martin</span>
+                        <span class="text-gray-100">{{ $usuario->name }}</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
-                        <span class="font-bold">Correo Electrónico:</span>
+                        <span class="font-bold">{{$usuario->email}}</span>
                         <span class="text-gray-100">carlos123@gmail.com</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
@@ -33,11 +33,24 @@
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Estado:</span>
                         <div class="text-gray-100 flex items-center space-x-2 p-1 px-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
-                                <path d="M50 10a40 40 0 1 1 0 80a40 40 0 1 1 0-80" fill="green" />
-                            </svg>
-                            <span>Activo</span>
+                            @if ($usuario->estado == 'activo')
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+                                    <path d="M50 10a40 40 0 1 1 0 80a40 40 0 1 1 0-80" fill="green" />
+                                </svg>
+                                <span>Activo</span>
+                            @elseif ($usuario->estado == 'inactivo')
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+                                    <path d="M50 10a40 40 0 1 1 0 80a40 40 0 1 1 0-80" fill="red" />
+                                </svg>
+                                <span>Inactivo</span>
+                            @elseif ($usuario->estado == 'nuevo')
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+                                    <path d="M50 10a40 40 0 1 1 0 80a40 40 0 1 1 0-80" fill="blue" />
+                                </svg>
+                                <span>Nuevo</span>
+                            @endif
                         </div>
+
                     </li>
                     <br>
                     <button type="button" data-drawer-target="drawer-update-product"
@@ -59,7 +72,7 @@
             <div class="flex-1 bg-gray-500 rounded-lg shadow-xl p-8">
                 <h4 class="text-xl text-gray-900 font-bold">Descripción</h4>
                 <p class="mt-2 text-gray-100">
-                    Carlos "XtremeGamer" Rodríguez: Jugador competitivo y streamer, experto en Fortnite, LoL y Call of
+                    Jugador competitivo y streamer, experto en Fortnite, LoL y Call of
                     Duty, siempre buscando nuevas estrategias.
                 </p>
             </div>

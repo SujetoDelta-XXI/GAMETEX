@@ -33,10 +33,13 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
+    'auth.user'
 ])->group(function () {
-    Route::get('/dashboard', function () {
+/*     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+        
+    })->name('dashboard'); */
+   /*  Route::get('dashboard', [UserDashController::class, 'index'])->name('dashboard'); */
 });
 
 Route::post('/login', [LoginController::class, 'login'])
