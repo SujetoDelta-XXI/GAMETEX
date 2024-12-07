@@ -1,8 +1,8 @@
 <div
-    {{ $attributes->merge(['class' => 'relative flex flex-col mt-6 text-black shadow-md bg-clip-border rounded-xl transform transition-transform duration-300 ease-in-out hover:scale-105 overflow-hidden' . $class]) }}>
+    {{ $attributes->merge(['class' => 'relative flex flex-col mt-6 text-black shadow-md bg-gray-200 border-[10px] rounded-xl transform transition-transform duration-300 ease-in-out hover:scale-105 overflow-hidden' . $class]) }}>
     <div
-        class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-        <img class="object-cover w-full h-full" src="{{ $imagen }}" alt="card-image" />
+        class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+        <img class="object-cover w-full h-full border-[5px] {{ $class }} rounded-xl" src="{{ $imagen }}" alt="card-image" />
     </div>
     <div class="p-6">
         <h5
@@ -15,7 +15,7 @@
     </div>
     <div class="p-6 pt-0">
         <button data-modal-target="exampleModal" data-modal-toggle="exampleModal"
-            class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-900 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-900 dark:focus:ring-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-600">
+            class="py-2 px-5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-900 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-900 dark:focus:ring-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-600">
             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
                 class="w-4 h-4 mr-2 -ml-0.5">
                 <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
@@ -26,6 +26,7 @@
         </button>
     </div>
 </div>
+
 
 <!-- Modal -->
 <div id="exampleModal" tabindex="-1" aria-hidden="true"
@@ -54,17 +55,6 @@
                     </h4>
                     <h5 class="mb-5 text-xl font-bold text-gray-900 dark:text-white">carlos@tecsup.edu.pe</h5>
                 </div>
-                <button type="button" data-drawer-dismiss="drawer-read-product-advanced"
-                    aria-controls="drawer-read-product-advanced"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <span class="sr-only">Close menu</span>
-                </button>
                 <div class="mb-4 sm:mb-5">
                     <div class="flex items-center justify-center p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
                         <img src="{{ asset('usuarios_img/gaming.gif') }}" alt="iMac Side Image"

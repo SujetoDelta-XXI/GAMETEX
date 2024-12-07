@@ -7,6 +7,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.6.0/dist/flowbite.min.css" rel="stylesheet" />
     @vite(['resources/css/app.css'])
     @vite(['resources/js/app.js'])
     @livewireStyles
@@ -16,12 +17,12 @@
 
     <x-banner />
 
-    <div class="min-h-screen bg-blue-900">
+    <div class="min-h-screen bg-gray-900">
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-blue-900 shadow">
+            <header class="bg-black shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>

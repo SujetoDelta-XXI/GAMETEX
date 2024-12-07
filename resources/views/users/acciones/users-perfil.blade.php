@@ -7,7 +7,7 @@
         <div class="flex flex-col items-center -mt-20">
             <img src="{{ asset('usuarios_img/gaming.gif') }}" class="w-40 border-4 border-white rounded-full">
             <div class="flex items-center space-x-2 mt-2">
-                <p class="text-2xl text-white">SujetoDelta</p>
+                <p class="text-2xl text-white">{{ $usuario->name }}</p>
             </div>
             <p class="text-black">Carlos Alfonso Asparrin Martin</p>
         </div>
@@ -20,10 +20,10 @@
                 <ul class="mt-2 text-black">
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Nombre:</span>
-                        <span class="text-gray-100">Carlos Alfonso Asparrin Martin</span>
+                        <span class="text-gray-100">{{ $usuario->name }}</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
-                        <span class="font-bold">Correo Electrónico:</span>
+                        <span class="font-bold">{{$usuario->email}}</span>
                         <span class="text-gray-100">carlos123@gmail.com</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
@@ -33,11 +33,24 @@
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Estado:</span>
                         <div class="text-gray-100 flex items-center space-x-2 p-1 px-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
-                                <path d="M50 10a40 40 0 1 1 0 80a40 40 0 1 1 0-80" fill="green" />
-                            </svg>
-                            <span>Activo</span>
+                            @if ($usuario->estado == 'activo')
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+                                    <path d="M50 10a40 40 0 1 1 0 80a40 40 0 1 1 0-80" fill="green" />
+                                </svg>
+                                <span>Activo</span>
+                            @elseif ($usuario->estado == 'inactivo')
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+                                    <path d="M50 10a40 40 0 1 1 0 80a40 40 0 1 1 0-80" fill="red" />
+                                </svg>
+                                <span>Inactivo</span>
+                            @elseif ($usuario->estado == 'nuevo')
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+                                    <path d="M50 10a40 40 0 1 1 0 80a40 40 0 1 1 0-80" fill="blue" />
+                                </svg>
+                                <span>Nuevo</span>
+                            @endif
                         </div>
+
                     </li>
                     <br>
                     <button type="button" data-drawer-target="drawer-update-product"
@@ -59,7 +72,7 @@
             <div class="flex-1 bg-gray-500 rounded-lg shadow-xl p-8">
                 <h4 class="text-xl text-gray-900 font-bold">Descripción</h4>
                 <p class="mt-2 text-gray-100">
-                    Carlos "XtremeGamer" Rodríguez: Jugador competitivo y streamer, experto en Fortnite, LoL y Call of
+                    Jugador competitivo y streamer, experto en Fortnite, LoL y Call of
                     Duty, siempre buscando nuevas estrategias.
                 </p>
             </div>
@@ -119,7 +132,7 @@
                 </div>
             </div>
         </div>
-        
+
         <br>
 
         <div class="flex justify-between space-x-4">
@@ -128,8 +141,8 @@
                 <label for="dropzone-file-profile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Imagen de Perfil
                 </label>
-                <div
-                    class="flex justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                <div class="flex justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    onclick="document.getElementById('dropzone-file-profile').click();">
                     <div class="flex flex-col justify-center items-center pt-5 pb-6">
                         <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -142,9 +155,14 @@
                         </p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
-                    <input id="dropzone-file-profile" type="file" class="hidden">
+                    <input id="dropzone-file-profile" type="file" class="hidden" onchange="previewImage(event)">
+                </div>
+                <!-- Contenedor para mostrar la imagen cargada -->
+                <div id="image-preview-container" class="mt-4">
+                    <img id="image-preview" src="" alt="Vista previa" class="hidden w-full h-auto rounded-lg">
                 </div>
             </div>
+
 
             <!-- Imagen de Fondo -->
             <div class="w-1/2 space-y-4">
@@ -152,8 +170,8 @@
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Imagen de Fondo
                 </label>
-                <div
-                    class="flex justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                <div class="flex justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    onclick="document.getElementById('dropzone-file-background').click();">
                     <div class="flex flex-col justify-center items-center pt-5 pb-6">
                         <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -166,7 +184,13 @@
                         </p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
-                    <input id="dropzone-file-background" type="file" class="hidden">
+                    <input id="dropzone-file-background" type="file" class="hidden"
+                        onchange="previewBackgroundImage(event)">
+                </div>
+                <!-- Contenedor para mostrar la imagen de fondo cargada -->
+                <div id="background-image-preview-container" class="mt-4">
+                    <img id="background-image-preview" src="" alt="Vista previa de fondo"
+                        class="hidden w-full h-auto rounded-lg">
                 </div>
             </div>
         </div>
@@ -182,4 +206,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.js"></script>
     <script src="/livewire/livewire.js?id=38dc8241" data-csrf="BGW9EdPbFlgx3x6zunuiT1IxnJYEeNNNUASQP0z5"
         data-update-uri="/livewire/update" data-navigate-once="true"></script>
+    <script>
+        // Función para previsualizar la imagen
+        function previewImage(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Obtener el contenedor de la imagen y mostrar la vista previa
+                var imagePreview = document.getElementById('image-preview');
+                var imageContainer = document.getElementById('image-preview-container');
+
+                // Mostrar la imagen en el contenedor
+                imagePreview.src = e.target.result;
+                imagePreview.classList.remove('hidden');
+                imageContainer.classList.remove('hidden');
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+    <script>
+        // Función para previsualizar la imagen de fondo
+        function previewBackgroundImage(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                // Obtener el contenedor de la imagen y mostrar la vista previa
+                var backgroundImagePreview = document.getElementById('background-image-preview');
+                var backgroundImageContainer = document.getElementById('background-image-preview-container');
+                
+                // Mostrar la imagen en el contenedor
+                backgroundImagePreview.src = e.target.result;
+                backgroundImagePreview.classList.remove('hidden');
+                backgroundImageContainer.classList.remove('hidden');
+            };
+            
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 @endsection

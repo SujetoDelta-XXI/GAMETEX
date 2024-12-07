@@ -16,16 +16,22 @@ class TorneosModelFactory extends Factory
 
     public function definition()
     {
+        $adjetivos = ['Épicos', 'Intensos', 'Grandiosos', 'Legendarios', 'Desafiantes', 'Colosales', 'Furiosos', 'Inmortales'];
+        $sustantivos = ['Desafíos', 'Combates', 'Retiros', 'Confrontaciones', 'Alianzas', 'Contiendas', 'Duelo', 'Conquistas'];
+        
+        $nombreCompuesto = $this->faker->randomElement($adjetivos) . ' ' . $this->faker->randomElement($sustantivos);
+        
+        
 
+        
         $juegoRandom = TorneosJuegoModel::all()->random();
-        $imageId = $this->faker->unique()->numberBetween(1, 1000); 
         return [
-            'nombre' => $this->faker->word(), // Un nombre de juego aleatorio
+            'nombre' => $nombreCompuesto, 
             'fecha_inicio' => $this->faker->dateTimeBetween('-1 month', 'now'), // Fecha de inicio aleatoria dentro del último mes
             'fecha_fin' => $this->faker->dateTimeBetween('now', '+1 month'), // Fecha de fin aleatoria dentro del próximo mes
-            'entrada' => $this->faker->randomElement([0, 10, 15, 30, 50]), // Nivel de experiencia aleatorio
-            'exp' => $this->faker->randomElement([100, 200, 300, 400, 500]), // Nivel de experiencia aleatorio
+            'entrada' => $this->faker->randomFloat(2, 10, 50), 
             'descripcion' => $this->faker->sentence(),
+            'reglas' => $this->faker->sentence(),
 /*             'imagen' => 'referencia.jpeg', */
             'imagen' => $juegoRandom->imagen,
             'torneo_juego_id' => $juegoRandom->id,

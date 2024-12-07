@@ -26,7 +26,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" class="mr-5">
             @csrf
 
             {{-- Campo para el email --}}
@@ -47,7 +47,7 @@
             <div class="block mt-4">
                 @if (Route::has('password.request'))
                     <a class="text-white underline text-s hover:text-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        href="{{ route('password.request') }}">
+                        href="#">
                         {{ __('¿Olvidaste tu contraseña?') }}
                     </a>
                 @endif

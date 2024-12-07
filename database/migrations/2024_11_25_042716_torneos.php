@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('nombre');
             $table->timestamp('fecha_inicio')->nullable();
             $table->timestamp('fecha_fin')->nullable();
-            $table->integer('entrada')->nullable();
-            $table->string('exp')->nullable();
+            $table->string('entrada')->nullable();
             $table->string('descripcion')->nullable();
+            $table->string('reglas')->nullable();
             $table->string('imagen')->nullable();  
             $table->foreignId('torneo_juego_id')->constrained('torneos_juegos')->onDelete('cascade');
             $table->foreignId('recompensas_id')->constrained('recompensas_tipo')->onDelete('cascade');

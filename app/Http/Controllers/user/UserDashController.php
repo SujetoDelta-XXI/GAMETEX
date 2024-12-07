@@ -10,15 +10,20 @@ use App\Models\UserModel;
 
 class UserDashController extends Controller
 {
-    public function __construct()
+/*     public function __construct()
     {
         $this->middleware('auth.user'); 
-    }
+    } */
 
     public function index()
     {
-        $actividades = []; 
-        return view('users.acciones.users-perfil', compact('actividades'));
+        $usuario = Auth::guard('user')->user();
+        if (!$usuario) {
+            abort(403, 'No autorizado');
+        }
+        
+
+        return view('users.acciones.users-perfil', compact('usuario'));
     }
 
     public function perfil()

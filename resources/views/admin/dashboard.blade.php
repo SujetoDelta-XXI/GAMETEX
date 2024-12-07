@@ -148,4 +148,7 @@
             addClickEventHandler();
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.js"></script>
+    <script src="/livewire/livewire.js?id=38dc8241" data-csrf="BGW9EdPbFlgx3x6zunuiT1IxnJYEeNNNUASQP0z5"
+        data-update-uri="/livewire/update" data-navigate-once="true"></script>
 </x-app-layout>

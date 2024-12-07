@@ -31,19 +31,14 @@ document.getElementById('torneos-container').addEventListener('mousemove', funct
     const containerWidth = container.offsetWidth;
     const carouselWidth = carousel.scrollWidth;
 
-    // Calcular la posición del cursor dentro del contenedor
     const mouseX = e.clientX - container.getBoundingClientRect().left;
     
-    // Calcular el porcentaje del movimiento del cursor
     const scrollPercent = mouseX / containerWidth;
 
-    // Definir un factor de velocidad
-    const speedFactor = 1.5;  // Aumenta este valor para mayor velocidad
+    const speedFactor = 2; 
 
-    // Calcular el desplazamiento horizontal ajustado por la velocidad
     const scrollPosition = (carouselWidth - containerWidth) * scrollPercent * speedFactor;
 
-    // Aplicar el desplazamiento horizontal al carrusel
     carousel.scrollLeft = scrollPosition;
 });
 

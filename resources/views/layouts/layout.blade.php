@@ -38,7 +38,7 @@
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}"
                                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                        Registrase
+                                        Registrarse
                                     </a>
                                 @endif
                             @else
@@ -179,15 +179,9 @@
                                 <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_nosotros' }}">Nosotros</a></li>
                                 <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_metodos_pago' }}">Métodos de Pago</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_tienda' }}">Tienda</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_torneos' }}">Torneos</a></li>
                                 <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_eventos' }}">Eventos</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_categorias' }}">Categorías</a></li>
                             </ul>
                         </div>
                         <div class="w-full lg:w-4/12 px-4 py-5">
