@@ -14,7 +14,7 @@
                 <div class="lg:w-2/3 flex flex-col space-y-4 w-full">
                     <!-- Información personal -->
                     <div class="rounded-lg shadow-xl p-8 bg-gray-500">
-                        <h4 class="text-[30px] text-gray-900 font-bold">Victoria Legendaria</h4>
+                        <h4 class="text-[30px] text-gray-900 font-bold">Desafío del Guerrero Legendario</h4>
                         <ul class="mt-2 text-black">
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Administrador</span>
@@ -26,19 +26,19 @@
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Recompensa</span>
-                                <span class="text-gray-100">Tarjeta de regalo de Steam - 50 soles</span>
+                                <span class="text-gray-100">Black Myth: Wukong</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Juego</span>
-                                <span class="text-gray-100">League of Legends</span>
+                                <span class="text-gray-100">Left 4 dead 2</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Fecha-Inicio:</span>
-                                <span class="text-gray-100">12/11/2024</span>
+                                <span class="text-gray-100">08/12/2024</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Fecha-Fin</span>
-                                <span class="text-gray-100">20/11/2024</span>
+                                <span class="text-gray-100">20/12/2024</span>
                             </li>
                         </ul>
                     </div>
@@ -47,7 +47,7 @@
             <!-- Descripción -->
             <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 xl:w-[70%] lg:w-[70%] md:w-[70%]">
-                    <h4 class="text-xl text-gray-900 font-bold">Detalles del Torneo:</h4>
+                    <h4 class="text-xl text-gray-900 font-bold">Reglas del evento:</h4>
                     <p id="texto">Eliminación doble. Modalidad: 5 vs 5. Mapas: Grieta del Invocador. Equipos de 5
                         jugadores (+2 suplentes opcionales). Nivel mínimo de cuenta: 30. Campeones desbloqueados: Mínimo 20.
                         Todas las partidas serán supervisadas a través de Discord.</p>

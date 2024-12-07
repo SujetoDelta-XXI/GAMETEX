@@ -47,7 +47,7 @@
             <!-- Descripción -->
             <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 xl:w-[70%] lg:w-[70%] md:w-[70%]">
-                    <h4 class="text-xl text-gray-900 font-bold">Detalles del Torneo:</h4>
+                    <h4 class="text-xl text-gray-900 font-bold">Reglas del torneo:</h4>
                     <p id="texto">Eliminación doble. Modalidad: 5 vs 5. Mapas: Grieta del Invocador. Equipos de 5
                         jugadores (+2 suplentes opcionales). Nivel mínimo de cuenta: 30. Campeones desbloqueados: Mínimo 20.
                         Todas las partidas serán supervisadas a través de Discord.</p>
