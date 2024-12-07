@@ -179,15 +179,9 @@
                                 <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_nosotros' }}">Nosotros</a></li>
                                 <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_metodos_pago' }}">Métodos de Pago</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_tienda' }}">Tienda</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_torneos' }}">Torneos</a></li>
                                 <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                                         href="{{ 'f_eventos' }}">Eventos</a></li>
-                                <li><a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                        href="{{ 'f_categorias' }}">Categorías</a></li>
                             </ul>
                         </div>
                         <div class="w-full lg:w-4/12 px-4 py-5">

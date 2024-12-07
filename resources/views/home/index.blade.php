@@ -71,9 +71,6 @@
                             <x-slot name="titulo">
                                 Desafío del Guerrero Legendario
                             </x-slot>
-                            <x-slot name="enlace">
-                                /login
-                            </x-slot>
                         </x-home.evento_card>
 
                         <!--Evento 2-->
@@ -88,9 +85,6 @@
                             <x-slot name="titulo">
                                 Concurso de Creadores de Estrategias
                             </x-slot>
-                            <x-slot name="enlace">
-                                /login
-                            </x-slot>
                         </x-home.evento_card>
 
                         <!--Evento 3-->
@@ -103,9 +97,6 @@
                             </x-slot>
                             <x-slot name="titulo">
                                 Evento del Fin de Semana Épico
-                            </x-slot>
-                            <x-slot name="enlace">
-                                /login
                             </x-slot>
                         </x-home.evento_card>
                     </div>
@@ -172,7 +163,7 @@
                                 </a>
                             </div>
                             <!-- Imagen 7 -->
-                            <div class="inline-block px-3 h-[110%]" data-juego="Dragon Ball Fighters Z">
+                            <div class="inline-block px-3 h-[110%]" data-juego="Dragon Ball Fighter Z">
                                 <a href="#">
                                     <img class="w-30 h-[100%] max-w-xs rounded-lg shadow-md bg-white hover:shadow-xl transition-transform duration-300 ease-in-out border-4 border-yellow-500 transform hover:scale-110"
                                         src="https://image.api.playstation.com/cdn/UP0700/CUSA09072_00/2eBPISxxvTv5foYSDlqiBJfmRj5LZxv3.png"
