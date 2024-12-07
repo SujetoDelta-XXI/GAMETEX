@@ -30,18 +30,18 @@ Route::get('usuarios', function () {
     return view('usuarios');
 });
 
-Route::middleware([
+/* Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
     'auth.user'
 ])->group(function () {
-/*     Route::get('/dashboard', function () {
+    Route::get('/dashboard', function () {
         return view('dashboard');
         
-    })->name('dashboard'); */
-   /*  Route::get('dashboard', [UserDashController::class, 'index'])->name('dashboard'); */
-});
+    })->name('dashboard');
+    Route::get('dashboard', [UserDashController::class, 'index'])->name('dashboard');
+}); */
 
 Route::post('/login', [LoginController::class, 'login'])
     ->name('login.attempt');
@@ -59,7 +59,8 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('profile-show', [UserDashController::class, 'show'])->name('profile-show');
     Route::get('users-torneos', [UserDashController::class, 'torneos'])->name('users-torneos');
     Route::get('users-recompensas', [RecompensaController::class, 'showUserRecompensas'])->name('users-recompensas');
-    Route::post('recompensa/updateEstado', [RecompensaController::class, 'updateEstado'])->name('recompensa.updateEstado');    Route::get('users-perfil', [UserDashController::class, 'perfil'])->name('users-perfil');
+    Route::post('recompensa/updateEstado', [RecompensaController::class, 'updateEstado'])->name('recompensa.updateEstado');  
+    Route::get('users-perfil', [UserDashController::class, 'index'])->name('users-perfil');
     Route::get('users-eventos', [UserDashController::class, 'eventos'])->name('users-eventos');
 
     Route::get('torneos-panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');

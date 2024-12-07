@@ -21,6 +21,7 @@ class TorneosController extends Controller
     public function register()
     {
         $this->middleware('auth.user');
+        
         return view('torneos.register_torneos');
     }
 }
