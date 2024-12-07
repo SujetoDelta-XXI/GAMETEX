@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 namespace App\Http\Controllers\admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\AdminModel;
 use App\Models\ModerModel;
+use App\Models\RecompensasModel;
 use App\Models\RecompensasTipoModel;
 use App\Models\TorneosJuegoModel;
 use App\Models\torneoModel;
+use App\Models\TorneosModel;
 use Illuminate\Http\Request;
 use Discord\Discord;
 
@@ -29,59 +32,69 @@ class AtorneoController extends Controller
     public function create()
     {
         $moderadores = ModerModel::all();
-        $recompensasTipos = RecompensasTipoModel::all();
+        $administradores = AdminModel::all();
+        $recompensas = RecompensasModel::all();
         $juegos = TorneosJuegoModel::all();
 
-        return view('admin.crud.torneoCreate', compact('moderadores', 'recompensasTipos', 'juegos'));
+        return view('admin.crud.torneoCreate', compact('moderadores', 'administradores', 'recompensas', 'juegos'));
     }
 
+    // Método para manejar el almacenamiento de datos
     public function store(Request $request)
     {
-        try {
-            $request->validate([
-                'nombre' => 'required|string|max:255',
-                'fecha_inicio' => 'date',
-                'fecha_fin' => 'date',
-                'entrada' => 'required|numeric',
-                'exp' => 'string',
-                'descripcion' => 'string',
-                'torneo_juego_id' => 'required|exists:torneos_juegos,id',
-                'recompensas_tipo_id' => 'required|exists:recompensas_tipo,id',
-                'moderador_id' => 'required|exists:moders,id',
-                'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:6048',
-            ]);
-    
-            $rutaImagen = null;
-            if ($request->hasFile('imagen')) {
-                $rutaImagen = $request->file('imagen')->store('imagenes_torneos', 'public');
-            }
-    
-            $recompensa = RecompensasTipoModel::find($request->recompensas_tipo_id);
-            if ($recompensa) {
-                $recompensa->cantidad -= $request->recompensas_cantidad;
-                $recompensa->save();
-            }
-    
-            $torneo = new TorneoModel();
-            $torneo->nombre = $request->nombre;
-            $torneo->fecha_inicio = $request->fecha_inicio;
-            $torneo->fecha_fin = $request->fecha_fin;
-            $torneo->entrada = $request->entrada;
-            $torneo->exp = $request->exp;
-            $torneo->descripcion = $request->descripcion;
-            $torneo->torneo_juego_id = $request->torneo_juego_id;
-            $torneo->recompensas_id = $recompensa->id;
-            $torneo->moderador_id = $request->moderador_id;
-            $torneo->administrador_id = auth()->id();
-            $torneo->imagen = $rutaImagen;
-            $this->crearCanalDiscord($torneo);
-            $torneo->save();
+        // Validar la solicitud
+        $this->validateRequest($request);
 
-            return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
-        } catch (\Exception $e) {
-            return back()->withErrors(['error' => $e->getMessage()]);
+        // Crear una nueva instancia de Torneo
+        $torneo = new TorneosModel();
+        $this->assignTorneoAttributes($torneo, $request);
+        
+        // Guardar el torneo
+        $torneo->save();
+
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente');
+    }
+
+    // Método para validar la solicitud
+    private function validateRequest($request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'moderator' => 'nullable|integer|exists:moders,id',  // Permitir que moderador sea opcional
+            'administrator' => 'required|integer|exists:admins,id',
+            'description' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'reward' => 'required|integer|exists:recompensas,id',
+            'game' => 'required|integer|exists:torneos_juegos,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    }
+
+    // Método para asignar atributos al modelo de Torneo
+    private function assignTorneoAttributes($torneo, $request)
+    {
+        $torneo->nombre = $request->name;
+        $torneo->moderador_id = $request->moderator ?? null;  // Asignar null si no se proporciona
+        $torneo->administrador_id = $request->administrator;
+        $torneo->descripcion = $request->description;
+        $torneo->fecha_inicio = $request->start_date;
+        $torneo->fecha_fin = $request->end_date;
+        $torneo->recompensas_id = $request->reward;
+        $torneo->torneo_juego_id = $request->game;
+
+        // Asumimos que el campo 'entrada' es null por defecto
+        $torneo->entrada = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/eventos');
+            $torneo->imagen = $imagePath;
+        } else {
+            $torneo->imagen = null;
         }
     }
+
     
 
 
@@ -114,7 +127,7 @@ class AtorneoController extends Controller
             }
         });
 
-        $discord->run(); // Ejecuta el bot
+        $discord->run(); 
     }
 
 
