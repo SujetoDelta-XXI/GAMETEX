@@ -12,7 +12,7 @@
                         {{ $torneo->imagen }}
                     </x-slot>
                     <x-slot name="nombre">
-                    {{ $torneo->imagen }}
+                    {{ $torneo->torneoJuego->nombre }}
                     </x-slot>
                     <x-slot name="descripcion">
                         {{ $torneo->descripcion }}
