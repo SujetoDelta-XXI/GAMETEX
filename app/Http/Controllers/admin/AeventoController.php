@@ -49,11 +49,6 @@ class AeventoController extends Controller
             $rutaImagen = $request->file('imagen')->store('imagenes_eventos', 'public');
         }
 
-        $recompensa = RecompensasModel::find($request->recompensa_id);
-        if ($recompensa && $request->recompensas_cantidad > 0) {
-            $recompensa->cantidad -= $request->recompensas_cantidad;
-            $recompensa->save();
-        }
 
         $evento = new eventosModel();
         $evento->nombre = $request->nombre;

@@ -18,7 +18,10 @@ use App\Http\Controllers\ProfilePhotoController;
 use App\Http\Controllers\admin\RecompensasController;
 use App\Http\Controllers\admin\UsuariosController;
 use App\Http\Controllers\user\RecompensaController;
-use App\Http\Controllers\eventos\RegistroEventController;
+
+use App\Http\Controllers\EventoController;
+use App\Http\Controllers\eventos\PanelEventController;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\QuickLoginController;
 
@@ -70,7 +73,10 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('torneos-equipos', [PanelTorneoController::class, 'equipo'])->name('torneos-equipos');
 
     Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register');
-    Route::get('eventos-register', [RegistroEventController::class, 'index'])->name('evento-register');
+    Route::get('eventos-register', [EventoController::class, 'register'])->name('eventos-register');
+
+    Route::get('eventos-detalle', [PanelEventController::class, 'detalle'])->name('evento-detalle');
+    Route::get('eventos-ranking', [PanelEventController::class, 'ranking'])->name('evento-ranking');
 });
 
 ///////////////////////////////////////////////////////////////////////////
