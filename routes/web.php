@@ -73,6 +73,7 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('torneos-equipos', [PanelTorneoController::class, 'equipo'])->name('torneos-equipos');
 
     Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register');
+    Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
     Route::get('eventos-register', [EventoController::class, 'register'])->name('eventos-register');
 
     Route::get('eventos-detalle', [PanelEventController::class, 'detalle'])->name('evento-detalle');

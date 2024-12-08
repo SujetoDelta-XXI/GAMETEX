@@ -14,14 +14,24 @@ class TorneosController extends Controller
 
         // Filtrar los torneos por juego si se seleccionó uno
         $torneos = TorneosModel::all();
-
+        /* dump('paso por index'); */
+        
         return view('torneos.index', compact('torneos', 'gameFilter'));
     }
-
+    
     public function register()
     {
+        /* dump('paso por register'); */
         $this->middleware('auth.user');
         
         return view('torneos.register_torneos');
+    }
+    
+    public function registerId($id)
+    {
+        /* dump('paso por registerId'); */
+        $this->middleware('auth.user');
+        $torneo = TorneosModel::find($id);
+        return view('/torneos.register_torneos', compact('torneo'));
     }
 }
