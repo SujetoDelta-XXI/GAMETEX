@@ -3,7 +3,7 @@
     <div class="flex justify-center items-center min-h-screen bg-gray-800">
         <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6 hide-scroll-bar xl:w-[80%] mx-10">
             <div class="lg:w-1/2 block sm:hidden mb-4">
-                <img src="{{ asset('torneos_img/lol1.jpeg') }}" class="h-full object-cover rounded-lg">
+                <img src="/storage/{{ $torneo->imagen }}" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
                 <!-- Imagen a la izquierda -->
@@ -34,11 +34,11 @@
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Fecha-Inicio:</span>
-                                <span class="text-gray-100">{{ \Carbon\Carbon::parse($torneo->fecha_inicio)->format('d/m/Y') }}</span>
+                                <span class="text-gray-100">{{ \Carbon\Carbon::parse($torneo->fecha_inicio)->format('j M, Y') }}</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Fecha-Fin</span>
-                                <span class="text-gray-100">{{ \Carbon\Carbon::parse($torneo->fecha_fin)->format('d/m/Y')}}</span>
+                                <span class="text-gray-100">{{ \Carbon\Carbon::parse($torneo->fecha_fin)->format('j M, Y')}}</span>
                             </li>
                         </ul>
                     </div>
@@ -69,7 +69,7 @@
                                 required autocomplete="new-password" />
                         </div>
                         <div class="flex items-center justify-end mt-4">
-                            <a class="flex items-center justify-end text-white hover:text-gray-400" href="f_torneos">
+                            <a class="flex items-center justify-end text-white hover:text-gray-400" href="/f_torneos">
                                 {{ __('¿Necesitas Ayuda?') }}
                             </a>
                             <x-button class="ms-4 bg-gray-900 hover:bg-black">
