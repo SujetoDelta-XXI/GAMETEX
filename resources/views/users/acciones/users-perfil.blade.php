@@ -23,8 +23,8 @@
                         <span class="text-gray-100">{{ $usuario->name }}</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
-                        <span class="font-bold">{{ $usuario->email }}</span>
-                        <span class="text-gray-100">carlos123@gmail.com</span>
+                        <span class="font-bold">Correo electronico:</span>
+                        <span class="text-gray-100">{{ $usuario->email }}/span>
                     </li>
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Fecha de creación de cuenta:</span>

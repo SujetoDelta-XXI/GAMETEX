@@ -48,8 +48,8 @@
             <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 xl:w-[70%] lg:w-[70%] md:w-[70%]">
                     <h4 class="text-xl text-gray-900 font-bold">Reglas del evento:</h4>
-                    <p id="texto">Eliminación doble. Modalidad: 5 vs 5. Mapas: Grieta del Invocador. Equipos de 5
-                        jugadores (+2 suplentes opcionales). Nivel mínimo de cuenta: 30. Campeones desbloqueados: Mínimo 20.
+                    <p id="texto">Solo se cuenta la actividad en torneos de Left 4 Dead 2. Los primeros 3 en el ranking reciben el
+                        premio. El puntaje se obtiene de forma individual, no se considera la participación del equipo.
                         Todas las partidas serán supervisadas a través de Discord.</p>
                 </div>
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 hidden sm:block">
