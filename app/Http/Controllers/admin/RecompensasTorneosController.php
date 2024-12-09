@@ -15,11 +15,10 @@ class RecompensasTorneosController extends Controller
     {
         $recompensa = RecompensasModel::findOrFail($id);
         $torneos = TorneosHasUsuariosModel::with(['torneo', 'torneo.torneoJuego', 'equipo'])->get();
-        $torneosJuegos = torneoJuegoModel::all();
+        $torneosJuegos = TorneosJuegoModel::all();
 
         return view('admin.crud.recompensasTorneos', compact('recompensa', 'torneos', 'torneosJuegos'));
     }
-
     public function searchTorneo(Request $request)
     {
         $searchTerm = $request->input('searchTerm');
@@ -47,9 +46,9 @@ class RecompensasTorneosController extends Controller
         $equipos = TorneosHasUsuariosModel::where('torneo_id', $id)
             ->with('equipo.usuarios')
             ->get()
-            ->pluck('equipo')
-            ->unique();
+            ->groupBy('equipo_id');
 
         return response()->json($equipos);
     }
+    
 }

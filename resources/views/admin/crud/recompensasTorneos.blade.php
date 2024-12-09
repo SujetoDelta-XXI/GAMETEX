@@ -57,10 +57,10 @@
                     </div>
                     <!-- Sección de 50% de Anchura Derecha -->
                     <div class="w-1/2 p-4">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Detalles del Equipo</h3>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Detalles de los Equipos</h3>
                         <div id="detalle-torneo" class="text-center text-gray-500 dark:text-gray-400">
-                            <!-- Detalles del equipo se mostrarán aquí -->
-                            Selecciona un torneo y haz clic en "Consultar" para ver más detalles del equipo.
+                            <!-- Los detalles de los equipos se mostrarán aquí -->
+                            Selecciona un torneo y haz clic en "Consultar" para ver los equipos.
                         </div>
                     </div>
                 </div>
@@ -74,83 +74,6 @@
             const searchFilter = document.getElementById('search-filter');
             const searchResults = document.getElementById('search-results');
             const detalleTorneo = document.getElementById('detalle-torneo');
-
-            // Filtrado dinámico
-            searchInput.addEventListener('input', function() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const filterType = searchFilter.value;
-
-                fetch(`/admin/crud/recompensas/torneos/search?searchTerm=${encodeURIComponent(searchTerm)}&filterType=${encodeURIComponent(filterType)}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        searchResults.innerHTML = '';
-                        if (data.length === 0) {
-                            const noResults = document.createElement('tr');
-                            noResults.classList.add('bg-white', 'dark:bg-gray-800');
-                            noResults.innerHTML = '<td colspan="3" class="px-4 py-2">No se encontraron resultados.</td>';
-                            searchResults.appendChild(noResults);
-                        } else {
-                            data.forEach(result => {
-                                const tr = document.createElement('tr');
-                                tr.classList.add('bg-white', 'border-b', 'dark:bg-gray-800', 'dark:border-gray-700', 'hover:bg-gray-100', 'dark:hover:bg-gray-700');
-                                tr.innerHTML = `<td class="px-4 py-2">${result.torneo.nombre}</td><td class="px-4 py-2">${result.torneo.torneoJuego.nombre}</td><td class="px-4 py-2"><button class="btn-consultar" data-torneo-id="${result.torneo.id}">Consultar</button></td>`;
-                                searchResults.appendChild(tr);
-                            });
-
-                            // Asignar eventos a los botones "Consultar"
-                            document.querySelectorAll('.btn-consultar').forEach(button => {
-                                button.addEventListener('click', function() {
-                                    const torneoId = this.getAttribute('data-torneo-id');
-                                    consultarEquipos(torneoId);
-                                });
-                            });
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            });
-
-            // Función para consultar y mostrar los equipos asociados a un torneo
-            function consultarEquipos(torneoId) {
-                fetch(`/admin/crud/recompensas/torneos/${torneoId}/equipos`)
-                    .then(response => response.json())
-                    .then(data => {
-                        detalleTorneo.innerHTML = '';
-                        if (data.length === 0) {
-                            detalleTorneo.innerHTML = '<p>No se encontraron equipos para este torneo.</p>';
-                        } else {
-                            data.forEach(equipo => {
-                                const equipoContainer = document.createElement('div');
-                                equipoContainer.classList.add('equipo-container', 'mb-4');
-
-                                const equipoHeader = document.createElement('div');
-                                equipoHeader.classList.add('equipo-header', 'p-2', 'bg-gray-100', 'dark:bg-gray-700', 'cursor-pointer');
-                                equipoHeader.textContent = equipo.nombre;
-                                equipoHeader.addEventListener('click', function() {
-                                    const equipoDetails = this.nextElementSibling;
-                                    equipoDetails.classList.toggle('hidden');
-                                });
-
-                                const equipoDetails = document.createElement('div');
-                                equipoDetails.classList.add('equipo-details', 'hidden', 'p-4', 'bg-gray-50', 'dark:bg-gray-800', 'border', 'border-gray-300', 'dark:border-gray-600');
-
-                                const usuariosList = document.createElement('ul');
-                                usuariosList.classList.add('list-disc', 'list-inside');
-
-                                equipo.usuarios.forEach(usuario => {
-                                    const li = document.createElement('li');
-                                    li.textContent = usuario.nombre;
-                                    usuariosList.appendChild(li);
-                                });
-
-                                equipoDetails.appendChild(usuariosList);
-                                equipoContainer.appendChild(equipoHeader);
-                                equipoContainer.appendChild(equipoDetails);
-                                detalleTorneo.appendChild(equipoContainer);
-                            });
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
 
             // Filtrado por Juego en el dropdown
             searchFilter.addEventListener('change', function() {
@@ -181,50 +104,42 @@
 
             // Función para consultar y mostrar los equipos asociados a un torneo
             function consultarEquipos(torneoId) {
+                console.log('Consultar Equipos para Torneo ID:', torneoId);
                 fetch(`/admin/crud/recompensas/torneos/${torneoId}/equipos`)
-                    .then(response => response.json())
+                    .then(response => {
+                        console.log('Respuesta recibida:', response);
+                        return response.json();
+                    })
                     .then(data => {
+                        console.log('Datos recibidos:', data);
                         detalleTorneo.innerHTML = '';
                         if (data.length === 0) {
                             detalleTorneo.innerHTML = '<p>No se encontraron equipos para este torneo.</p>';
                         } else {
                             data.forEach(equipo => {
-                                const equipoContainer = document.createElement('div');
-                                equipoContainer.classList.add('equipo-container', 'mb-4');
-
-                                const equipoHeader = document.createElement('div');
-                                equipoHeader.classList.add('equipo-header', 'p-2', 'bg-gray-100', 'dark:bg-gray-700', 'cursor-pointer');
-                                equipoHeader.textContent = equipo.nombre;
-                                equipoHeader.addEventListener('click', function() {
-                                    const equipoDetails = this.nextElementSibling;
-                                    equipoDetails.classList.toggle('hidden');
-                                });
-
-                                const equipoDetails = document.createElement('div');
-                                equipoDetails.classList.add('equipo-details', 'hidden', 'p-4', 'bg-gray-50', 'dark:bg-gray-800', 'border', 'border-gray-300', 'dark:border-gray-600');
-
-                                const usuariosList = document.createElement('ul');
-                                usuariosList.classList.add('list-disc', 'list-inside');
-
-                                equipo.usuarios.forEach(usuario => {
-                                    const li = document.createElement('li');
-                                    li.textContent = usuario.nombre;
-                                    usuariosList.appendChild(li);
-                                });
-
-                                equipoDetails.appendChild(usuariosList);
-                                equipoContainer.appendChild(equipoHeader);
-                                equipoContainer.appendChild(equipoDetails);
-                                detalleTorneo.appendChild(equipoContainer);
+                                const equipoCard = document.createElement('div');
+                                equipoCard.classList.add('p-4', 'mb-4', 'bg-white', 'dark:bg-gray-800', 'shadow', 'rounded-lg');
+                                equipoCard.textContent = equipo.nombre;
+                                detalleTorneo.appendChild(equipoCard);
                             });
                         }
                     })
-                    .catch(error => console.error('Error:', error));
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             }
+
+            // Asignar eventos a los botones "Consultar"
+            document.querySelectorAll('.btn-consultar').forEach(button => {
+                button.addEventListener('click', function() {
+                    const torneoId = this.getAttribute('data-torneo-id');
+                    console.log('Botón Consultar clickeado para Torneo ID:', torneoId);
+                    consultarEquipos(torneoId);
+                });
+            });
 
             // Inicializar el filtro de juegos
             searchFilter.dispatchEvent(new Event('change'));
         });
     </script>
 @endsection
-
