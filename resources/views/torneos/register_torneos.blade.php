@@ -55,7 +55,7 @@
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 hidden sm:block">
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
-                    <form method="POST" action="#">
+                    <form method="GET" action="/users-torneos"> <!-- Modificar a post -->
                         @csrf
                         <div>
                             <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
@@ -83,7 +83,7 @@
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 sm:block">
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
-                    <form method="POST" action="#">
+                    <form method="GET" action="users-torneos"> <!-- Modificar a post -->
                         @csrf
                         <div>
                             <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />

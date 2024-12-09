@@ -24,11 +24,11 @@
                     </li>
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Correo electronico:</span>
-                        <span class="text-gray-100">{{ $usuario->email }}/span>
+                        <span class="text-gray-100">{{ $usuario->email }}</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Fecha de creación de cuenta:</span>
-                        <span class="text-gray-100">12/11/2024</span>
+                        <span class="text-gray-100">{{ \Carbon\Carbon::parse($usuario->created_at)->format('j M, Y') }}</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Estado:</span>
