@@ -10,22 +10,6 @@
         {{-- Mostrar errores de validación --}}
         <x-validation-errors class="mb-4" />
 
-        {{-- Mostrar mensaje de estado si existe --}}
-        @if (session('error'))
-            <div class="mb-4 font-medium text-sm text-red-600">
-                {{ session('error') }}
-            </div>
-        @endif
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
         <form method="POST" action="{{ route('login') }}" class="mr-5">
             @csrf
 
