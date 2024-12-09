@@ -33,43 +33,52 @@ class AtorneoController extends Controller
     {
         $moderadores = ModerModel::all();
         $administradores = AdminModel::all();
-        $recompensas = RecompensasModel::all();
         $juegos = TorneosJuegoModel::all();
+        $recompensas = RecompensasModel::with('tipo')->get(); // Obtener recompensas con sus tipos
 
-        return view('admin.crud.torneoCreate', compact('moderadores', 'administradores', 'recompensas', 'juegos'));
+        return view('admin.crud.torneoCreate', compact('moderadores', 'administradores', 'juegos', 'recompensas'));
     }
 
-    // Método para manejar el almacenamiento de datos
     public function store(Request $request)
     {
-        // Validar la solicitud
-        $this->validateRequest($request);
 
-        // Crear una nueva instancia de Torneo
+
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'moderador' => 'required|exists:moders,id',
+            'administrador' => 'required|exists:admins,id',
+            'descripcion' => 'required|string',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date|after:fecha_inicio',
+            'recompensas_id' => 'required|exists:recompensas,id', // Cambio aquí
+            'juego' => 'required|exists:torneos_juegos,id',
+            'reglas' => 'required|string',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        // Crear el nuevo torneo
         $torneo = new TorneosModel();
-        $this->assignTorneoAttributes($torneo, $request);
-        
-        // Guardar el torneo
+        $torneo->nombre = $request->nombre;
+        $torneo->moderador_id = $request->moderador;
+        $torneo->administrador_id = $request->administrador;
+        $torneo->descripcion = $request->descripcion;
+        $torneo->fecha_inicio = $request->fecha_inicio;
+        $torneo->fecha_fin = $request->fecha_fin;
+        $torneo->recompensas_id = $request->recompensas_id; // Cambio aquí
+        $torneo->torneo_juego_id = $request->juego;
+        $torneo->reglas = $request->reglas;
+
+        // Guardar la imagen de fondo si se ha cargado una
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $nombreImagen = time().'.'.$imagen->extension();
+            $imagen->move(public_path('images'), $nombreImagen);
+            $torneo->imagen = $nombreImagen;
+        }
+
         $torneo->save();
 
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente');
-    }
-
-    // Método para validar la solicitud
-    private function validateRequest($request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'moderator' => 'nullable|integer|exists:moders,id',  // Permitir que moderador sea opcional
-            'administrator' => 'required|integer|exists:admins,id',
-            'description' => 'required|string',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
-            'reward' => 'required|integer|exists:recompensas,id',
-            'game' => 'required|integer|exists:torneos_juegos,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
     }
 
     // Método para asignar atributos al modelo de Torneo

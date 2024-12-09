@@ -18,13 +18,15 @@ class RecompensasModel extends Model
         'clave_producto',
         'precio',
         'recompensa_tipo_id',
+        'asignada',
         'torneo_id',
         /* 'evento_id', */
     ];
 
     protected $cast = [
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
+        'asignada'=>'boolean',
     ];
 
 

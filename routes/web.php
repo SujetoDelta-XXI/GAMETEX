@@ -20,8 +20,10 @@ use App\Http\Controllers\admin\UsuariosController;
 use App\Http\Controllers\user\RecompensaController;
 
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\admin\RecompensasTorneosController;
 use App\Http\Controllers\eventos\PanelEventController;
 
+use App\Models\RecompensasModel;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\QuickLoginController;
 use App\Http\Controllers\UserDiscordController;
@@ -114,9 +116,15 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('recompensas', [RecompensasController::class, 'showListado'])->name('recompensas');
         Route::post('recompensa/store', [RecompensasController::class, 'store'])->name('recompensa.store');
         Route::post('recompensa', [RecompensasController::class, 'store'])->name('recompensa.store');
+        Route::post('/recompensas/asignar', [RecompensaController::class, 'asignar'])->name('asignar');
         Route::get('recompensa/{id}/edit', [RecompensasController::class, 'edit'])->name('recompensa.edit');
         Route::put('recompensa/{id}', [RecompensasController::class, 'update'])->name('recompensa.update');
         Route::delete('recompensa/{id}', [RecompensasController::class, 'delete'])->name('recompensa.delete');
+        Route::get('/recompensas/eventos/{id}', [RecompensasController::class, 'showEvento'])->name('recompensasEventos');
+        Route::get('/recompensas/torneos/{id}', [RecompensasTorneosController::class, 'showTorneo'])->name('recompensasTorneos');
+        Route::get('/recompensas/torneos/search', [RecompensasTorneosController::class, 'searchTorneo'])->name('searchTorneo');
+        Route::get('/recompensas/torneos/{id}/equipos', [RecompensasTorneosController::class, 'getEquipos'])->name('getEquipos');
+
 
         Route::get('usuarios', [UsuariosController::class, 'showListado'])->name('usuarios');
         Route::post('/usuario/detalles', [UsuariosController::class, 'getUsuarioDetalles'])->name('usuario.detalles');
