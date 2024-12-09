@@ -6,15 +6,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
 
-class RegistroEventController extends Controller
+class PanelEventController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth.user'); 
     }
 
-    public function index()
+    public function detalle()
     {
-        return view('eventos.register-event');
+        return view('eventos.panel.detalle');
+    }
+
+    public function ranking()
+    {
+        return view('eventos.panel.ranking');
     }
 }

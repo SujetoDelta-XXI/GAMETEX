@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
 /*         $this->call([ TorneosHasUsuariosSeeder::class ]); */
 /*         $this->call([ EquiposModelSeeder::class ]); */
         EquiposModel::factory(500)->create();
-        TorneosHasUsuariosModel::factory(30)->create();
+        TorneosHasUsuariosModel::factory(100)->create();
         $recompensas = RecompensasModel::factory(30)->create();
         $recompensas = UsuariosHasRecompensasModel::factory(30)->create();
         $this->call([ FasesModelSeeder::class ]);

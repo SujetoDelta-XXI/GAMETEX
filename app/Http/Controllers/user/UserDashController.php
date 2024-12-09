@@ -7,6 +7,7 @@ use App\Models\RecompensasModel;
 use App\Models\TorneosModel;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
+use Illuminate\Support\Facades\DB;
 
 class UserDashController extends Controller
 {
@@ -14,15 +15,25 @@ class UserDashController extends Controller
     {
         $this->middleware('auth.user'); 
     } */
-
-    public function index()
-    {
+   public function userLog(){
         $usuario = Auth::guard('user')->user();
         if (!$usuario) {
             abort(403, 'No autorizado');
         }
-        
+        return [
+            'usuario' => $usuario,
+            'id' => $usuario->id,
+        ];
+   }
 
+    public function index()
+    {
+/*         $usuario = Auth::guard('user')->user();
+        if (!$usuario) {
+            abort(403, 'No autorizado');
+        } */
+        
+        $usuario = $this->userLog()['usuario'];
         return view('users.acciones.users-perfil', compact('usuario'));
     }
 
@@ -38,10 +49,20 @@ class UserDashController extends Controller
 
     public function torneos()
     {
+        $userId = $this->userLog()['id'];
         $fechaActual = \Carbon\Carbon::now();
+        
 
-        $torneosConcluidos = TorneosModel::where('fecha_fin', '<', $fechaActual)->get();
-        $torneosActivos = TorneosModel::where('fecha_fin', '>=', $fechaActual)->get();
+        
+        $torneosConcluidos = UserModel::find($userId)
+        ->torneos()
+        ->where('fecha_fin', '<', $fechaActual)
+        ->get();
+    
+        $torneosActivos = UserModel::find($userId)
+        ->torneos()
+        ->where('fecha_fin', '>=', $fechaActual)
+        ->get();
 
         return view('users.acciones.users-torneos', compact('torneosConcluidos', 'torneosActivos'));
     }

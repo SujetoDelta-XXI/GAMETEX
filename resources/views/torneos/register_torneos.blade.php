@@ -3,42 +3,42 @@
     <div class="flex justify-center items-center min-h-screen bg-gray-800">
         <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6 hide-scroll-bar xl:w-[80%] mx-10">
             <div class="lg:w-1/2 block sm:hidden mb-4">
-                <img src="{{ asset('torneos_img/lol1.jpeg') }}" class="h-full object-cover rounded-lg">
+                <img src="/storage/{{ $torneo->imagen }}" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
                 <!-- Imagen a la izquierda -->
                 <div class="lg:w-1/2 sm:block hidden">
-                    <img src="{{ asset('torneos_img/lol1.jpeg') }}" class="h-full object-cover rounded-lg">
+                    <img src="/storage/{{ $torneo->imagen }}" class="h-full object-cover rounded-lg">
                 </div>
 
                 <div class="lg:w-2/3 flex flex-col space-y-4 w-full">
                     <!-- Información personal -->
                     <div class="rounded-lg shadow-xl p-8 bg-gray-500">
-                        <h4 class="text-[30px] text-gray-900 font-bold">Victoria Legendaria</h4>
+                        <h4 class="text-[30px] text-gray-900 font-bold">{{ $torneo->nombre }}</h4>
                         <ul class="mt-2 text-black">
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Administrador</span>
-                                <span class="text-gray-100">Carlos Alfonso Asparrin Martin</span>
+                                <span class="text-gray-100">{{ $torneo->administrador->name }}</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Moderador</span>
-                                <span class="text-gray-100">Miguel Amauta</span>
+                                <span class="text-gray-100">{{$torneo->moderador->name}}</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Recompensa</span>
-                                <span class="text-gray-100">Tarjeta de regalo de Steam - 50 soles</span>
+                                <span class="text-gray-100">{{$torneo->recompensa->nombre}}</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Juego</span>
-                                <span class="text-gray-100">League of Legends</span>
+                                <span class="text-gray-100">{{$torneo->torneoJuego->nombre}}</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Fecha-Inicio:</span>
-                                <span class="text-gray-100">12/11/2024</span>
+                                <span class="text-gray-100">{{ \Carbon\Carbon::parse($torneo->fecha_inicio)->format('j M, Y') }}</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Fecha-Fin</span>
-                                <span class="text-gray-100">20/11/2024</span>
+                                <span class="text-gray-100">{{ \Carbon\Carbon::parse($torneo->fecha_fin)->format('j M, Y')}}</span>
                             </li>
                         </ul>
                     </div>
@@ -55,7 +55,7 @@
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 hidden sm:block">
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
-                    <form method="POST" action="#">
+                    <form method="GET" action="/users-torneos"> <!-- Modificar a post -->
                         @csrf
                         <div>
                             <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
@@ -69,7 +69,7 @@
                                 required autocomplete="new-password" />
                         </div>
                         <div class="flex items-center justify-end mt-4">
-                            <a class="flex items-center justify-end text-white hover:text-gray-400" href="f_torneos">
+                            <a class="flex items-center justify-end text-white hover:text-gray-400" href="/f_torneos">
                                 {{ __('¿Necesitas Ayuda?') }}
                             </a>
                             <x-button class="ms-4 bg-gray-900 hover:bg-black">
@@ -83,7 +83,7 @@
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 sm:block">
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
-                    <form method="POST" action="#">
+                    <form method="GET" action="users-torneos"> <!-- Modificar a post -->
                         @csrf
                         <div>
                             <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />

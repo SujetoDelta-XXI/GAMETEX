@@ -26,7 +26,7 @@
                     class="flex flex-col w-full h-auto md:hidden">
                     <div class="flex flex-col items-center justify-center gap-2 py-4">
                         <a href="{{ '/' }}">Inicio</a>
-                        <a href="{{ 'torneos' }}">Torneos</a>
+                        <a href="{{'torneos'}}">Torneos</a>
                     </div>
                     <div class="flex flex-col items-center justify-center gap-2 py-2">
                         @if (Route::has('login'))
@@ -71,7 +71,7 @@
                 </div>
                 <div class="hidden w-1/5 items-center justify-evenly font-semibold md:flex">
                     <a href="{{ '/' }}">Inicio</a>
-                    <a class="pl-10" href="{{ 'torneos' }}">Torneos</a>
+                    <a class="pl-10" href="/torneos">Torneos</a>
                     <a class="pl-10" href="{{ 'torneos-panel' }}">Panel</a>
                 </div>
                 <div class="hidden w-1/5 items-center justify-evenly font-semibold md:flex mr-[50px]">

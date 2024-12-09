@@ -1,6 +1,6 @@
-@extends('torneos.dashboard')
+@extends('eventos.dashboard')
 
-@section('content-torneos')
+@section('content-eventos')
     <div class="lg:w-1/2 block sm:hidden mb-4">
         <img src="{{ asset('torneos_img/lol1.jpeg') }}" class="h-full object-cover rounded-lg">
     </div>
@@ -26,7 +26,7 @@
                     </li>
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Recompensa</span>
-                        <span class="text-gray-100">Tarjeta de regalo de Steam - 50 soles</span>
+                        <span class="text-gray-100">Black Myth: Wukong</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Juego</span>
@@ -47,8 +47,8 @@
     <!-- Descripción -->
     <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500">
         <h4 class="text-xl text-gray-900 font-bold">Detalles del Torneo:</h4>
-        <p id="texto">Eliminación doble. Modalidad: 5 vs 5. Mapas: Grieta del Invocador. Equipos de 5
-            jugadores (+2 suplentes opcionales). Nivel mínimo de cuenta: 30. Campeones desbloqueados: Mínimo 20.
+        <p id="texto">Solo se cuenta la actividad en torneos de Left 4 Dead 2. Los primeros 3 en el ranking reciben el
+            premio. El puntaje se obtiene de forma individual, no se considera la participación del equipo.
             Todas las partidas serán supervisadas a través de Discord.</p>
     </div>
 

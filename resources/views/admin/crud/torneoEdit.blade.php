@@ -176,42 +176,18 @@
     </div>
     
     <script>
-        // Función para previsualizar la imagen
-        function previewImage(event) {
-            var file = event.target.files[0];
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                // Obtener el contenedor de la imagen y mostrar la vista previa
-                var imagePreview = document.getElementById('image-preview');
-                var imageContainer = document.getElementById('image-preview-container');
-
-                // Mostrar la imagen en el contenedor
-                imagePreview.src = e.target.result;
-                imagePreview.classList.remove('hidden');
-                imageContainer.classList.remove('hidden');
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        }
-    </script>
-    <script>
-        // Función para previsualizar la imagen de fondo
         function previewBackgroundImage(event) {
             var file = event.target.files[0];
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                // Obtener el contenedor de la imagen y mostrar la vista previa
                 var backgroundImagePreview = document.getElementById('background-image-preview');
-                var backgroundImageContainer = document.getElementById('background-image-preview-container');
+                var uploadPlaceholder = document.getElementById('upload-placeholder');
 
-                // Mostrar la imagen en el contenedor
+                // Ocultar el marcador y mostrar la imagen
+                uploadPlaceholder.classList.add('hidden');
                 backgroundImagePreview.src = e.target.result;
                 backgroundImagePreview.classList.remove('hidden');
-                backgroundImageContainer.classList.remove('hidden');
             };
 
             if (file) {

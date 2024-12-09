@@ -9,6 +9,8 @@ use App\Models\ModerModel;
 use App\Models\AdminModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
+
 
 class TorneosModelFactory extends Factory
 {
@@ -25,10 +27,12 @@ class TorneosModelFactory extends Factory
 
         
         $juegoRandom = TorneosJuegoModel::all()->random();
+        $fechaInicio = $this->faker->dateTimeBetween('-3 month','now');
+        $fechaFin = Carbon::instance($fechaInicio)->addMonth()->addDays(7);
         return [
             'nombre' => $nombreCompuesto, 
-            'fecha_inicio' => $this->faker->dateTimeBetween('-1 month', 'now'), // Fecha de inicio aleatoria dentro del último mes
-            'fecha_fin' => $this->faker->dateTimeBetween('now', '+1 month'), // Fecha de fin aleatoria dentro del próximo mes
+            'fecha_inicio' => $fechaInicio, // Fecha de inicio aleatoria dentro del último mes
+            'fecha_fin' => $fechaFin, // Fecha de fin aleatoria dentro del próximo mes
             'entrada' => $this->faker->randomFloat(2, 10, 50), 
             'descripcion' => $this->faker->sentence(),
             'reglas' => $this->faker->sentence(),

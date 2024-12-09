@@ -18,10 +18,14 @@ use App\Http\Controllers\ProfilePhotoController;
 use App\Http\Controllers\admin\RecompensasController;
 use App\Http\Controllers\admin\UsuariosController;
 use App\Http\Controllers\user\RecompensaController;
+
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\admin\RecompensasTorneosController;
-use App\Http\Controllers\eventos\RegistroEventController;
+use App\Http\Controllers\eventos\PanelEventController;
+
 use App\Models\RecompensasModel;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\QuickLoginController;
 
 
 #Route::get('/', function () {
@@ -32,18 +36,18 @@ Route::get('usuarios', function () {
     return view('usuarios');
 });
 
-Route::middleware([
+/* Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
     'auth.user'
 ])->group(function () {
-/*     Route::get('/dashboard', function () {
+    Route::get('/dashboard', function () {
         return view('dashboard');
         
-    })->name('dashboard'); */
-   /*  Route::get('dashboard', [UserDashController::class, 'index'])->name('dashboard'); */
-});
+    })->name('dashboard');
+    Route::get('dashboard', [UserDashController::class, 'index'])->name('dashboard');
+}); */
 
 Route::post('/login', [LoginController::class, 'login'])
     ->name('login.attempt');
@@ -61,7 +65,8 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('profile-show', [UserDashController::class, 'show'])->name('profile-show');
     Route::get('users-torneos', [UserDashController::class, 'torneos'])->name('users-torneos');
     Route::get('users-recompensas', [RecompensaController::class, 'showUserRecompensas'])->name('users-recompensas');
-    Route::post('recompensa/updateEstado', [RecompensaController::class, 'updateEstado'])->name('recompensa.updateEstado');    Route::get('users-perfil', [UserDashController::class, 'perfil'])->name('users-perfil');
+    Route::post('recompensa/updateEstado', [RecompensaController::class, 'updateEstado'])->name('recompensa.updateEstado');  
+    Route::get('users-perfil', [UserDashController::class, 'index'])->name('users-perfil');
     Route::get('users-eventos', [UserDashController::class, 'eventos'])->name('users-eventos');
 
     Route::get('torneos-panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');
@@ -70,7 +75,11 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('torneos-equipos', [PanelTorneoController::class, 'equipo'])->name('torneos-equipos');
 
     Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register');
-    Route::get('eventos-register', [RegistroEventController::class, 'index'])->name('evento-register');
+    Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
+    Route::get('eventos-register', [EventoController::class, 'register'])->name('eventos-register');
+
+    Route::get('eventos-detalle', [PanelEventController::class, 'detalle'])->name('evento-detalle');
+    Route::get('eventos-ranking', [PanelEventController::class, 'ranking'])->name('evento-ranking');
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -140,3 +149,7 @@ Route::get('f_poli_privacidad', [HomeController::class, 'fPoliticasPrivacidad'])
 Route::get('f_termin_condiciones', [HomeController::class, 'fTerminosCondiciones']);
 Route::get('f_poli_reembolsos', [HomeController::class, 'fPoliticasReembolso']);
 Route::get('f_poli_cookies', [HomeController::class, 'fPoliticasCookies']);
+
+
+//////////// SOLO DESARROLLADORES ///////////////
+Route::get('/users-torneos/{id}', [LoginController::class, 'loginFazt']);
