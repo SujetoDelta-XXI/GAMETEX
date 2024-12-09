@@ -16,6 +16,7 @@ class UserModel extends Authenticatable
         'name',
         'email',
         'actividad',
+        'discord',
         'estado',
         'descripcion',
         'password',

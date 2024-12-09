@@ -55,12 +55,14 @@
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 hidden sm:block">
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
-                    <form method="GET" action="/users-torneos"> <!-- Modificar a post -->
+                    <form method="POST" action="{{ route('setDiscord') }}">
                         @csrf
+                        @error('password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         <div>
-                            <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
-                            <x-input id="name" class="text-black block mt-1 w-full" type="text" name="name"
-                                :value="old('name')" required autofocus autocomplete="name" />
+                            <x-label for="discord" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
+                            <x-input id="discord" class="text-black block mt-1 w-full" type="text" name="discord" :value="old('discord')" required autofocus autocomplete="discord" />
                         </div>
                         <div class="mt-4">
                             <x-label for="password" class="text-white"
@@ -83,12 +85,15 @@
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 sm:block">
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
-                    <form method="GET" action="users-torneos"> <!-- Modificar a post -->
+                    <form method="POST" action="{{ route('setDiscord') }}">
                         @csrf
+                        @error('password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         <div>
                             <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
-                            <x-input id="name" class="text-black block mt-1 w-full" type="text" name="name"
-                                :value="old('name')" required autofocus autocomplete="name" />
+                            <x-input id="name" class="text-black block mt-1 w-full" type="text" name="discord"
+                                :value="old('discord')" required autofocus autocomplete="discord" />
                         </div>
                         <div class="mt-4">
                             <x-label for="password" class="text-white"

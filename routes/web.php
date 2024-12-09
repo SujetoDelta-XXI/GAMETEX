@@ -24,6 +24,7 @@ use App\Http\Controllers\eventos\PanelEventController;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\QuickLoginController;
+use App\Http\Controllers\UserDiscordController;
 
 
 #Route::get('/', function () {
@@ -74,6 +75,7 @@ Route::middleware(['auth.user'])->group(function () {
 
     Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register');
     Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
+    Route::post('setDiscord',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
     Route::get('eventos-register', [EventoController::class, 'register'])->name('eventos-register');
 
     Route::get('eventos-detalle', [PanelEventController::class, 'detalle'])->name('evento-detalle');
