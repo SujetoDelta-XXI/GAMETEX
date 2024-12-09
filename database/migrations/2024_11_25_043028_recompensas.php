@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('clave_producto');
             $table->integer('precio');
+            $table->boolean('asignada')->default(false);
             $table->foreignId('recompensa_tipo_id')->constrained('recompensas_tipo')->onDelete('cascade');
             /* $table->foreignId('torneo_id')->constrained('torneos')->onDelete('cascade'); */
             /* $table->foreignId('evento_id')->constrained('eventos')->onDelete('cascade'); */

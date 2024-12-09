@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\RecompensasModel;
 use App\Models\RecompensasTipoModel;
+use App\Models\TorneosHasUsuariosModel;
+use App\Models\UsuariosHasRecompensasModel;
 use Illuminate\Http\Request;
 
 class RecompensasController extends Controller
@@ -21,7 +23,7 @@ class RecompensasController extends Controller
         $recompensasTipos = RecompensasTipoModel::all();
         return view('admin.crud.recompensas', compact('recompensas', 'totalQuantity', 'recompensasTipos'));
     }
-    
+
     public function create()
     {
         $recompensasTipos = RecompensasTipoModel::all();
@@ -96,4 +98,40 @@ class RecompensasController extends Controller
         return redirect()->route('admin.crud.recompensas')->with('success', 'Recompensa eliminada exitosamente.');
     }
 
+    public function asignar(Request $request)
+    {
+        $request->validate([
+            'tipo_busqueda' => 'required|string',
+            'usuario_id' => 'required|integer|exists:usuarios,id',
+            'recompensa_id' => 'required|integer|exists:recompensas,id',
+        ]);
+
+        $recompensa = RecompensasModel::findOrFail($request->recompensa_id);
+
+        if ($recompensa->asignada) {
+            return redirect()->back()->with('error', 'La recompensa ya ha sido asignada.');
+        }
+
+        $usuariosHasRecompensas = new UsuariosHasRecompensasModel();
+        $usuariosHasRecompensas->usuario_id = $request->usuario_id;
+        $usuariosHasRecompensas->recompensa_id = $request->recompensa_id;
+        $usuariosHasRecompensas->estado = true;
+        $usuariosHasRecompensas->save();
+
+        $recompensa->asignada = true;
+        $recompensa->save();
+
+        return redirect()->route('admin.crud.recompensas')->with('success', 'Recompensa asignada exitosamente.');
+    }
+
+        ////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////////
+        public function showEvento($id)
+        {
+            $recompensa = RecompensasModel::findOrFail($id);
+            return view('admin.crud.recompensasEventos', compact('recompensa'));
+        }
+    
+        //////////////////////////////////////////////////////////////////////////
 }
