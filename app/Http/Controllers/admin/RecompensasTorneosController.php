@@ -49,8 +49,7 @@ class RecompensasTorneosController extends Controller
     {
         $torneos = TorneosModel::with('torneoJuego')->get();
         $torneosJuegos = TorneosJuegoModel::all();
-        $detalles = TorneosHasUsuariosModel::where('torneo_id', $torneo_id)
-                     ->with(['usuario', 'equipo'])->get();
+        $detalles = TorneosHasUsuariosModel::where('torneo_id', $torneo_id)->with(['usuario', 'equipo'])->get();
         
         $torneo = TorneosModel::with('recompensas')->find($torneo_id);
         $recompensas = $torneo ? $torneo->recompensas : collect(); 
