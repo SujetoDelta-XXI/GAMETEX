@@ -44,7 +44,7 @@
                     @foreach ($torneos as $torneo)
                         <div class="px-0 py-4 sm:mb-0 mb-6 group relative w-full sm:w-1/2 md:w-1/3 lg:1/4 xl:w-1/5"
                             data-game="{{ $torneo->torneoJuego->nombre }}">
-                            <a href="torneos-register/{{$torneo->id}}">
+                            <a href="{{route('torneos-registerId', ['id' => $torneo->id])}}">
                                 <div
                                     class="rounded-lg h-96 overflow-hidden relative border-4 border-solid border-transparent hover:border-gray-300 hover:ring-2 hover:ring-opacity-60 hover:ring-gray-500 transition-all duration-300 ease-in-out">
                                     <img alt="content"
