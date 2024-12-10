@@ -43,16 +43,16 @@ class DatabaseSeeder extends Seeder
         $moderador = ModerModel::factory(5)->create();
         $this->call([ AdminSeeder::class ]);
         $administrador = AdminModel::factory(2)->create();
-        $torneos = TorneosModel::factory(20)->create();
+/*         $torneos = TorneosModel::factory(20)->create(); */
         UserModel::factory(10)->create();
 /*         $this->call([ TorneosHasUsuariosSeeder::class ]); */
 /*         $this->call([ EquiposModelSeeder::class ]); */
-        EquiposModel::factory(500)->create();
-        TorneosHasUsuariosModel::factory(100)->create();
+/*         EquiposModel::factory(500)->create(); */
+/*         TorneosHasUsuariosModel::factory(100)->create(); */
         $recompensas = RecompensasModel::factory(30)->create();
         $recompensas = UsuariosHasRecompensasModel::factory(30)->create();
-        $this->call([ FasesModelSeeder::class ]);
-        $this->call([ PartidasModelSeeder::class ]);
+/*         $this->call([ FasesModelSeeder::class ]); */
+/*         $this->call([ PartidasModelSeeder::class ]); */
 
     }
 }

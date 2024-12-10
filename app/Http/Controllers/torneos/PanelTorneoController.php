@@ -29,8 +29,8 @@ class PanelTorneoController extends Controller
         return view('torneos.panel.partidas');
     }
 
-    public function equipo()
+    public function equipos()
     {
-        return view('torneos.panel.equipo');
+        return view('torneos.panel.equipos');
     }
 }

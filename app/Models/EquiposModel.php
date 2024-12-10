@@ -12,7 +12,11 @@ class EquiposModel extends Model
     protected $table = 'equipos_models';
     protected $fillable = [
         'nombre',
+        'numero_equipo',
+        'torneo_id',
     ];
+
+/*     protected $guarded = [''];
 
     public function usuarios()
     {
@@ -35,6 +39,6 @@ class EquiposModel extends Model
     {
         return $this->belongsToMany(FasesModel::class, 'equipo_torneo_fase_partida_models', 'equipo_id', 'fase_id')
                     ->withTimestamps();
-    }
+    } */
 
 }
