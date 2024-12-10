@@ -38,6 +38,9 @@ class TorneosModel extends Model
     {
         return $this->belongsTo(RecompensasTipoModel::class, 'recompensas_id');
     }
+    public function recompensas(){
+        return $this->belongsTo(RecompensasModel::class,'torneo_id');
+    }
 
     public function moderador()
     {
