@@ -47,24 +47,30 @@ class UserDashController extends Controller
         return redirect()->action([RecompensaController::class, 'showUserRecompensas']);
     }
 
-    public function torneos()
+    public function torneos_activos()
     {
         $userId = $this->userLog()['id'];
         $fechaActual = \Carbon\Carbon::now();
-        
-
-        
-        $torneosConcluidos = UserModel::find($userId)
-        ->torneos()
-        ->where('fecha_fin', '<', $fechaActual)
-        ->get();
     
         $torneosActivos = UserModel::find($userId)
         ->torneos()
         ->where('fecha_fin', '>=', $fechaActual)
         ->get();
 
-        return view('users.acciones.users-torneos', compact('torneosConcluidos', 'torneosActivos'));
+        return view('users.acciones.users-torneos', compact('torneosActivos'));
+    }
+
+    public function torneos_concluidos()
+    {
+        $userId = $this->userLog()['id'];
+        $fechaActual = \Carbon\Carbon::now();
+
+        $torneosConcluidos = UserModel::find($userId)
+        ->torneos()
+        ->where('fecha_fin', '<', $fechaActual)
+        ->get();
+
+        return view('users.acciones.users-torneos-concluidos', compact('torneosConcluidos'));
     }
 
     public function eventos()
