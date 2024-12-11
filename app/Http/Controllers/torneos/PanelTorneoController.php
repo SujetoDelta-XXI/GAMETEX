@@ -42,7 +42,8 @@ class PanelTorneoController extends Controller
         $equipos = DB::table('equipos_models')
             ->where('torneo_id', $id)
             ->get();
-        return view('torneos.panel.equipos', compact('equipos', 'torneo'));
+            return view('torneos.panel.equipos', compact('equipos', 'torneo'))->with('torneoLleno', $torneo->estaLleno());
+
     }
 
 

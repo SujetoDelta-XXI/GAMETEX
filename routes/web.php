@@ -81,7 +81,7 @@ Route::middleware(['auth.user'])->group(function () {
 
 
 
-    Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register');
+    /* Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register'); */
     Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
     Route::post('setDiscord/{id}',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
     Route::get('eventos-register', [EventoController::class, 'register'])->name('eventos-register');

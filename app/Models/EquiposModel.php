@@ -13,6 +13,8 @@ class EquiposModel extends Model
     protected $fillable = [
         'nombre',
         'numero_equipo',
+        'capacidad_maxima',
+        'inscritos_actuales',
         'torneo_id',
     ];
 

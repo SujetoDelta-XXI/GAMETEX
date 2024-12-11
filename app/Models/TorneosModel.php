@@ -23,11 +23,18 @@ class TorneosModel extends Model
         'descripcion',
         'reglas',
         'imagen',
+        'capacidad_maxima',
+        'inscritos_actuales',
         'torneo_juego_id',
         'recompensas_id',
         'moderador_id',
         'administrador_id',
     ];
+
+    public function estaLleno()
+    {
+        return $this->inscritos_actuales >= $this->capacidad_maxima;
+    }
 
     public function torneoJuego()
     {

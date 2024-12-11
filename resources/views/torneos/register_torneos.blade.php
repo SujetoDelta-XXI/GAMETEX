@@ -53,6 +53,22 @@
                         Todas las partidas serán supervisadas a través de Discord.</p>
                 </div>
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 hidden sm:block">
+
+                    @if ($torneoLleno)
+
+                        <div class="bg-white shadow-lg rounded-lg p-6 w-80 text-center">
+                            <!-- Título -->
+                            <h2 class="text-lg font-bold text-gray-800 mb-2">Torneo Lleno</h2>
+                            <!-- Mensaje -->
+                            <p class="text-gray-600 mb-4">Lo sentimos, este torneo ya alcanzó su capacidad máxima de participantes.</p>
+                            <!-- Botón (Opcional) -->
+                            <a href="/torneos" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg">
+                                Ver otros torneos
+                            </a>
+                        </div>
+
+
+                    @else
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
                     <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
@@ -79,34 +95,56 @@
                             </x-button>
                         </div>
                     </form>
+                    @endif
+
+
                 </div>
             </div>
             <div class="lg:w-1/2 block sm:hidden mb-4">
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 sm:block">
-                    <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
-                    <br>
-                    <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
-                        @csrf
-                        @error('password')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <div>
-                            <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
-                            <x-input id="name" class="text-black block mt-1 w-full" type="text" name="discord"
-                                :value="old('discord')" required autofocus autocomplete="discord" />
+
+                    @if ($torneoLleno)
+
+                    <div class="bg-white shadow-lg rounded-lg p-6 w-80 text-center">
+                            <!-- Título -->
+                            <h2 class="text-lg font-bold text-gray-800 mb-2">Torneo Lleno</h2>
+                            <!-- Mensaje -->
+                            <p class="text-gray-600 mb-4">Lo sentimos, este torneo ya alcanzó su capacidad máxima de participantes.</p>
+                            <!-- Botón (Opcional) -->
+                            <a href="/torneos" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg">
+                                Ver otros torneos
+                            </a>
                         </div>
-                        <div class="mt-4">
-                            <x-label for="password" class="text-white"
-                                value="{{ __('Contraeña (Su usuario del sitio web)') }}" />
-                            <x-input id="password" class="text-black block mt-1 w-full" type="password" name="password"
-                                required autocomplete="new-password" />
-                        </div>
-                        <div class="flex items-center justify-end mt-4">
-                            <x-button class="ms-4 bg-gray-900 hover:bg-black">
-                                {{ __('Inscribirme') }}
-                            </x-button>
-                        </div>
-                    </form>
+
+
+                    @else
+                        <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
+                        <br>
+                        <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
+                            @csrf
+                            @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            <div>
+                                <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
+                                <x-input id="name" class="text-black block mt-1 w-full" type="text" name="discord"
+                                    :value="old('discord')" required autofocus autocomplete="discord" />
+                            </div>
+                            <div class="mt-4">
+                                <x-label for="password" class="text-white"
+                                    value="{{ __('Contraeña (Su usuario del sitio web)') }}" />
+                                <x-input id="password" class="text-black block mt-1 w-full" type="password" name="password"
+                                    required autocomplete="new-password" />
+                            </div>
+                            <div class="flex items-center justify-end mt-4">
+                                <x-button class="ms-4 bg-gray-900 hover:bg-black">
+                                    {{ __('Inscribirme') }}
+                                </x-button>
+                            </div>
+                        </form>
+                    @endif
+
+
                 </div>
             </div>
         </div>
