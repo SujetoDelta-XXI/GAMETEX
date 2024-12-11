@@ -7,13 +7,6 @@
                     <img id="profile-image"
                         src="{{ 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}"
                         alt="Profile" class="rounded-full w-full h-full object-cover">
-                    <label for="admin-photo-upload"
-                        class="absolute bottom-0 right-0 bg-purple-500 text-white rounded-full p-2 cursor-pointer hover:bg-purple-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <path
-                                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                        </svg>
-                    </label>
                     <input type="file" id="admin-photo-upload" class="hidden" onchange="previewImage(event)">
                 </div>
                 <h4 class="font-semibold">{{ Auth::guard('admin')->user()->name ?? 'Administrador' }}</h4>
