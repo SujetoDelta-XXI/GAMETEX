@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
+use Illuminate\Support\Facades\DB;
+use App\Models\EquiposModel;
+use App\Models\TorneosModel;
+
 
 class PanelTorneoController extends Controller
 {
@@ -14,23 +18,35 @@ class PanelTorneoController extends Controller
         $this->middleware('auth.user');
     }
 
-    public function index()
+    public function index($id)
     {
-        return view('torneos.panel.descripcion');
+        $torneo = TorneosModel::findOrFail($id);
+        return view('torneos.panel.descripcion', compact('torneo'));
     }
 
-    public function descripcion()
+    public function descripcion($id)
     {
-        return view('torneos.panel.descripcion');
+        $torneo = TorneosModel::findOrFail($id);
+        return view('torneos.panel.descripcion', compact('torneo'));
     }
 
-    public function partidas()
+    public function partidas($id)
     {
-        return view('torneos.panel.partidas');
+        $torneo = TorneosModel::findOrFail($id);
+        return view('torneos.panel.partidas', compact('torneo'));
     }
 
-    public function equipos()
+    public function equipos($id)
     {
-        return view('torneos.panel.equipos');
+        $torneo = TorneosModel::findOrFail($id);
+        $equipos = DB::table('equipos_models')
+            ->where('torneo_id', $id)
+            ->get();
+        return view('torneos.panel.equipos', compact('equipos', 'torneo'));
     }
+
+
+
+
+
 }

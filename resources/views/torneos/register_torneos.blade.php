@@ -55,7 +55,7 @@
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 hidden sm:block">
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
-                    <form method="POST" action="{{ route('setDiscord') }}">
+                    <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
                         @csrf
                         @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -85,7 +85,7 @@
                 <div class="rounded-lg shadow-xl mt-4 p-8 bg-gray-500 sm:block">
                     <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
                     <br>
-                    <form method="POST" action="{{ route('setDiscord') }}">
+                    <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
                         @csrf
                         @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>

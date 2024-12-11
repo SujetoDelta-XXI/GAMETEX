@@ -70,14 +70,20 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('users-perfil', [UserDashController::class, 'index'])->name('users-perfil');
     Route::get('users-eventos', [UserDashController::class, 'eventos'])->name('users-eventos');
 
-    Route::get('torneos-panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');
-    Route::get('torneos-descripcion', [PanelTorneoController::class, 'descripcion'])->name('torneos-descripcion');
-    Route::get('torneos-partidas', [PanelTorneoController::class, 'partidas'])->name('torneos-partidas');
-    Route::get('torneos-equipos', [PanelTorneoController::class, 'equipos'])->name('torneos-equipos');
+    Route::prefix('/torneo/{id}')->group(function () {
+        Route::get('panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');
+        Route::get('descripcion', [PanelTorneoController::class, 'descripcion'])->name('torneos-descripcion');
+        Route::get('partidas', [PanelTorneoController::class, 'partidas'])->name('torneos-partidas');
+        Route::get('equipos', [PanelTorneoController::class, 'equipos'])->name('torneos-equipos');
+    });
+    
+
+
+
 
     Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register');
     Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
-    Route::post('setDiscord',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
+    Route::post('setDiscord/{id}',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
     Route::get('eventos-register', [EventoController::class, 'register'])->name('eventos-register');
 
     Route::get('eventos-detalle', [PanelEventController::class, 'detalle'])->name('evento-detalle');
