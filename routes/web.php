@@ -119,6 +119,9 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('/recompensas/torneos/{torneo_id}/detalles', [RecompensasTorneosController::class, 'getDetalles'])->name('recompensasTorneos.detalles');        
         Route::post('recompensas/torneos/asignar', [RecompensasTorneosController::class, 'asignarRecompensa'])->name('asignar.recompensa');
 
+
+        Route::get('/admin/recompensas/{recompensas_id}', [RecompensaController::class, 'obtenerRecompensa']);
+        
         Route::post('/recompensas/guardar-recompensa-id', [RecompensasTorneosController::class, 'guardarRecompensaId'])->name('guardarRecompensaId'); 
         Route::get('/recompensas/obtener-recompensa-id', [RecompensasTorneosController::class, 'obtenerRecompensaId'])->name('obtenerRecompensaId');
         Route::get('/recompensas/disponibles', [RecompensasTorneosController::class, 'recompensasDisponibles'])->name('recompensasDisponibles');

@@ -43,27 +43,30 @@ class RecompensasTorneosController extends Controller
         return view('admin.crud.recompensasTorneos', compact('torneos', 'torneosJuegos', 'recompensas'));
     }
 
-    public function getDetalles($torneo_id)
+    public function getDetalles($torneo_id,)
     {
         $torneos = TorneosModel::with('torneoJuego')->get();
         $torneosJuegos = TorneosJuegoModel::all();
         $detalles = TorneosHasUsuariosModel::where('torneo_id', $torneo_id)->with(['usuario', 'equipo'])->get();
+        $recompensa = RecompensasModel::find($torneo_id); // Busca la recompensa asociada al torneo
 
         $torneo = TorneosModel::with('recompensas')->find($torneo_id);
-        $recompensas = $torneo ? $torneo->recompensas : collect();
 
-        return view('admin.crud.recompensasTorneos', compact('torneos', 'torneosJuegos', 'detalles', 'recompensas'));
+        return view('admin.crud.recompensasTorneos', compact('torneos', 'torneosJuegos', 'detalles','recompensa'));
     }
 
-    public function obtenerRecompensaId()
+    public function obtenerRecompensa($recompensas_id)
     {
-        $recompensa_id = session('temp_recompensa_id');
-
-        // Añadir mensaje de registro
-        Log::info('ID de la recompensa obtenida: ' . $recompensa_id);
-
-        return response()->json(['recompensa_id' => $recompensa_id]);
+        $recompensa = RecompensasModel::find($recompensas_id);
+    
+        if (!$recompensa) {
+            return response()->json(['error' => 'Recompensa no encontrada'], 404);
+        }
+    
+        return response()->json($recompensa);
     }
+    
+    
 
     public function asignarRecompensa(Request $request)
     {
@@ -72,18 +75,19 @@ class RecompensasTorneosController extends Controller
             'recompensa_id' => 'required|exists:recompensas,id',
             'estado' => 'required|string',
         ]);
-
+    
         // Asignar la recompensa
         UsuariosHasRecompensasModel::create([
             'usuario_id' => $validated['usuario_id'],
             'recompensa_id' => $validated['recompensa_id'],
             'estado' => $validated['estado']
         ]);
-
-        // Eliminar la ID de la recompensa temporal
+    
+        // Eliminar la ID de la recompensa temporal de la sesión
         session()->forget('temp_recompensa_id');
-
+    
         return response()->json(['success' => true]);
     }
+    
     
 }
