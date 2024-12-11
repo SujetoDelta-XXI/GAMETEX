@@ -31,10 +31,7 @@ class TorneosModel extends Model
         'administrador_id',
     ];
 
-    public function estaLleno()
-    {
-        return $this->inscritos_actuales >= $this->capacidad_maxima;
-    }
+
 
     public function torneoJuego()
     {
@@ -59,17 +56,26 @@ class TorneosModel extends Model
         return $this->belongsTo(AdminModel::class, 'administrador_id');
     }
 
-    public function usuarios()
-    {
-        return $this->belongsToMany(UserModel::class, 'torneos_has_usuarios', 'torneo_id', 'usuario_id')
-                    ->withTimestamps();
-    }
-
     public function equipos()
     {
-        return $this->belongsToMany(EquiposModel::class, 'equipo_torneo_fase_partida_models', 'torneo_id', 'equipo_id')
-                    ->withTimestamps();
+        return $this->hasMany(EquiposModel::class, 'torneo_id');
     }
+    
+    public function usuarios()
+    {
+        return $this->belongsToMany(
+            UserModel::class,
+            'torneos_has_usuarios', // Nombre de la tabla intermedia
+            'torneo_id',            // Llave foránea hacia torneos
+            'usuario_id'            // Llave foránea hacia usuarios
+        );
+    }
+    
+    public function estaLleno()
+    {
+        return $this->usuarios()->count() >= $this->capacidad_maxima;
+    }
+    
 
     public function fases()
     {

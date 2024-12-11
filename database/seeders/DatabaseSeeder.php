@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
     {
         
         $this->call([ UserSeeder::class, ]);
+        UserModel::factory(200)->create();
         /* $this->call([ ModerSeeder::class, ]); */
         /* $this->call([ eventosSeeder::class, ]); */
         /* $this->call([ eventosTipoSeeder::class, ]); */
@@ -43,7 +44,8 @@ class DatabaseSeeder extends Seeder
         $moderador = ModerModel::factory(5)->create();
         $this->call([ AdminSeeder::class ]);
         $administrador = AdminModel::factory(2)->create();
-        $torneos = TorneosModel::factory(30)->create();
+        $torneos = TorneosModel::factory(20)->create();
+        TorneosHasUsuariosModel::factory(500)->create();
         UserModel::factory(10)->create();
 /*         $this->call([ TorneosHasUsuariosSeeder::class ]); */
 /*         $this->call([ EquiposModelSeeder::class ]); */

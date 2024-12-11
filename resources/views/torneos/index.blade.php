@@ -42,6 +42,18 @@
             <div class="container mx-auto px-0 py-0">
                 <div class="flex flex-wrap justify-center px-5 py-5 mx-auto gap-x-4">
                     @foreach ($torneos as $torneo)
+                    @php
+                        $imagePath1 = public_path('images/' . $torneo->imagen);
+                        $imagePath2 = public_path('storage/' . $torneo->imagen);
+
+                            if (file_exists($imagePath1)) {
+                                $imageUrl = asset('images/' . $torneo->imagen);
+                            } elseif (file_exists($imagePath2)) {
+                                $imageUrl = asset('storage/' . $torneo->imagen);
+                            } else {
+                                $imageUrl = asset('torneos_img/lol1.jpeg'); // Imagen predeterminada si no se encuentra en ninguna carpeta
+                            }
+                    @endphp
                         <div class="px-0 py-4 sm:mb-0 mb-6 group relative w-full sm:w-1/2 md:w-1/3 lg:1/4 xl:w-1/5"
                             data-game="{{ $torneo->torneoJuego->nombre }}">
                             <a href="{{route('torneos-registerId', ['id' => $torneo->id])}}">
@@ -49,7 +61,7 @@
                                     class="rounded-lg h-96 overflow-hidden relative border-4 border-solid border-transparent hover:border-gray-300 hover:ring-2 hover:ring-opacity-60 hover:ring-gray-500 transition-all duration-300 ease-in-out">
                                     <img alt="content"
                                         class="object-cover object-center h-full w-full transition duration-300 ease-in-out group-hover:brightness-50"
-                                        src="\storage\{{ $torneo->imagen }}">
+                                        src="{{ $imageUrl }}">
                                     <div
                                         class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out px-5">
                                         <ul>

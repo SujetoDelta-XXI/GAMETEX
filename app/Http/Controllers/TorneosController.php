@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TorneosModel;
 use Illuminate\Http\Request;
+use App\Models\TorneosHasUsuariosModel;
 
 class TorneosController extends Controller
 {
@@ -29,13 +30,22 @@ class TorneosController extends Controller
     
     public function registerId($id)
     {
-        /* dump('paso por registerId'); */
         $this->middleware('auth.user');
+    
         $torneo = TorneosModel::find($id);
-
-        
-
-        return view('torneos.register_torneos', compact('torneo'))->with('torneoLleno', $torneo->estaLleno());
-
+    
+        if (!$torneo) {
+            return back()->withErrors(['torneo' => 'El torneo no existe.']);
+        }
+    
+        $usuario = Auth()->guard('user')->user();
+    
+        // Verificar si el usuario ya está inscrito en el torneo
+        $usuarioInscrito = TorneosHasUsuariosModel::where('usuario_id', $usuario->id)
+            ->where('torneo_id', $id)
+            ->exists();
+    
+        return view('torneos.register_torneos', compact('torneo', 'usuarioInscrito'))
+            ->with('torneoLleno', $torneo->estaLleno());
     }
 }

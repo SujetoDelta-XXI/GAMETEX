@@ -16,7 +16,7 @@ class TorneosHasUsuariosModelFactory extends Factory
      * @var string
      */
     protected $model = TorneosHasUsuariosModel::class;
-
+    
     /**
      * Define el estado por defecto para el factory.
      *
@@ -28,13 +28,13 @@ class TorneosHasUsuariosModelFactory extends Factory
         $torneo = TorneosModel::all()->filter(function ($torneo) {
             return !$torneo->estaLleno();
         })->random();
-
+        
         // Filtrar equipos del torneo que no están llenos
         $equipo = $torneo->equipos->filter(function ($equipo) {
             return !$equipo->estaLleno();
         })->random();
-
         // Filtrar usuarios que aún no estén asignados a un equipo del torneo
+
         $usuario = UserModel::all()->filter(function ($usuario) use ($torneo) {
             return !$torneo->usuarios->contains($usuario);
         })->random();

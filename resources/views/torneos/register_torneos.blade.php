@@ -1,14 +1,26 @@
+@php
+    $imagePath1 = public_path('images/' . $torneo->imagen);
+    $imagePath2 = public_path('storage/' . $torneo->imagen);
+
+        if (file_exists($imagePath1)) {
+            $imageUrl = asset('images/' . $torneo->imagen);
+        } elseif (file_exists($imagePath2)) {
+            $imageUrl = asset('storage/' . $torneo->imagen);
+        } else {
+            $imageUrl = asset('torneos_img/lol1.jpeg'); // Imagen predeterminada si no se encuentra en ninguna carpeta
+        }
+@endphp
 @extends('layouts.header')
 @section('contenido')
     <div class="flex justify-center items-center min-h-screen bg-gray-800">
         <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6 hide-scroll-bar xl:w-[80%] mx-10">
             <div class="lg:w-1/2 block sm:hidden mb-4">
-                <img src="/storage/{{ $torneo->imagen }}" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ $imageUrl }}" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
                 <!-- Imagen a la izquierda -->
                 <div class="lg:w-1/2 sm:block hidden">
-                    <img src="/storage/{{ $torneo->imagen }}" class="h-full object-cover rounded-lg">
+                    <img src="{{ $imageUrl }}" class="h-full object-cover rounded-lg">
                 </div>
 
                 <div class="lg:w-2/3 flex flex-col space-y-4 w-full">
@@ -26,7 +38,7 @@
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Recompensa</span>
-                                <span class="text-gray-100">{{$torneo->recompensa->nombre}}</span>
+                                <span class="text-gray-100">{{$torneo->recompensas->nombre ?? 'No asignado'}}</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Juego</span>
@@ -69,32 +81,45 @@
 
 
                     @else
-                    <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
-                    <br>
-                    <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
-                        @csrf
-                        @error('password')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <div>
-                            <x-label for="discord" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
-                            <x-input id="discord" class="text-black block mt-1 w-full" type="text" name="discord" :value="old('discord')" required autofocus autocomplete="discord" />
-                        </div>
-                        <div class="mt-4">
-                            <x-label for="password" class="text-white"
-                                value="{{ __('Contraeña (Su usuario del sitio web)') }}" />
-                            <x-input id="password" class="text-black block mt-1 w-full" type="password" name="password"
-                                required autocomplete="new-password" />
-                        </div>
-                        <div class="flex items-center justify-end mt-4">
-                            <a class="flex items-center justify-end text-white hover:text-gray-400" href="/f_torneos">
-                                {{ __('¿Necesitas Ayuda?') }}
-                            </a>
-                            <x-button class="ms-4 bg-gray-900 hover:bg-black">
-                                {{ __('Inscribirme') }}
-                            </x-button>
-                        </div>
-                    </form>
+                        @if ($usuarioInscrito)
+                            <div class="bg-white shadow-lg rounded-lg p-6 w-80 text-center">
+                                <!-- Título -->
+                                <h2 class="text-lg font-bold text-gray-800 mb-2">Usuario Inscrito</h2>
+                                <!-- Mensaje -->
+                                <p class="text-gray-600 mb-4">Usted ya se encuentra inscrito, comience a jugar.</p>
+                                <!-- Botón (Opcional) -->
+                                <a href="{{route('torneos-equipos', ['id' => $torneo->id])}}" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg">
+                                    Comience a jugar
+                                </a>
+                            </div>
+                        @else
+                            <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
+                                <br>
+                            <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
+                                @csrf
+                                @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                <div>
+                                    <x-label for="discord" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
+                                    <x-input id="discord" class="text-black block mt-1 w-full" type="text" name="discord" :value="old('discord')" required autofocus autocomplete="discord" />
+                                </div>
+                                <div class="mt-4">
+                                    <x-label for="password" class="text-white"
+                                        value="{{ __('Contraeña (Su usuario del sitio web)') }}" />
+                                    <x-input id="password" class="text-black block mt-1 w-full" type="password" name="password"
+                                        required autocomplete="new-password" />
+                                </div>
+                                <div class="flex items-center justify-end mt-4">
+                                    <a class="flex items-center justify-end text-white hover:text-gray-400" href="/f_torneos">
+                                        {{ __('¿Necesitas Ayuda?') }}
+                                    </a>
+                                    <x-button class="ms-4 bg-gray-900 hover:bg-black">
+                                        {{ __('Inscribirme') }}
+                                    </x-button>
+                                </div>
+                            </form>
+                        @endif
                     @endif
 
 
@@ -118,30 +143,43 @@
 
 
                     @else
-                        <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
-                        <br>
-                        <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
-                            @csrf
-                            @error('password')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div>
-                                <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
-                                <x-input id="name" class="text-black block mt-1 w-full" type="text" name="discord"
-                                    :value="old('discord')" required autofocus autocomplete="discord" />
-                            </div>
-                            <div class="mt-4">
-                                <x-label for="password" class="text-white"
-                                    value="{{ __('Contraeña (Su usuario del sitio web)') }}" />
-                                <x-input id="password" class="text-black block mt-1 w-full" type="password" name="password"
-                                    required autocomplete="new-password" />
-                            </div>
-                            <div class="flex items-center justify-end mt-4">
-                                <x-button class="ms-4 bg-gray-900 hover:bg-black">
-                                    {{ __('Inscribirme') }}
-                                </x-button>
-                            </div>
-                        </form>
+                        @if ($usuarioInscrito)
+                                <div class="bg-white shadow-lg rounded-lg p-6 w-80 text-center">
+                                    <!-- Título -->
+                                    <h2 class="text-lg font-bold text-gray-800 mb-2">Usuario Inscrito</h2>
+                                    <!-- Mensaje -->
+                                    <p class="text-gray-600 mb-4">Usted ya se encuentra inscrito, comience a jugar.</p>
+                                    <!-- Botón (Opcional) -->
+                                    <a href="{{route('torneos-equipos', ['id' => $torneo->id])}}" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg">
+                                        Comience a jugar
+                                    </a>
+                                </div>
+                        @else
+                            <h4 class="text-xl text-gray-900 font-bold">Formulario de Inscripción:</h4>
+                            <br>
+                            <form method="POST" action="{{ route('setDiscord', ['id' => $torneo->id]) }}">
+                                @csrf
+                                @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                <div>
+                                    <x-label for="name" class="text-white" value="{{ __('Nombre de usuario de Discord') }}" />
+                                    <x-input id="name" class="text-black block mt-1 w-full" type="text" name="discord"
+                                        :value="old('discord')" required autofocus autocomplete="discord" />
+                                </div>
+                                <div class="mt-4">
+                                    <x-label for="password" class="text-white"
+                                        value="{{ __('Contraeña (Su usuario del sitio web)') }}" />
+                                    <x-input id="password" class="text-black block mt-1 w-full" type="password" name="password"
+                                        required autocomplete="new-password" />
+                                </div>
+                                <div class="flex items-center justify-end mt-4">
+                                    <x-button class="ms-4 bg-gray-900 hover:bg-black">
+                                        {{ __('Inscribirme') }}
+                                    </x-button>
+                                </div>
+                            </form>
+                        @endif
                     @endif
 
 
