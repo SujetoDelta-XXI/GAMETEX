@@ -58,19 +58,29 @@ class UserModel extends Authenticatable
 
     public function torneos()
     {
-        return $this->belongsToMany(TorneosModel::class, 'torneos_has_usuarios', 'usuario_id', 'torneo_id')
-                    ->withTimestamps(); // Si necesitas los timestamps
+        return $this->belongsToMany(
+            TorneosModel::class,
+            'torneos_has_usuarios', // Nombre de la tabla intermedia
+            'usuario_id',           // Llave foránea hacia usuarios
+            'torneo_id'             // Llave foránea hacia torneos
+        );
     }
+    
+    public function equipos()
+    {
+        return $this->belongsToMany(
+            EquiposModel::class,
+            'torneos_has_usuarios', // Nombre de la tabla intermedia
+            'usuario_id',           // Llave foránea hacia usuarios
+            'equipo_id'             // Llave foránea hacia equipos
+        );
+    }
+    
 
     public function recompensas()
     {
         return $this->belongsToMany(RecompensasModel::class, 'usuarios_has_recompensas', 'usuario_id', 'recompensa_id')->withTimestamps();
     }
 
-    public function equipos()
-    {
-        return $this->belongsToMany(EquiposModel::class, 'torneos_has_usuarios', 'usuario_id', 'equipo_id')
-                    ->withTimestamps(); // Si necesitas los timestamps
-    }
 
 }

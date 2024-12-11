@@ -18,20 +18,32 @@ class EquiposModel extends Model
         'torneo_id',
     ];
 
-/*     protected $guarded = [''];
+    protected $guarded = [''];
 
+
+
+    public function torneo()
+    {
+        return $this->belongsTo(TorneosModel::class, 'torneo_id');
+    }
+    
     public function usuarios()
     {
-        return $this->belongsToMany(UserModel::class, 'torneos_has_usuarios', 'equipo_id', 'usuario_id')->withTimestamps();
+        return $this->belongsToMany(
+            UserModel::class,
+            'torneos_has_usuarios', // Nombre de la tabla intermedia
+            'equipo_id',            // Llave foránea hacia equipos
+            'usuario_id'            // Llave foránea hacia usuarios
+        );
     }
-
-    public function torneos()
+    
+    public function estaLleno()
     {
-        return $this->belongsToMany(TorneosModel::class, 'equipo_torneo_fase_partida_models', 'equipo_id', 'torneo_id')
-                    ->withTimestamps();
+        return $this->usuarios()->count() >= $this->capacidad_maxima;
     }
+    
 
-    public function partidas()
+/*     public function partidas()
     {
         return $this->belongsToMany(PartidasModel::class, 'equipo_torneo_fase_partida_models', 'equipo_id', 'partida_id')
                     ->withTimestamps();
@@ -42,5 +54,6 @@ class EquiposModel extends Model
         return $this->belongsToMany(FasesModel::class, 'equipo_torneo_fase_partida_models', 'equipo_id', 'fase_id')
                     ->withTimestamps();
     } */
+
 
 }
