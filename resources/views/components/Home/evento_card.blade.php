@@ -15,8 +15,8 @@
     </h3>
     <!-- Botón Participar -->
     <div class="mt-3 flex justify-center">
-        <a href="{{ 'eventos-register' }}" class="py-2 px-6 text-center text-indigo-500 border-2 border-indigo-500 rounded-lg transition duration-300 ease-in-out transform hover:bg-indigo-500 hover:text-white hover:border-indigo-500">
-            Participar
+        <a href="{{ $link }}" target="_blank" class="py-2 px-6 text-center text-indigo-500 border-2 border-indigo-500 rounded-lg transition duration-300 ease-in-out transform hover:bg-indigo-500 hover:text-white hover:border-indigo-500">
+            Ir al sitio web
         </a>
     </div>
 </div>

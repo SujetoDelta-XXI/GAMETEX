@@ -2,7 +2,7 @@
     <div class="flex flex-row items-center">
         <div class="pl-4 py-2">
             <p class="text-xl font-bold">{{ $nombre }}</p>
-            <p class="text-gray-500 font-medium">{{ $tipo }}</p>
+            <p class="text-gray-400 font-medium">{{ $tipo }}</p>
             <p class="text-gray-500 text-sm">{{ $fecha }}</p>
         </div>
     </div>
