@@ -76,10 +76,6 @@ Route::middleware(['auth.user'])->group(function () {
         Route::get('equipos', [PanelTorneoController::class, 'equipos'])->name('torneos-equipos');
     });
     
-
-
-
-
     /* Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register'); */
     Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
     Route::post('setDiscord/{id}',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
@@ -128,8 +124,6 @@ Route::middleware(['auth.admin'])->group(function () {
 
     });
 });
-
-
 
 
 ///////////////////////////////////////////////////////////////////////////

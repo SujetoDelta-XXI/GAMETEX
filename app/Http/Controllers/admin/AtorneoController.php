@@ -35,7 +35,7 @@ class AtorneoController extends Controller
         $moderadores = ModerModel::all();
         $administradores = AdminModel::all();
         $juegos = TorneosJuegoModel::all();
-        $recompensas = RecompensasModel::with('tipo')->get()->unique('tipo.nombre');
+        $recompensas = RecompensasModel::with('tipo')->get()->unique('nombre');
     
         return view('admin.crud.torneoCreate', compact('moderadores', 'administradores', 'juegos', 'recompensas'));
     }
