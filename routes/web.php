@@ -123,9 +123,9 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('/recompensas/eventos/{id}', [RecompensasController::class, 'showEvento'])->name('recompensasEventos');
         Route::get('/recompensas/torneos/{id}', [RecompensasTorneosController::class, 'showTorneo'])->name('recompensasTorneos');
         Route::get('/recompensas/torneos/search', [RecompensasTorneosController::class, 'searchTorneo'])->name('searchTorneo');
-        Route::get('/recompensas/torneos/{id}/equipos', [RecompensasTorneosController::class, 'getEquipos'])->name('getEquipos');
-
-
+        Route::get('/recompensas/torneos/{torneo_id}/detalles', [RecompensasTorneosController::class, 'getDetalles'])->name('recompensasTorneos.detalles');        
+        Route::post('recompensas/torneos/asignar', [RecompensasTorneosController::class, 'asignarRecompensa'])->name('asignar.recompensa');
+        
         Route::get('usuarios', [UsuariosController::class, 'showListado'])->name('usuarios');
         Route::post('/usuario/detalles', [UsuariosController::class, 'getUsuarioDetalles'])->name('usuario.detalles');
 
