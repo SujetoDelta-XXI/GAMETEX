@@ -29,7 +29,7 @@ class UserModelFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'estado' => $this->faker->randomElement(['nuevo','activo','inactivo']),   // Generar un usuario relacionado
+            'estado' => $this->faker->randomElement(['activo','suspendido']),   // Generar un usuario relacionado
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('123'),
             'two_factor_secret' => null,
