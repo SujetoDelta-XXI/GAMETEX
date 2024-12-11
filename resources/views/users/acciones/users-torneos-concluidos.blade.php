@@ -1,9 +1,9 @@
 @extends('users.dashboard')
 @section('content-user')
-    <div id="24h">
-        <h1 class="font-bold py-4 uppercase text-[18px] sm:text-[20px]">Torneos Activos</h1>
+    <div id="last-incomes">
+        <h1 class="font-bold py-4 uppercase text-[18px] sm:text-[20px]">Torneos Concluidos</h1>
         <div id="stats" class="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($torneosActivos as $torneo)
+            @foreach ($torneosConcluidos as $torneo)
                 @php
                     $imagePath1 = public_path('images/' . $torneo->imagen);
                     $imagePath2 = public_path('storage/' . $torneo->imagen);
@@ -16,9 +16,8 @@
                         $imageUrl = asset('torneos_img/lol1.jpeg'); // Imagen predeterminada si no se encuentra en ninguna carpeta
                     }
                 @endphp
-                <div class="px-0 py-4 sm:mb-0 mb-6 group relative w-full"
-                    data-game="{{ $torneo->torneoJuego->nombre }}">
-                    <a href="{{ route('torneos-equipos', ['id' => $torneo->id]) }}">
+                <div class="px-0 py-4 sm:mb-0 mb-6 group relative w-full" data-game="{{ $torneo->torneoJuego->nombre }}">
+                    <a href="{{ route('torneos-descripcion', ['id' => $torneo->id]) }}">
                         <div
                             class="rounded-lg h-96 overflow-hidden relative border-4 border-solid border-transparent hover:border-gray-300 hover:ring-2 hover:ring-opacity-60 hover:ring-gray-500 transition-all duration-300 ease-in-out">
                             <img alt="content"

@@ -11,6 +11,7 @@
                 <h3 class="text-lg font-semibold">{{ $nombre }}</h3><br>
                 <li>{{ $descripcion }}</li><br>
                 <li>Moderador: {{ $moderador}}</li>
+                <br>
                 <li>Fecha Inicio: {{ \Carbon\Carbon::parse($inicio)->format('d/m/Y') }}</li>
                 <li>Fecha Fin: {{ \Carbon\Carbon::parse($fin)->format('d/m/Y') }}</li>
             </ul>

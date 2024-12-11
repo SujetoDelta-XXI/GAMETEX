@@ -29,7 +29,6 @@
                 </div>
             </div>
             <div class="flex">
-                <!-- Sección de 50% de Anchura Derecha - Lista de Torneos -->
                 <div class="w-1/2 p-4 border-r dark:border-gray-600">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Lista de Torneos</h3>
                     <div class="overflow-x-auto">
@@ -65,11 +64,9 @@
                         </table>
                     </div>
                 </div>
-                <!-- Sección de 50% de Anchura Izquierda - Detalles de Participantes -->
                 <div class="w-1/2 p-4">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Participantes del Torneo</h3>
                     <div id="detalle-torneo" class="text-center text-gray-500 dark:text-gray-400">
-                        <!-- Aquí se incluirá la vista de TorneoEquipos.blade.php -->
                         @isset($detalles)
                             @include('admin.crud.TorneoEquipos', ['detalles' => $detalles])
                         @else

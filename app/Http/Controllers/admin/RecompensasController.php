@@ -24,13 +24,11 @@ class RecompensasController extends Controller
 
     public function showListado(Request $request)
     {
-        $recompensas = RecompensasModel::all();
+        $recompensas = RecompensasModel::paginate(10);
         $totalQuantity = $recompensas->sum('cantidad');
         $recompensasTipos = RecompensasTipoModel::all();
         return view('admin.crud.recompensas', compact('recompensas', 'totalQuantity', 'recompensasTipos'));
     }
-
-
   
     public function edit($id)
     {
@@ -105,7 +103,6 @@ class RecompensasController extends Controller
 
         return redirect()->route('admin.crud.recompensas')->with('success', 'Recompensa asignada exitosamente.');
     }
-
         ////////////////////////////////////////////////////////////////////
 
     ///////////////////////////////////////////////////////////////////////////////

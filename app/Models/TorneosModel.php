@@ -56,21 +56,24 @@ class TorneosModel extends Model
         return $this->belongsTo(AdminModel::class, 'administrador_id');
     }
 
+    // Relación con los equipos (grupos) del torneo
     public function equipos()
     {
         return $this->hasMany(EquiposModel::class, 'torneo_id');
     }
-    
+
+    // Relación con los usuarios del torneo
     public function usuarios()
     {
         return $this->belongsToMany(
             UserModel::class,
-            'torneos_has_usuarios', // Nombre de la tabla intermedia
-            'torneo_id',            // Llave foránea hacia torneos
-            'usuario_id'            // Llave foránea hacia usuarios
+            'torneos_has_usuarios',  // Tabla intermedia
+            'torneo_id',             // Llave foránea a torneos
+            'usuario_id'             // Llave foránea a usuarios
         );
     }
-    
+
+    // Método para verificar si el torneo está lleno
     public function estaLleno()
     {
         return $this->usuarios()->count() >= $this->capacidad_maxima;

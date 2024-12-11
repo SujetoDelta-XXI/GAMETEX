@@ -39,15 +39,13 @@ class PanelTorneoController extends Controller
     public function equipos($id)
     {
         $torneo = TorneosModel::findOrFail($id);
-        $equipos = DB::table('equipos_models')
-            ->where('torneo_id', $id)
-            ->get();
+        $equipos = EquiposModel::with('usuarios')
+            ->whereHas('torneos', function ($query) use ($id) 
+            {
+                $query->where('torneo_id', $id); })
+                ->get();
+
             return view('torneos.panel.equipos', compact('equipos', 'torneo'))->with('torneoLleno', $torneo->estaLleno());
-
+    
     }
-
-
-
-
-
 }

@@ -40,12 +40,12 @@
                                 <div>
                                     <p
                                         class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-                                        Torneos
+                                        Torneos Activos
                                     </p>
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('users-eventos') }}"
+                        <a href="{{ route('users-torneos-concluidos') }}"
                             class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
                             <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                                 <div>
@@ -53,13 +53,13 @@
                                         stroke-width="1.5" stroke="currentColor"
                                         class="w-6 h-6 group-hover:text-indigo-400">
                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M11.48 3.499a.375.375 0 01.683 0l2.08 4.214a.375.375 0 00.282.205l4.595.668a.375.375 0 01.208.639l-3.326 3.24a.375.375 0 00-.108.332l.785 4.577a.375.375 0 01-.544.395L12 15.854l-4.105 2.158a.375.375 0 01-.544-.395l.785-4.577a.375.375 0 00-.108-.332L4.702 9.226a.375.375 0 01.208-.639l4.595-.668a.375.375 0 00.282-.205l2.08-4.214z" />
+                                            d="M16.5 3.75h3.75c.621 0 1.125.504 1.125 1.125v6.375a1.125 1.125 0 01-1.125 1.125H16.5M7.5 3.75H3.75c-.621 0-1.125.504-1.125 1.125v6.375c0 .621.504 1.125 1.125 1.125H7.5m0 0v4.5m0-4.5h9m0 0v4.5m0 0h-9m0 0V21h9v-4.5" />
                                     </svg>
                                 </div>
                                 <div>
                                     <p
                                         class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-                                        Eventos
+                                        Torneos Concluidos
                                     </p>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                 <div>
                                     <p
                                         class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-                                        Premios
+                                        Recompensas
                                     </p>
                                 </div>
                             </div>

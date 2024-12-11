@@ -62,7 +62,8 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::middleware(['auth.user'])->group(function () {
     Route::get('dashboard', [UserDashController::class, 'index'])->name('dashboard');
     Route::get('profile-show', [UserDashController::class, 'show'])->name('profile-show');
-    Route::get('users-torneos', [UserDashController::class, 'torneos'])->name('users-torneos');
+    Route::get('users-torneos', [UserDashController::class, 'torneos_activos'])->name('users-torneos');
+    Route::get('users-torneos-concluidos', [UserDashController::class, 'torneos_concluidos'])->name('users-torneos-concluidos');
     Route::get('users-recompensas', [RecompensaController::class, 'showUserRecompensas'])->name('users-recompensas');
     Route::post('recompensa/updateEstado', [RecompensaController::class, 'updateEstado'])->name('recompensa.updateEstado');  
     Route::get('users-perfil', [UserDashController::class, 'index'])->name('users-perfil');
@@ -75,10 +76,6 @@ Route::middleware(['auth.user'])->group(function () {
         Route::get('equipos', [PanelTorneoController::class, 'equipos'])->name('torneos-equipos');
     });
     
-
-
-
-
     /* Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register'); */
     Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
     Route::post('setDiscord/{id}',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
@@ -130,8 +127,6 @@ Route::middleware(['auth.admin'])->group(function () {
 
     });
 });
-
-
 
 
 ///////////////////////////////////////////////////////////////////////////
