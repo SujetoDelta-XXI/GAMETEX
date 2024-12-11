@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 namespace App\Http\Controllers\admin;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\AdminModel;
@@ -20,7 +21,7 @@ class AtorneoController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:admin'); 
+        $this->middleware('auth:admin');
     }
 
     public function show()
@@ -34,14 +35,13 @@ class AtorneoController extends Controller
         $moderadores = ModerModel::all();
         $administradores = AdminModel::all();
         $juegos = TorneosJuegoModel::all();
-        $recompensas = RecompensasModel::with('tipo')->get(); // Obtener recompensas con sus tipos
-
+        $recompensas = RecompensasModel::with('tipo')->get()->unique('tipo.nombre');
+    
         return view('admin.crud.torneoCreate', compact('moderadores', 'administradores', 'juegos', 'recompensas'));
     }
 
     public function store(Request $request)
     {
-
 
         $request->validate([
             'nombre' => 'required|string|max:255',
@@ -71,7 +71,7 @@ class AtorneoController extends Controller
         // Guardar la imagen de fondo si se ha cargado una
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
-            $nombreImagen = time().'.'.$imagen->extension();
+            $nombreImagen = time() . '.' . $imagen->extension();
             $imagen->move(public_path('images'), $nombreImagen);
             $torneo->imagen = $nombreImagen;
         }
@@ -104,7 +104,7 @@ class AtorneoController extends Controller
         }
     }
 
-    
+
 
 
     private function crearCanalDiscord(TorneoModel $torneo)
@@ -136,7 +136,7 @@ class AtorneoController extends Controller
             }
         });
 
-        $discord->run(); 
+        $discord->run();
     }
 
 
