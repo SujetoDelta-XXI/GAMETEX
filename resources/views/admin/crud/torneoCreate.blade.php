@@ -1,3 +1,4 @@
+<!-- resources/views/admin/crud/torneoCreate.blade.php -->
 @extends('admin.dashboard')
 
 @section('crudAdm')
@@ -97,7 +98,7 @@
             <div class="flex justify-between space-x-4">
                 <div class="w-1/2 space-y-4">
                     <label for="recompensas_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Tipo de Recompensa:
+                        Seleccionar Recompensa:
                     </label>
                     <select name="recompensas_id" id="recompensas_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 
@@ -105,7 +106,7 @@
                         required>
                         @foreach ($recompensas as $recompensa)
                             <option value="{{ $recompensa->id }}" {{ old('recompensas_id') == $recompensa->id ? 'selected' : '' }}>
-                                {{ $recompensa->tipo->nombre }}
+                                {{ $recompensa->nombre }} ({{ $recompensa->tipo->nombre }})
                             </option>
                         @endforeach
                     </select>

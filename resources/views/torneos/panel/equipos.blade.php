@@ -1,7 +1,7 @@
 @extends('torneos.dashboard')
 @section('content-torneos')
     <section id="24h">
-        <h1 class="font-bold py-4 uppercase text-2xl text-center">Equipo 1</h1>
+        <h1 class="font-bold py-4 uppercase text-2xl text-center">Participantes</h1>
         <h2 class="font-bold pt-4 uppercase text-2x1">Link de Discord</h2>
         <div class="w-1/2 lg:w-1/2 sm:w-[70%]">
             <div
@@ -24,8 +24,10 @@
             </div>
         </div>
         <br>
-        <h2 class="font-bold pt-4 uppercase text-2x1">Integrantes</h2>
+        
+        @if (true)
         <div>
+            <h2 class="font-bold pt-4 uppercase text-2x1">Integrantes</h2>
             <div
                 class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
                 <div class="w-[5%] hidden sm:block">
@@ -39,78 +41,52 @@
                     data-drawer-show="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced"
                     class="py-[5px] px-3  ml-auto flex items-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-900 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-900 dark:focus:ring-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                        class="w-4 h-4 mr-2 -ml-0.5">
+                    class="w-4 h-4 mr-2 -ml-0.5">
                         <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
+                        d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
                     </svg>
                     Ver Perfil
                 </button>
             </div>
-            <div
-                class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
-                <div class="w-[5%] hidden sm:block">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTagbbVn8g0ILDayKjIp6_KAONYVp7_VkakLQ&s" alt="Imagen del jugador" class="rounded-lg">
-                </div>
-                <!-- Información del jugador -->
-                <div class="ml-4">
-                    <dt class="font-semibold text-gray-900 dark:text-white">Lluvia de amburguesas</dt>
-                </div>
-                <button type="button" data-drawer-target="drawer-read-product-advanced"
-                    data-drawer-show="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced"
-                    class="py-[5px] px-3  ml-auto flex items-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-900 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-900 dark:focus:ring-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                        class="w-4 h-4 mr-2 -ml-0.5">
-                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
-                    </svg>
-                    Ver Perfil
-                </button>
-            </div>
-            <div
-                class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
-                <div class="w-[5%] hidden sm:block">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzJjLneDX5JaeR1aDrBHBVFttNsmaMGedAJQ&s" alt="Imagen del jugador" class="rounded-lg">
-                </div>
-                <!-- Información del jugador -->
-                <div class="ml-4">
-                    <dt class="font-semibold text-gray-900 dark:text-white">Chcicharron asado</dt>
-                </div>
-                <button type="button" data-drawer-target="drawer-read-product-advanced"
-                    data-drawer-show="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced"
-                    class="py-[5px] px-3  ml-auto flex items-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-900 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-900 dark:focus:ring-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                        class="w-4 h-4 mr-2 -ml-0.5">
-                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
-                    </svg>
-                    Ver Perfil
-                </button>
-            </div>
-            <div
-                class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
-                <div class="w-[5%] hidden sm:block">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsBXwm9IyKMOdoAlRGepI9wTwclCdX6lpw3w&s" alt="Imagen del jugador" class="rounded-lg">
-                </div>
-                <!-- Información del jugador -->
-                <div class="ml-4">
-                    <dt class="font-semibold text-gray-900 dark:text-white">Miguel Pedro Flores</dt>
-                </div>
-                <button type="button" data-drawer-target="drawer-read-product-advanced"
-                    data-drawer-show="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced"
-                    class="py-[5px] px-3  ml-auto flex items-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-900 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-900 dark:focus:ring-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                        class="w-4 h-4 mr-2 -ml-0.5">
-                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
-                    </svg>
-                    Ver Perfil
-                </button>
-            </div>
+            
+            
         </div>
+        
+        @else
+            <h2 class="font-bold pt-4 uppercase text-2x1">Grupos</h2>
+            <br>
+            @foreach ($equipos as $equipo)
+                <div class="bg-black/60 to-white/5 rounded-lg col-span-3 mb-4">
+                    <!-- Encabezado del equipo -->
+                    <div class="flex flex-row items-center p-4 border-b border-white/5">
+                        <p class="text-xl font-bold">{{ $equipo->nombre }}</p>
+                    </div>
+                    
+                    <!-- Contenido del equipo -->
+                    <div class="p-4 flex items-center">
+                        <span class="p-1 text-sm text-green-500">
+                        Esta lleno
+                        </span>
+                        <button type="button" data-drawer-target="drawer-read-product-advanced"
+                            data-drawer-show="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced"
+                            class="py-[5px] px-3 ml-auto flex items-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-900 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-900 dark:focus:ring-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-4 h-4 mr-2 -ml-0.5">
+                                <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
+                            </svg>
+                            Integrantes
+                        </button>
+                    </div>
+                </div>
+            @endforeach
+
+            {{$equipos}}
+
+        @endif
+
     </section>
 
     <!-- Preview Drawer -->

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserDiscordController extends Controller
 {
-    public function  setDiscord (Request $request){
+    public function  setDiscord (Request $request, $id){
         $request->validate([
             'password' => ['required'],
         ]);
@@ -20,6 +20,6 @@ class UserDiscordController extends Controller
         $usuario = Auth()->guard('user')->user();
         $usuario->discord = $request->input('discord');
         $usuario->save();
-        return redirect()->route('torneos-panel');
+        return redirect()->route('torneos-equipos', $id);
     }
 }

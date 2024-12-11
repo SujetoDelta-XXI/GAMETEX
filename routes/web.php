@@ -68,14 +68,20 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('users-perfil', [UserDashController::class, 'index'])->name('users-perfil');
     Route::get('users-eventos', [UserDashController::class, 'eventos'])->name('users-eventos');
 
-    Route::get('torneos-panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');
-    Route::get('torneos-descripcion', [PanelTorneoController::class, 'descripcion'])->name('torneos-descripcion');
-    Route::get('torneos-partidas', [PanelTorneoController::class, 'partidas'])->name('torneos-partidas');
-    Route::get('torneos-equipos', [PanelTorneoController::class, 'equipo'])->name('torneos-equipos');
+    Route::prefix('/torneo/{id}')->group(function () {
+        Route::get('panel', [PanelTorneoController::class, 'index'])->name('torneos-panel');
+        Route::get('descripcion', [PanelTorneoController::class, 'descripcion'])->name('torneos-descripcion');
+        Route::get('partidas', [PanelTorneoController::class, 'partidas'])->name('torneos-partidas');
+        Route::get('equipos', [PanelTorneoController::class, 'equipos'])->name('torneos-equipos');
+    });
+    
 
-    Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register');
+
+
+
+    /* Route::get('torneos-register', [TorneosController::class, 'register'])->name('torneos-register'); */
     Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
-    Route::post('setDiscord',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
+    Route::post('setDiscord/{id}',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
     Route::get('eventos-register', [EventoController::class, 'register'])->name('eventos-register');
 });
 
@@ -112,7 +118,10 @@ Route::middleware(['auth.admin'])->group(function () {
         Route::get('/recompensas/torneos/search', [RecompensasTorneosController::class, 'searchTorneo'])->name('searchTorneo');
         Route::get('/recompensas/torneos/{torneo_id}/detalles', [RecompensasTorneosController::class, 'getDetalles'])->name('recompensasTorneos.detalles');        
         Route::post('recompensas/torneos/asignar', [RecompensasTorneosController::class, 'asignarRecompensa'])->name('asignar.recompensa');
-        
+
+        Route::post('/recompensas/guardar-recompensa-id', [RecompensasTorneosController::class, 'guardarRecompensaId'])->name('guardarRecompensaId'); 
+        Route::get('/recompensas/obtener-recompensa-id', [RecompensasTorneosController::class, 'obtenerRecompensaId'])->name('obtenerRecompensaId');
+        Route::get('/recompensas/disponibles', [RecompensasTorneosController::class, 'recompensasDisponibles'])->name('recompensasDisponibles');
         Route::get('usuarios', [UsuariosController::class, 'showListado'])->name('usuarios');
         Route::post('/usuario/detalles', [UsuariosController::class, 'getUsuarioDetalles'])->name('usuario.detalles');
 

@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('equipos_models', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->integer('numero_equipo');
+            $table->integer('capacidad_maxima')->default(5); // Capacidad máxima del equipo
+            $table->integer('inscritos_actuales')->default(0); // Inscritos actualmente
+            $table->foreignId('torneo_id')->constrained('torneos')->onDelete('cascade');
             $table->timestamps();
         });
     }
