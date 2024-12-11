@@ -7,7 +7,7 @@
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="flex justify-between items-center space-y-3 md:space-y-0 md:space-x-4 p-4">
                     <!-- Buscador Dinámico -->
-                    <div class="relative w-full md:w-2/3">
+                    <div class="relative w-full md:w-1/2">
                         <input type="search" id="search-dropdown"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500"
                             placeholder="Buscar" required />
@@ -20,7 +20,16 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="relative w-full md:w-1/3">
+                    <button type="button" id="createProductButton" data-modal-toggle="createProductModal"
+                        class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                        <svg class="h-3.5 w-3.5 mr-1.5 -ml-1" fill="currentColor" viewbox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path clip-rule="evenodd" fill-rule="evenodd"
+                                d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
+                        </svg>
+                        Nuevo producto
+                    </button>
+                    <div class="relative w-full md:w-1/4">
                         <select id="search-filter"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500">
                             <option value="all">Todas las Categorías</option>
@@ -39,20 +48,23 @@
                                 <th scope="col" class="p-4">Clave del Producto</th>
                                 <th scope="col" class="p-4">Precio</th>
                                 <th scope="col" class="p-4">Fecha de Ingreso</th>
-                                <th scope="col" class="p-4">Última Actualización</th>
                                 <th scope="col" class="p-4">Asignada</th>
-                                <th>Acciones</th>
+                                <th scope="col" class="p-4">Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="recompensas-table">
                             @foreach ($recompensas as $recompensa)
-                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700" data-categoria="{{ $recompensa->tipo->nombre }}">
-                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $recompensa->nombre }}</td>
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                    data-categoria="{{ $recompensa->tipo->nombre }}">
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $recompensa->nombre }}</td>
                                     <td class="px-4 py-3">{{ $recompensa->tipo->nombre }}</td>
-                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $recompensa->clave_producto }}</td>
-                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $recompensa->precio }}</td>
-                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $recompensa->created_at }}</td>
-                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $recompensa->updated_at }}</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $recompensa->clave_producto }}</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $recompensa->precio }}</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $recompensa->created_at }}</td>
                                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         @if ($recompensa->asignada)
                                             <span class="text-green-600">Sí</span>
@@ -60,14 +72,13 @@
                                             <span class="text-red-600">No</span>
                                         @endif
                                     </td>
-                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <a href="{{ route('admin.crud.recompensasEventos', ['id' => $recompensa->id]) }}" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
-                                            Eventos
-                                        </a>
-                                        <a href="{{ route('admin.crud.recompensasTorneos', ['id' => $recompensa->id]) }}" onclick="guardarRecompensaId({{ $recompensa->id }})" class="ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">
+                                    <td class="py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <a href="{{ route('admin.crud.recompensasTorneos', ['id' => $recompensa->id]) }}"
+                                            onclick="guardarRecompensaId({{ $recompensa->id }})"
+                                            class="ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">
                                             Torneos
                                         </a>
-                                        
+
                                         <script>
                                             function guardarRecompensaId(recompensaId) {
                                                 fetch('{{ route('admin.crud.guardarRecompensaId') }}', {
@@ -76,7 +87,9 @@
                                                         'Content-Type': 'application/json',
                                                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                                                     },
-                                                    body: JSON.stringify({ recompensa_id: recompensaId })
+                                                    body: JSON.stringify({
+                                                        recompensa_id: recompensaId
+                                                    })
                                                 }).then(response => {
                                                     if (response.ok) {
                                                         console.log('ID de la recompensa guardada exitosamente.');
@@ -88,22 +101,23 @@
                                                 });
                                             }
                                         </script>
-                                        
-                                        
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-4 pb-5 px-5">
+                        {{ $recompensas->links() }}
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <script>
         function guardarRecompensaId(recompensaId) {
-        localStorage.setItem('recompensa_id', recompensaId);
+            localStorage.setItem('recompensa_id', recompensaId);
         }
-    
+
         document.querySelectorAll('[data-toggle="modal"]').forEach(button => {
             button.addEventListener('click', function() {
                 const userId = this.getAttribute('data-user-id');
@@ -114,7 +128,7 @@
                 document.getElementById('assignRewardModal').classList.remove('hidden');
             });
         });
-    
+
         document.getElementById('assignRewardForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const userId = document.getElementById('modalUserId').value;
@@ -125,7 +139,11 @@
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
-                body: JSON.stringify({ usuario_id: userId, recompensa_id: recompensaId, estado: 'asignada' })
+                body: JSON.stringify({
+                    usuario_id: userId,
+                    recompensa_id: recompensaId,
+                    estado: 'asignada'
+                })
             }).then(response => response.json()).then(data => {
                 if (data.success) {
                     alert('Recompensa asignada con éxito');
@@ -136,7 +154,8 @@
             }).catch(error => console.error('Error:', error));
         });
     </script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.js"></script>
-    <script src="/livewire/livewire.js?id=38dc8241" data-csrf="BGW9EdPbFlgx3x6zunuiT1IxnJYEeNNNUASQP0z5" data-update-uri="/livewire/update" data-navigate-once="true"></script>
+    <script src="/livewire/livewire.js?id=38dc8241" data-csrf="BGW9EdPbFlgx3x6zunuiT1IxnJYEeNNNUASQP0z5"
+        data-update-uri="/livewire/update" data-navigate-once="true"></script>
 @endsection

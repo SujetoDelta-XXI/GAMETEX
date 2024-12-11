@@ -78,7 +78,7 @@
                                 <div>
                                     <p
                                         class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-                                        Premios
+                                        Recompensas
                                     </p>
                                 </div>
                             </div>
