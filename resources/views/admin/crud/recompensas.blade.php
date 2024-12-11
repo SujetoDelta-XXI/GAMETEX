@@ -64,9 +64,32 @@
                                         <a href="{{ route('admin.crud.recompensasEventos', ['id' => $recompensa->id]) }}" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
                                             Eventos
                                         </a>
-                                        <a href="{{ route('admin.crud.recompensasTorneos', ['id' => $recompensa->id]) }}" class="ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">
+                                        <a href="{{ route('admin.crud.recompensasTorneos', ['id' => $recompensa->id]) }}" onclick="guardarRecompensaId({{ $recompensa->id }})" class="ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">
                                             Torneos
                                         </a>
+                                        
+                                        <script>
+                                            function guardarRecompensaId(recompensaId) {
+                                                fetch('{{ route('admin.crud.guardarRecompensaId') }}', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                                    },
+                                                    body: JSON.stringify({ recompensa_id: recompensaId })
+                                                }).then(response => {
+                                                    if (response.ok) {
+                                                        console.log('ID de la recompensa guardada exitosamente.');
+                                                    } else {
+                                                        console.error('Error al guardar la ID de la recompensa.');
+                                                    }
+                                                }).catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                            }
+                                        </script>
+                                        
+                                        
                                     </td>
                                 </tr>
                             @endforeach
@@ -76,43 +99,44 @@
             </div>
         </div>
     </section>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const recompensasFilter = document.getElementById('search-filter');
-            const recompensaContainers = document.querySelectorAll('[data-categoria]');
-            const searchInput = document.getElementById('search-dropdown');
-
-            // Filtrar recompensas por el tipo de búsqueda seleccionado en el dropdown
-            recompensasFilter.addEventListener('change', function() {
-                const selectedRecompensa = recompensasFilter.value;
-
-                recompensaContainers.forEach(function(container) {
-                    const recompensaType = container.getAttribute('data-categoria');
-                    if (selectedRecompensa === 'all' || recompensaType === selectedRecompensa) {
-                        container.style.display = "";
-                    } else {
-                        container.style.display = "none";
-                    }
-                });
-            });
-
-            // Función que filtra las filas según el texto de búsqueda
-            searchInput.addEventListener('input', function() {
-                const searchTerm = searchInput.value.toLowerCase();
-
-                recompensaContainers.forEach(function(container) {
-                    const productoText = container.querySelector('td').textContent.toLowerCase();
-
-                    if (productoText.includes(searchTerm)) {
-                        container.style.display = '';
-                    } else {
-                        container.style.display = 'none';
-                    }
-                });
+        function guardarRecompensaId(recompensaId) {
+        localStorage.setItem('recompensa_id', recompensaId);
+        }
+    
+        document.querySelectorAll('[data-toggle="modal"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const userId = this.getAttribute('data-user-id');
+                document.getElementById('modalUserId').value = userId;
+                const recompensaId = localStorage.getItem('recompensa_id');
+                console.log('ID de la Recompensa:', recompensaId); // Agregar depuración aquí
+                document.getElementById('hiddenRecompensaId').value = recompensaId;
+                document.getElementById('assignRewardModal').classList.remove('hidden');
             });
         });
+    
+        document.getElementById('assignRewardForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userId = document.getElementById('modalUserId').value;
+            const recompensaId = document.getElementById('hiddenRecompensaId').value;
+            fetch('{{ route('admin.crud.asignar.recompensa') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ usuario_id: userId, recompensa_id: recompensaId, estado: 'asignada' })
+            }).then(response => response.json()).then(data => {
+                if (data.success) {
+                    alert('Recompensa asignada con éxito');
+                    closeModal();
+                } else {
+                    alert('Hubo un error al asignar la recompensa');
+                }
+            }).catch(error => console.error('Error:', error));
+        });
     </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.js"></script>
     <script src="/livewire/livewire.js?id=38dc8241" data-csrf="BGW9EdPbFlgx3x6zunuiT1IxnJYEeNNNUASQP0z5" data-update-uri="/livewire/update" data-navigate-once="true"></script>
 @endsection

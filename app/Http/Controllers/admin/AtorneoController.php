@@ -41,8 +41,6 @@ class AtorneoController extends Controller
 
     public function store(Request $request)
     {
-
-
         $request->validate([
             'nombre' => 'required|string|max:255',
             'moderador' => 'required|exists:moders,id',
@@ -50,12 +48,12 @@ class AtorneoController extends Controller
             'descripcion' => 'required|string',
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date|after:fecha_inicio',
-            'recompensas_id' => 'required|exists:recompensas,id', // Cambio aquí
+            'recompensas_id' => 'required|exists:recompensas,id', // Usar recompensas_id
             'juego' => 'required|exists:torneos_juegos,id',
             'reglas' => 'required|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
+    
         // Crear el nuevo torneo
         $torneo = new TorneosModel();
         $torneo->nombre = $request->nombre;
@@ -64,10 +62,10 @@ class AtorneoController extends Controller
         $torneo->descripcion = $request->descripcion;
         $torneo->fecha_inicio = $request->fecha_inicio;
         $torneo->fecha_fin = $request->fecha_fin;
-        $torneo->recompensas_id = $request->recompensas_id; // Cambio aquí
+        $torneo->recompensas_id = $request->recompensas_id; // Asegúrate de usar recompensas_id
         $torneo->torneo_juego_id = $request->juego;
         $torneo->reglas = $request->reglas;
-
+    
         // Guardar la imagen de fondo si se ha cargado una
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
@@ -75,35 +73,12 @@ class AtorneoController extends Controller
             $imagen->move(public_path('images'), $nombreImagen);
             $torneo->imagen = $nombreImagen;
         }
-
+    
         $torneo->save();
-
+    
         return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
     }
-
-    // Método para asignar atributos al modelo de Torneo
-    private function assignTorneoAttributes($torneo, $request)
-    {
-        $torneo->nombre = $request->name;
-        $torneo->moderador_id = $request->moderator ?? null;  // Asignar null si no se proporciona
-        $torneo->administrador_id = $request->administrator;
-        $torneo->descripcion = $request->description;
-        $torneo->fecha_inicio = $request->start_date;
-        $torneo->fecha_fin = $request->end_date;
-        $torneo->recompensas_id = $request->reward;
-        $torneo->torneo_juego_id = $request->game;
-
-        // Asumimos que el campo 'entrada' es null por defecto
-        $torneo->entrada = null;
-
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/eventos');
-            $torneo->imagen = $imagePath;
-        } else {
-            $torneo->imagen = null;
-        }
-    }
-
+    
     
 
 
