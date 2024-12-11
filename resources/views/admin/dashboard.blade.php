@@ -71,23 +71,6 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('admin.crud.evento') }}"
-                    class="load-view-button block px-4 py-2 text-sm text-black hover:bg-gray-400 rounded-md">
-                    <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:text-indigo-400">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M11.48 3.499a.375.375 0 01.683 0l2.08 4.214a.375.375 0 00.282.205l4.595.668a.375.375 0 01.208.639l-3.326 3.24a.375.375 0 00-.108.332l.785 4.577a.375.375 0 01-.544.395L12 15.854l-4.105 2.158a.375.375 0 01-.544-.395l.785-4.577a.375.375 0 00-.108-.332L4.702 9.226a.375.375 0 01.208-.639l4.595-.668a.375.375 0 00.282-.205l2.08-4.214z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-base lg:text-lg text-black leading-4 group-hover:text-indigo-400">
-                                Eventos
-                            </p>
-                        </div>
-                    </div>
-                </a>
                 <a href="{{ route('admin.crud.torneo') }}"
                     class="load-view-button block px-4 py-2 text-sm text-black hover:bg-gray-400 rounded-md">
                     <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">

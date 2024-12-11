@@ -12,7 +12,6 @@ use App\Http\Controllers\torneos\PanelTorneoController;
 use App\Http\Controllers\moder\ModerDashController;
 
 use App\Http\Controllers\admin\AdminDashController;
-use App\Http\Controllers\admin\AeventoController;
 use App\Http\Controllers\admin\AtorneoController;
 use App\Http\Controllers\ProfilePhotoController;
 use App\Http\Controllers\admin\RecompensasController;
@@ -21,7 +20,6 @@ use App\Http\Controllers\user\RecompensaController;
 
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\admin\RecompensasTorneosController;
-use App\Http\Controllers\eventos\PanelEventController;
 
 use App\Models\RecompensasModel;
 use Illuminate\Support\Facades\Auth;
@@ -79,9 +77,6 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('torneos-register/{id}', [TorneosController::class, 'registerId'])->name('torneos-registerId');
     Route::post('setDiscord',[UserDiscordController::class, 'setDiscord'])->name('setDiscord');
     Route::get('eventos-register', [EventoController::class, 'register'])->name('eventos-register');
-
-    Route::get('eventos-detalle', [PanelEventController::class, 'detalle'])->name('evento-detalle');
-    Route::get('eventos-ranking', [PanelEventController::class, 'ranking'])->name('evento-ranking');
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -97,14 +92,6 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('admin/dashboard', [AdminDashController::class, 'index'])->name('admin.dashboard');
 
     Route::prefix('admin/crud')->name('admin.crud.')->group(function () {
-        /////////////////////////////// evento /////////////////////////////////////
-        Route::get('evento', [AeventoController::class, 'show'])->name('evento');
-        Route::get('evento/create', [AeventoController::class, 'create'])->name('evento.create');
-        Route::get('evento-edit/{id}/edit', [AeventoController::class, 'editEventos'])->name('evento.edit');
-        Route::delete('evento/{id}', [AeventoController::class, 'deleteEventos'])->name('evento.delete');
-        Route::get('evento/search', [AeventoController::class, 'search'])->name('evento.search');
-        Route::post('evento/store', [AeventoController::class, 'store'])->name('evento.store');
-        /////////////////////////////// evento /////////////////////////////////////
         Route::get('torneo', [AtorneoController::class, 'show'])->name('torneo');
         Route::get('torneo/create', [AtorneoController::class, 'create'])->name('torneo.create');
         Route::post('torneo/store', [AtorneoController::class, 'store'])->name('torneo.store');
