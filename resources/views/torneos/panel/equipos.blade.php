@@ -95,7 +95,7 @@
             </div>
             @endforeach
 
-            {{$equipos}}
+            
 
         @endif
 

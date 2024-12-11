@@ -10,10 +10,8 @@ class TorneosController extends Controller
 {
     public function index()
     {
-        // Captura el parámetro 'game' de la URL
-        $gameFilter = request()->query('game', 'all'); // Por defecto, muestra "all"
+        $gameFilter = request()->query('game', 'all'); 
 
-        // Filtrar los torneos por juego si se seleccionó uno
         $torneos = TorneosModel::all();
         /* dump('paso por index'); */
         
@@ -40,7 +38,6 @@ class TorneosController extends Controller
     
         $usuario = Auth()->guard('user')->user();
     
-        // Verificar si el usuario ya está inscrito en el torneo
         $usuarioInscrito = TorneosHasUsuariosModel::where('usuario_id', $usuario->id)
             ->where('torneo_id', $id)
             ->exists();
