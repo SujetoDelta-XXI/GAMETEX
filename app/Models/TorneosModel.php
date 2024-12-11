@@ -43,7 +43,10 @@ class TorneosModel extends Model
 
     public function recompensa()
     {
-        return $this->belongsTo(RecompensasTipoModel::class, 'recompensas_id');
+        return $this->hasMany(RecompensasTipoModel::class, 'recompensas_id');
+    }
+    public function recompensas(){
+        return $this->belongsTo(RecompensasModel::class,'torneo_id');
     }
 
     public function moderador()

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 namespace App\Http\Controllers\admin;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\AdminModel;
@@ -20,7 +21,7 @@ class AtorneoController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:admin'); 
+        $this->middleware('auth:admin');
     }
 
     public function show()
@@ -34,15 +35,13 @@ class AtorneoController extends Controller
         $moderadores = ModerModel::all();
         $administradores = AdminModel::all();
         $juegos = TorneosJuegoModel::all();
-        $recompensas = RecompensasModel::with('tipo')->get(); // Obtener recompensas con sus tipos
-
+        $recompensas = RecompensasModel::with('tipo')->get()->unique('tipo.nombre');
+    
         return view('admin.crud.torneoCreate', compact('moderadores', 'administradores', 'juegos', 'recompensas'));
     }
 
     public function store(Request $request)
     {
-
-
         $request->validate([
             'nombre' => 'required|string|max:255',
             'moderador' => 'required|exists:moders,id',
@@ -50,12 +49,12 @@ class AtorneoController extends Controller
             'descripcion' => 'required|string',
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date|after:fecha_inicio',
-            'recompensas_id' => 'required|exists:recompensas,id', // Cambio aquí
+            'recompensas_id' => 'required|exists:recompensas,id', // Usar recompensas_id
             'juego' => 'required|exists:torneos_juegos,id',
             'reglas' => 'required|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
+    
         // Crear el nuevo torneo
         $torneo = new TorneosModel();
         $torneo->nombre = $request->nombre;
@@ -64,20 +63,20 @@ class AtorneoController extends Controller
         $torneo->descripcion = $request->descripcion;
         $torneo->fecha_inicio = $request->fecha_inicio;
         $torneo->fecha_fin = $request->fecha_fin;
-        $torneo->recompensas_id = $request->recompensas_id; // Cambio aquí
+        $torneo->recompensas_id = $request->recompensas_id; // Asegúrate de usar recompensas_id
         $torneo->torneo_juego_id = $request->juego;
         $torneo->reglas = $request->reglas;
-
+    
         // Guardar la imagen de fondo si se ha cargado una
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
-            $nombreImagen = time().'.'.$imagen->extension();
+            $nombreImagen = time() . '.' . $imagen->extension();
             $imagen->move(public_path('images'), $nombreImagen);
             $torneo->imagen = $nombreImagen;
         }
-
+    
         $torneo->save();
-
+    
         return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
     }
 
@@ -104,7 +103,7 @@ class AtorneoController extends Controller
         }
     }
 
-    
+
 
 
     private function crearCanalDiscord(TorneoModel $torneo)
@@ -136,7 +135,7 @@ class AtorneoController extends Controller
             }
         });
 
-        $discord->run(); 
+        $discord->run();
     }
 
 
