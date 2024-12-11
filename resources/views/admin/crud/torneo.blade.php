@@ -1,3 +1,4 @@
+
 @extends('admin.dashboard')
 @section('crudAdm')
     <div class="mt-4">
@@ -35,9 +36,22 @@
             </div>
         </nav>
         <br>
+
         <!-- Grilla de torneos -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             @foreach ($torneos as $torneo)
+                @php
+                    $imagePath1 = public_path('images/' . $torneo->imagen);
+                    $imagePath2 = public_path('storage/' . $torneo->imagen);
+
+                        if (file_exists($imagePath1)) {
+                            $imageUrl = asset('images/' . $torneo->imagen);
+                        } elseif (file_exists($imagePath2)) {
+                            $imageUrl = asset('storage/' . $torneo->imagen);
+                        } else {
+                            $imageUrl = asset('imagenes/default.png'); // Imagen predeterminada si no se encuentra en ninguna carpeta
+                        }
+                @endphp
                 <div class="mb-6 p-6 bg-gray-800 rounded-xl shadow-lg border border-gray-700 torneo-row" data-nombre="{{ strtolower($torneo->nombre) }}" data-juego="{{ strtolower($torneo->torneoJuego->nombre) }}" data-moderador="{{ strtolower($torneo->moderador->name) }}">
                     <h4 class="text-lg font-bold text-indigo-500 mb-2">🏆 {{ $torneo->nombre }}</h4>
                     <div class="space-y-2 text-sm text-gray-300">
@@ -51,7 +65,7 @@
                         <p><span class="font-semibold text-gray-400">🕒 Última Modificación:</span> {{ $torneo->updated_at->format('d/m/Y H:i') }}</p>
                     </div>
                     <div class="m-4 w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300">
-                        <img src="{{ Str::startsWith($torneo->imagen, ['http://', 'https://']) ? $torneo->imagen : Storage::url($torneo->imagen) }}"
+                        <img src="{{ $imageUrl }}"
                             alt="Imagen circular" class="w-full h-full object-cover">
                     </div>
                     <div class="flex justify-end space-x-3">

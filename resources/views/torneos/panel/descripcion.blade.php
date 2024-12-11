@@ -1,13 +1,25 @@
+@php
+    $imagePath1 = public_path('images/' . $torneo->imagen);
+    $imagePath2 = public_path('storage/' . $torneo->imagen);
+
+        if (file_exists($imagePath1)) {
+            $imageUrl = asset('images/' . $torneo->imagen);
+        } elseif (file_exists($imagePath2)) {
+            $imageUrl = asset('storage/' . $torneo->imagen);
+        } else {
+            $imageUrl = asset('torneos_img/lol1.jpeg'); // Imagen predeterminada si no se encuentra en ninguna carpeta
+        }
+@endphp
 @extends('torneos.dashboard')
 
 @section('content-torneos')
     <div class="lg:w-1/2 block sm:hidden mb-4">
-        <img src="/storage/{{ $torneo->imagen }}" class="h-full object-cover rounded-lg">
+        <img src="{{ $imageUrl }}" class="h-full object-cover rounded-lg">
     </div>
     <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
         <!-- Imagen a la izquierda -->
         <div class="lg:w-1/2 sm:block hidden">
-            <img src="/storage/{{ $torneo->imagen }}" class="h-full object-cover rounded-lg">
+            <img src="{{ $imageUrl }}" class="h-full object-cover rounded-lg">
         </div>
 
         <!-- Contenedor para la información personal y la descripción -->
@@ -26,7 +38,7 @@
                     </li>
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Recompensa</span>
-                        <span class="text-gray-100">{{$torneo->recompensa->nombre}}</span>
+                        <span class="text-gray-100">{{$torneo->recompensas->nombre ?? 'No asignado'}}</span>
                     </li>
                     <li class="flex flex-col border-b py-2">
                         <span class="font-bold">Juego</span>

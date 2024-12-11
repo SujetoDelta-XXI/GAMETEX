@@ -1,14 +1,26 @@
+@php
+    $imagePath1 = public_path('images/' . $torneo->imagen);
+    $imagePath2 = public_path('storage/' . $torneo->imagen);
+
+        if (file_exists($imagePath1)) {
+            $imageUrl = asset('images/' . $torneo->imagen);
+        } elseif (file_exists($imagePath2)) {
+            $imageUrl = asset('storage/' . $torneo->imagen);
+        } else {
+            $imageUrl = asset('torneos_img/lol1.jpeg'); // Imagen predeterminada si no se encuentra en ninguna carpeta
+        }
+@endphp
 @extends('layouts.header')
 @section('contenido')
     <div class="flex justify-center items-center min-h-screen bg-gray-800">
         <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6 hide-scroll-bar xl:w-[80%] mx-10">
             <div class="lg:w-1/2 block sm:hidden mb-4">
-                <img src="/storage/{{ $torneo->imagen }}" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ $imageUrl }}" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="rounded-lg shadow-xl overflow-hidden flex sm:space-x-4">
                 <!-- Imagen a la izquierda -->
                 <div class="lg:w-1/2 sm:block hidden">
-                    <img src="/storage/{{ $torneo->imagen }}" class="h-full object-cover rounded-lg">
+                    <img src="{{ $imageUrl }}" class="h-full object-cover rounded-lg">
                 </div>
 
                 <div class="lg:w-2/3 flex flex-col space-y-4 w-full">
