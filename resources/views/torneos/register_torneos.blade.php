@@ -26,7 +26,7 @@
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Recompensa</span>
-                                <span class="text-gray-100">{{$torneo->recompensa->nombre}}</span>
+                                <span class="text-gray-100">{{$torneo->recompensas->nombre ?? 'No asignado'}}</span>
                             </li>
                             <li class="flex flex-col border-b py-2">
                                 <span class="font-bold">Juego</span>
