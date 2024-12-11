@@ -55,48 +55,57 @@
             <div class="container mx-auto px-0 py-0">
                 <!-- Subtítulo de la sección -->
                 <h2 class="lg:px-20 md:px-10 px-5 lg:mx-0 md:mx-20 mx-5 font-bold text-4xl text-white text-center pb-5">
-                    EVENTOS
+                    PATROCINADORES
                 </h2>
                 <section class="text-gray-400 bg-gray-900 body-font">
                     <div class="flex flex-wrap justify-center px-5 py-5 mx-auto space-x-0 sm:space-x-4 md:space-x-10">
                         <!--Evento 1-->
                         <x-home.evento_card class="lg:w-1/3">
                             <x-slot name="imagen">
-                                https://image.api.playstation.com/vulcan/ap/rnd/202405/2117/bd406f42e9352fdb398efcf21a4ffe575b2306ac40089d21.png
+                                https://www.kartal24.com/dosyalar/2019/09/gog-812x609.jpg
                             </x-slot>
                             <x-slot name="descripcion">
-                                Completa misiones épicas rápidamente para ganar Wukong. Los primeros 100 finalistas
-                                recibirán Cartas de Regalo de Steam.
+                                GOG Galaxy es una plataforma de juegos universal que centraliza bibliotecas, logros, y
+                                amigos de múltiples tiendas en una sola aplicación.
                             </x-slot>
                             <x-slot name="titulo">
-                                Desafío del Guerrero Legendario
+                                GOG Galaxy
+                            </x-slot>
+                            <x-slot name="link">
+                                https://www.gog.com/en/
                             </x-slot>
                         </x-home.evento_card>
 
                         <!--Evento 2-->
                         <x-home.evento_card class="lg:w-1/4">
                             <x-slot name="imagen">
-                                https://preview.redd.it/8m9tv6m3ouq81.jpg?auto=webp&s=0f99cb2b9bd28d93667453c0806a5dd75f888c1e
+                                https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw83haZfZ3gHUIsvTJETNVwZX8U1i9NwiorA&s
                             </x-slot>
                             <x-slot name="descripcion">
-                                Ganá torneos de Left4Dead2 y Counter Strike. Las mejores estrategias ganan premios en
-                                cartas de regalo de Steam.
+                                Mi PC lista tiene componentes potentes: procesador avanzado, tarjeta gráfica, RAM,
+                                almacenamiento rápido y enfriamiento eficiente para máximo rendimiento.
                             </x-slot>
                             <x-slot name="titulo">
-                                Concurso de Creadores de Estrategias
+                                Mi PC Lista
+                            </x-slot>
+                            <x-slot name="link">
+                                https://mipclista.com/
                             </x-slot>
                         </x-home.evento_card>
 
                         <!--Evento 3-->
                         <x-home.evento_card class="lg:w-1/3">
                             <x-slot name="imagen">
-                                https://image.api.playstation.com/vulcan/ap/rnd/202405/2216/cbb03393f0ab1149f2b89a8194ce19e596a24fa5bec6526a.png
+                                https://lmgmas.com/wp-content/uploads/2021/01/Peru-1024x640.jpg
                             </x-slot>
                             <x-slot name="descripcion">
                                 Participa en torneos de DragonBall Fighters y llevate el juego de Sparking Zero.
                             </x-slot>
                             <x-slot name="titulo">
-                                Evento del Fin de Semana Épico
+                                Perú Gaming Show
+                            </x-slot>
+                            <x-slot name="link">
+                                https://www.perugamingshow.com/
                             </x-slot>
                         </x-home.evento_card>
                     </div>

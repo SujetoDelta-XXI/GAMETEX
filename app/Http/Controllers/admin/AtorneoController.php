@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 namespace App\Http\Controllers\admin;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\AdminModel;
@@ -20,7 +21,7 @@ class AtorneoController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:admin'); 
+        $this->middleware('auth:admin');
     }
 
     public function show()
@@ -34,8 +35,8 @@ class AtorneoController extends Controller
         $moderadores = ModerModel::all();
         $administradores = AdminModel::all();
         $juegos = TorneosJuegoModel::all();
-        $recompensas = RecompensasModel::with('tipo')->get(); // Obtener recompensas con sus tipos
-
+        $recompensas = RecompensasModel::with('tipo')->get()->unique('tipo.nombre');
+    
         return view('admin.crud.torneoCreate', compact('moderadores', 'administradores', 'juegos', 'recompensas'));
     }
 
@@ -69,7 +70,7 @@ class AtorneoController extends Controller
         // Guardar la imagen de fondo si se ha cargado una
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
-            $nombreImagen = time().'.'.$imagen->extension();
+            $nombreImagen = time() . '.' . $imagen->extension();
             $imagen->move(public_path('images'), $nombreImagen);
             $torneo->imagen = $nombreImagen;
         }
@@ -78,8 +79,31 @@ class AtorneoController extends Controller
     
         return redirect()->route('admin.crud.torneo')->with('success', 'Torneo creado exitosamente.');
     }
-    
-    
+
+    // Método para asignar atributos al modelo de Torneo
+    private function assignTorneoAttributes($torneo, $request)
+    {
+        $torneo->nombre = $request->name;
+        $torneo->moderador_id = $request->moderator ?? null;  // Asignar null si no se proporciona
+        $torneo->administrador_id = $request->administrator;
+        $torneo->descripcion = $request->description;
+        $torneo->fecha_inicio = $request->start_date;
+        $torneo->fecha_fin = $request->end_date;
+        $torneo->recompensas_id = $request->reward;
+        $torneo->torneo_juego_id = $request->game;
+
+        // Asumimos que el campo 'entrada' es null por defecto
+        $torneo->entrada = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/eventos');
+            $torneo->imagen = $imagePath;
+        } else {
+            $torneo->imagen = null;
+        }
+    }
+
+
 
 
     private function crearCanalDiscord(TorneoModel $torneo)
@@ -111,7 +135,7 @@ class AtorneoController extends Controller
             }
         });
 
-        $discord->run(); 
+        $discord->run();
     }
 
 

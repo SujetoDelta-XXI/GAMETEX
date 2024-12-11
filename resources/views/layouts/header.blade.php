@@ -72,7 +72,6 @@
                 <div class="hidden w-1/5 items-center justify-evenly font-semibold md:flex">
                     <a href="{{ '/' }}">Inicio</a>
                     <a class="pl-10" href="/torneos">Torneos</a>
-                    <a class="pl-10" href="{{ 'torneos-panel' }}">Panel</a>
                 </div>
                 <div class="hidden w-1/5 items-center justify-evenly font-semibold md:flex mr-[50px]">
                     @if (Route::has('login'))
