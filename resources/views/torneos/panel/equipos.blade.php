@@ -25,17 +25,18 @@
         </div>
         <br>
         
-        @if (true)
+        @if (!$torneoLleno)
         <div>
-            <h2 class="font-bold pt-4 uppercase text-2x1">Integrantes</h2>
-            <div
-                class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
+            <h2 class="font-bold pt-4 uppercase text-2x1">Participantes del torneo: {{ $torneo->usuarios->count() }}</h2>
+            <br>
+            @foreach ($torneo->usuarios as $integrante)
+            <div class="p-3 my-3 flex items-center justify-start bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 grid-cols-2">
                 <div class="w-[5%] hidden sm:block">
                     <img src="{{ asset('usuarios_img/gaming.gif') }}" alt="Imagen del jugador" class="rounded-lg">
                 </div>
                 <!-- Información del jugador -->
                 <div class="ml-4">
-                    <dt class="font-semibold text-gray-900 dark:text-white">Carlos Alfonso Asparrin Martin</dt>
+                    <dt class="font-semibold text-gray-900 dark:text-white">{{$integrante->name}}</dt>
                 </div>
                 <button type="button" data-drawer-target="drawer-read-product-advanced"
                     data-drawer-show="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced"
@@ -49,6 +50,7 @@
                     Ver Perfil
                 </button>
             </div>
+            @endforeach
             
             
         </div>
