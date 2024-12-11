@@ -5,7 +5,7 @@
             <div class="mb-6 text-center">
                 <div class="relative w-32 h-32 mx-auto mb-4">
                     <img id="profile-image"
-                        src="{{ Auth::guard('admin')->user()->profile_photo_url ?? '/default-avatar.png' }}"
+                        src="{{ 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}"
                         alt="Profile" class="rounded-full w-full h-full object-cover">
                     <label for="admin-photo-upload"
                         class="absolute bottom-0 right-0 bg-purple-500 text-white rounded-full p-2 cursor-pointer hover:bg-purple-600">
