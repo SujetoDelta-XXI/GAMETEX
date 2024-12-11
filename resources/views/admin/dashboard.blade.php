@@ -100,8 +100,7 @@
                 </a>
             </nav>
         </div>
-
-        <!-- Contenido principal con espacio a la izquierda para el menú -->
+        
         <div class="flex-1 py-12 px-4 bg-gray-900 ml-64">
             @yield('crudAdm')
         </div>
