@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('entrada')->nullable();
             $table->string('descripcion')->nullable();
             $table->string('reglas')->nullable();
-            $table->string('imagen')->nullable();  
+            $table->string('imagen')->nullable();
+            $table->integer('capacidad_maxima')->default(25); // Capacidad máxima del equipo
+            $table->integer('inscritos_actuales')->default(0); // Inscritos actualmente
             $table->foreignId('torneo_juego_id')->constrained('torneos_juegos')->onDelete('cascade');
             $table->foreignId('recompensas_id')->constrained('recompensas_tipo')->onDelete('cascade');
             $table->foreignId('moderador_id')->nullable()->constrained('moders')->onDelete('cascade'); 

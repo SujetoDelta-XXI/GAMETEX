@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
+use App\Models\TorneosModel;
+use App\Observers\TorneoObservador;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,6 @@ class AppServiceProvider extends ServiceProvider
     
     public function boot()
     {
-        //
+        TorneosModel::observe(TorneoObservador::class);
     }
 }

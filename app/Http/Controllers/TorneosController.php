@@ -32,6 +32,10 @@ class TorneosController extends Controller
         /* dump('paso por registerId'); */
         $this->middleware('auth.user');
         $torneo = TorneosModel::find($id);
-        return view('/torneos.register_torneos', compact('torneo'));
+
+        
+
+        return view('torneos.register_torneos', compact('torneo'))->with('torneoLleno', $torneo->estaLleno());
+
     }
 }
