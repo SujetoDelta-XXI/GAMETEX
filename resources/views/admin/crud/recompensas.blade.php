@@ -94,13 +94,14 @@
                                             <span class="text-red-600">No</span>
                                         @endif
                                     </td>
-                                    <td class="py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <a href="{{ route('admin.crud.recompensasTorneos', ['id' => $recompensa->id]) }}"
-                                            onclick="guardarRecompensaId({{ $recompensa->id }})"
-                                            class="ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">
-                                            Torneos
-                                        </a>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
+                                        <a href="{{ route('admin.crud.recompensasTorneos', ['id' => $recompensa->id]) }}" 
+                                            onclick="guardarRecompensaId({{ $recompensa->id }})" 
+                                            class="ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">
+                                             Torneos
+                                         </a>
+                                         
                                         <script>
                                             function guardarRecompensaId(recompensaId) {
                                                 fetch('{{ route('admin.crud.guardarRecompensaId') }}', {
@@ -212,6 +213,20 @@
 
 
     <script>
+            document.addEventListener("DOMContentLoaded", () => {
+        const recompensaId = document.getElementById("recompensa_id_inicial").value;
+
+        if (recompensaId) {
+            // Guardar la ID en el localStorage
+            localStorage.setItem("recompensa_id", recompensaId);
+        }
+    });
+
+        function guardarRecompensaId(recompensaId) {
+        localStorage.setItem('recompensa_id', recompensaId); // Guardar la ID en localStorage
+        console.log('ID de la recompensa guardada:', recompensaId);
+    }
+
         function guardarRecompensaId(recompensaId) {
             localStorage.setItem('recompensa_id', recompensaId);
         }

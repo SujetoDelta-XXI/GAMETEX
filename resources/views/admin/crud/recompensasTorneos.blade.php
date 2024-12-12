@@ -83,6 +83,33 @@
 
 
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Capturar el ID desde la URL
+    const url = window.location.href;
+    const recompensasId = url.split('/').pop(); // Obtiene el último segmento de la URL
+
+    // Asignar el ID al campo oculto para usarlo en formularios si es necesario
+    document.getElementById('recompensas_id').value = recompensasId;
+
+    // Hacer una solicitud al backend para obtener la recompensa
+    fetch(`/admin/recompensas/${recompensasId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Mostrar la recompensa en el modal
+            document.getElementById('recompensa_text').textContent = data.nombre || 'Recompensa no disponible';
+            document.getElementById('recompensa_id').value = data.id; // Campo oculto para el formulario
+        })
+        .catch(error => {
+            console.error('Error al cargar la recompensa:', error);
+            document.getElementById('recompensa_text').textContent = 'Recompensa no disponible';
+        });
+});
+
     document.addEventListener("DOMContentLoaded", function() {
         const searchInput = document.getElementById('search-dropdown');
         const searchFilter = document.getElementById('search-filter');

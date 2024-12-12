@@ -1,4 +1,3 @@
-<!-- resources/views/admin/crud/TorneoEquipos.blade.php -->
 <div>
     @if ($detalles->isEmpty())
         <p>No se encontraron usuarios ni equipos para este torneo.</p>
@@ -19,88 +18,114 @@
                             <td class="px-4 py-2">{{ optional($detalle->usuario)->name }}</td>
                             <td class="px-4 py-2">{{ optional($detalle->equipo)->nombre }}</td>
                             <td class="px-4 py-2">
-                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded" data-user-id="{{ $detalle->usuario->id }}" data-toggle="modal" data-target="#assignRewardModal">Asignar</button>
+                                <button 
+                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded asignar-recompensa" 
+                                    data-user-id="{{ $detalle->usuario->id }}" 
+                                    data-user-name="{{ optional($detalle->usuario)->name }}">
+                                    Asignar
+                                </button>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+    @endif
 
-        <!-- Modal -->
-        <div id="assignRewardModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
-            <div class="bg-white p-4 rounded-lg w-1/3">
-                <h3 class="text-lg font-medium text-gray-900 mb-4">Asignar Recompensa</h3>
-                <form id="assignRewardForm" method="POST" action="{{ route('admin.crud.asignar.recompensa') }}">
-                    @csrf
-                    <input type="hidden" name="usuario_id" id="modalUserId">
-                    <input type="hidden" name="recompensa_id" id="hiddenRecompensaId"> <!-- Recuperar el ID de la recompensa del atributo de datos -->
-                    <div class="mb-4">
-                        <label for="recompensa" class="block mb-2 text-sm font-medium text-gray-900">Seleccionar Recompensa:</label>
-                        @if($recompensas && $recompensas->count())
-                        <select name="recompensa_id" id="recompensa" class="block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                            @foreach ($recompensas as $recompensa)
-                                <option value="{{ $recompensa->id }}">{{ $recompensa->nombre }}</option>
-                            @endforeach
-                        </select>
-                        @else
-                        <p>No hay recompensas disponibles.</p>
-                        @endif
-                    </div>
-                    <div class="flex justify-end">
-                        <button type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded mr-2" onclick="closeModal()">Cancelar</button>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">Recompensar</button>
-                    </div>
-                </form>
+    <div class="modal" id="asignarModal" tabindex="-1" role="dialog" aria-labelledby="asignarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="asignarModalLabel">Asignar Recompensa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="asignarRecompensaForm" action="{{ route('admin.crud.asignar.recompensa') }}" method="POST">
+                        @csrf
+                        <input type="hidden" id="usuario_id" name="usuario_id">
+                        <input type="hidden" id="torneo_id" name="torneo_id">
+                        
+                        <input type="hidden" id="recompensa_id" name="recompensa_id">
+                        <p>Recompensa seleccionada: <span id="recompensa_text">Cargando...</span></p>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Asignar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    @endif
+    </div>
 </div>
 
+
 <script>
-    function closeModal() {
-        document.getElementById('assignRewardModal').classList.add('hidden');
+    document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("asignarModal");
+    const modalUserName = document.getElementById("modalUserName");
+    const recompensaText = document.getElementById("recompensa_text");
+    const recompensaIdInput = document.getElementById("recompensa_id");
+
+    const recompensaId = localStorage.getItem("recompensa_id");
+
+    if (recompensaId) {
+        recompensaIdInput.value = recompensaId; 
+        recompensaText.textContent = `Recompensa ID: ${recompensaId}`; 
+    } else {
+        recompensaText.textContent = "Recompensa no disponible";
     }
 
-    document.querySelectorAll('[data-toggle="modal"]').forEach(button => {
-        button.addEventListener('click', function() {
-            const userId = this.getAttribute('data-user-id');
-            document.getElementById('modalUserId').value = userId;
+    document.querySelectorAll(".asignar-recompensa").forEach(button => {
+        button.addEventListener("click", () => {
+            const userId = button.getAttribute("data-user-id");
+            const userName = button.getAttribute("data-user-name");
 
-            // Consultar al controlador para obtener la ID de la recompensa
-            fetch('{{ route('admin.crud.obtenerRecompensaId') }}')
-                .then(response => response.json())
-                .then(data => {
-                    const recompensaId = data.recompensa_id;
-                    console.log('ID de la Recompensa obtenida del controlador:', recompensaId); // Depuración
-                    document.getElementById('hiddenRecompensaId').value = recompensaId;
-                    document.getElementById('assignRewardModal').classList.remove('hidden');
-                })
-                .catch(error => {
-                    console.error('Error al obtener la ID de la recompensa:', error);
-                });
+            document.getElementById("usuario_id").value = userId;
+            modalUserName.textContent = userName;
+            modal.classList.remove("hidden");
         });
     });
 
-    document.getElementById('assignRewardForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const userId = document.getElementById('modalUserId').value;
-        const recompensaId = document.getElementById('hiddenRecompensaId').value;
-        fetch('{{ route('admin.crud.asignar.recompensa') }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ usuario_id: userId, recompensa_id: recompensaId, estado: 'asignada' })
-        }).then(response => response.json()).then(data => {
-            if (data.success) {
-                alert('Recompensa asignada con éxito');
-                closeModal();
-            } else {
-                alert('Hubo un error al asignar la recompensa');
-            }
-        }).catch(error => console.error('Error:', error));
+    document.getElementById("btn-cerrar-modal").addEventListener("click", () => {
+        modal.classList.add("hidden");
+    });
+});
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("asignarModal");
+        const recompensaNombre = document.getElementById("recompensa_nombre");
+        const recompensaIdInput = document.getElementById("recompensa_id");
+
+        const url = window.location.href;
+        const torneoId = url.split('/').pop(); 
+
+        let recompensaId = null;
+        fetch(`/api/recompensas/torneos/${torneoId}`)
+            .then(response => response.json())
+            .then(data => {
+                recompensaId = data.id;
+                recompensaIdInput.value = recompensaId; 
+                recompensaNombre.textContent = data.nombre; 
+            })
+            .catch(error => {
+                console.error("Error al cargar la recompensa:", error);
+                recompensaNombre.textContent = "No disponible";
+            });
+
+        document.querySelectorAll(".asignar-recompensa").forEach(button => {
+            button.addEventListener("click", () => {
+                const userId = button.getAttribute("data-user-id");
+                document.getElementById("usuario_id").value = userId;
+
+                modal.classList.remove("hidden");
+            });
+        });
+
+        document.getElementById("btn-cerrar-modal").addEventListener("click", () => {
+            modal.classList.add("hidden");
+        });
     });
 </script>
-
