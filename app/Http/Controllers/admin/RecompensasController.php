@@ -22,6 +22,46 @@ class RecompensasController extends Controller
         $this->middleware('auth.admin'); 
     }
 
+    public function store(Request $request)
+    {
+        try {
+            // Validar los datos del formulario
+            $validatedData = $request->validate([
+                'nombre' => 'required|string|max:255',
+                'clave' => 'required|string|max:255',
+                'precio' => 'required|numeric|min:0',
+                'recompensa_tipo_id' => 'required|exists:recompensas_tipo,id',
+            ]);
+    
+            // Crear y guardar la recompensa
+            RecompensasModel::create([
+                'nombre' => $validatedData['nombre'],
+                'clave_producto' => $validatedData['clave'],
+                'precio' => $validatedData['precio'],
+                'recompensa_tipo_id' => $validatedData['recompensa_tipo_id'],
+                'asignada' => false, // Valor por defecto
+            ]);
+    
+            echo('jpass');
+            // Redirigir con mensaje de éxito
+            return redirect()->route('admin.crud.recompensa.index')
+                             ->with('success', 'Recompensa creada exitosamente.');
+    
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Capturar errores de validación y redirigir con mensajes de error
+            return redirect()->back()
+                             ->withErrors($e->validator)
+                             ->withInput();
+        } catch (\Exception $e) {
+            // Manejar cualquier otro error y redirigir con un mensaje genérico
+            return redirect()->back()
+                             ->with('error', 'Ocurrió un error inesperado al guardar la recompensa. Por favor, inténtalo de nuevo.')
+                             ->withInput();
+        }
+    }
+    
+
+
     public function showListado(Request $request)
     {
         $recompensas = RecompensasModel::paginate(10);
